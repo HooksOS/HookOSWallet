@@ -738,6 +738,12 @@ type RouteParams = {
     onSuccess?: () => void;
     revokeReason?: RevokeReason;
   };
+  [Routes.HOOKOS_TOKENS_SCREEN]: undefined;
+  [Routes.HOOKOS_TOKEN_DETAIL_SHEET]: {
+    address: string;
+    chainId: number;
+  };
+  [Routes.HOOKOS_BRIDGE_SHEET]: undefined;
 };
 
 /**

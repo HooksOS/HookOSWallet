@@ -19,6 +19,9 @@ import RegisterENSNavigator from '@/features/ens/navigation/RegisterENSNavigator
 import ENSAdditionalRecordsSheet from '@/features/ens/screens/ENSAdditionalRecordsSheet';
 import ENSConfirmRegisterSheet from '@/features/ens/screens/ENSConfirmRegisterSheet';
 import SelectENSSheet from '@/features/ens/screens/SelectENSSheet';
+import { HookosBridgeSheet } from '@/features/hookos/ui/screens/HookosBridgeSheet';
+import { HookosTokenDetailSheet } from '@/features/hookos/ui/screens/HookosTokenDetailSheet';
+import { HookosTokensScreen } from '@/features/hookos/ui/screens/HookosTokensScreen';
 import { useShowKingOfTheHill } from '@/features/king-of-the-hill/hooks/useShowKingOfTheHill';
 import { KingOfTheHillExplainSheet } from '@/features/king-of-the-hill/screens/KingOfTheHillExplainSheet';
 import PinAuthenticationScreen from '@/features/local-auth/screens/PinAuthenticationScreen';
@@ -158,6 +161,7 @@ function MainNavigator() {
 
       <Stack.Screen component={WalletConnectRedirectSheet} name={Routes.WALLET_CONNECT_REDIRECT_SHEET} options={wcPromptPreset} />
       <Stack.Screen component={FiatOnRampSheet} name={Routes.FIAT_ON_RAMP_SHEET} options={fiatOnRampSheet} />
+      <Stack.Screen component={HookosTokensScreen} name={Routes.HOOKOS_TOKENS_SCREEN} options={expandedPreset} />
       <Stack.Screen component={RestoreSheet} name={Routes.RESTORE_SHEET} options={bottomSheetPreset} />
       <Stack.Screen component={WelcomeScreen} name={Routes.WELCOME_SCREEN} options={{ animationEnabled: false, gestureEnabled: false }} />
       <Stack.Screen component={ShowSecretView} name="ShowSecretView" options={bottomSheetPreset} />
@@ -307,6 +311,9 @@ function BSNavigator() {
       <BSStack.Screen component={PerpsAboutSheet} name={Routes.PERPS_ABOUT_SHEET} />
       <BSStack.Screen component={CashDepositIntroPanel} name={Routes.CASH_DEPOSIT_INTRO_PANEL} />
       <BSStack.Screen component={AddCashSheet} name={Routes.ADD_CASH_SHEET} />
+      <BSStack.Screen component={HookosTokenDetailSheet} name={Routes.HOOKOS_TOKEN_DETAIL_SHEET} />
+      <BSStack.Screen component={HookosBridgeSheet} name={Routes.HOOKOS_BRIDGE_SHEET} />
+
       <BSStack.Screen component={PerpsTradeDetailsSheet} name={Routes.PERPS_TRADE_DETAILS_SHEET} />
       <BSStack.Screen component={PolymarketEventScreen} name={Routes.POLYMARKET_EVENT_SCREEN} />
       <BSStack.Screen component={PolymarketRedeemPositionSheet} name={Routes.POLYMARKET_MANAGE_POSITION_SHEET} />

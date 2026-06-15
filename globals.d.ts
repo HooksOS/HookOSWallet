@@ -72,4 +72,6 @@ declare module 'react-native-dotenv' {
   export const RAINBOW_RELAY_API_KEY: string;
   export const RAINBOW_RELAY_QUOTE_SIGNER: string;
   export const RAINBOW_RELAY_GO_BACKEND_QUOTE_SIGNER: string;
+  export const HOOKOS_INFURA_API_BASE_URL: string;
+  export const HOOKOS_INFURA_API_KEY: string;
 }

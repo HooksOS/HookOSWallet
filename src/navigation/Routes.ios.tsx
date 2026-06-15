@@ -19,6 +19,9 @@ import RegisterENSNavigator from '@/features/ens/navigation/RegisterENSNavigator
 import ENSAdditionalRecordsSheet from '@/features/ens/screens/ENSAdditionalRecordsSheet';
 import ENSConfirmRegisterSheet from '@/features/ens/screens/ENSConfirmRegisterSheet';
 import SelectENSSheet from '@/features/ens/screens/SelectENSSheet';
+import { HookosBridgeSheet } from '@/features/hookos/ui/screens/HookosBridgeSheet';
+import { HookosTokenDetailSheet } from '@/features/hookos/ui/screens/HookosTokenDetailSheet';
+import { HookosTokensScreen } from '@/features/hookos/ui/screens/HookosTokensScreen';
 import { useShowKingOfTheHill } from '@/features/king-of-the-hill/hooks/useShowKingOfTheHill';
 import { KingOfTheHillExplainSheet } from '@/features/king-of-the-hill/screens/KingOfTheHillExplainSheet';
 import { NotificationPermissionScreen } from '@/features/notifications/screens/NotificationPermissionScreen';
@@ -177,6 +180,7 @@ function MainNavigator() {
       <Stack.Screen component={AvatarBuilder} name={Routes.AVATAR_BUILDER} options={emojiPreset} />
       <Stack.Screen component={AvatarBuilder} name={Routes.AVATAR_BUILDER_WALLET} options={emojiPresetWallet} />
       <Stack.Screen component={FiatOnRampSheet} name={Routes.FIAT_ON_RAMP_SHEET} options={fiatOnRampSheet} />
+      <Stack.Screen component={HookosTokensScreen} name={Routes.HOOKOS_TOKENS_SCREEN} />
     </Stack.Navigator>
   );
 }
@@ -341,6 +345,8 @@ function NativeStackNavigator() {
       <NativeStack.Screen component={PerpsAboutSheet} name={Routes.PERPS_ABOUT_SHEET} {...panelConfig} />
       <NativeStack.Screen component={CashDepositIntroPanel} name={Routes.CASH_DEPOSIT_INTRO_PANEL} {...panelConfig} />
       <NativeStack.Screen component={AddCashSheet} name={Routes.ADD_CASH_SHEET} {...panelConfig} />
+      <NativeStack.Screen component={HookosTokenDetailSheet} name={Routes.HOOKOS_TOKEN_DETAIL_SHEET} {...panelConfig} />
+      <NativeStack.Screen component={HookosBridgeSheet} name={Routes.HOOKOS_BRIDGE_SHEET} {...panelConfig} />
       <NativeStack.Screen
         component={PerpsTradeDetailsSheet}
         name={Routes.PERPS_TRADE_DETAILS_SHEET}
