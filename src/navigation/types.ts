@@ -762,6 +762,24 @@ type RouteParams = {
         chainId?: number;
       }
     | undefined;
+  [Routes.HOOKOS_ARENA_SCREEN]:
+    | {
+        chainId?: number;
+      }
+    | undefined;
+  [Routes.HOOKOS_BATTLE_DETAIL_SHEET]: {
+    battleId: number;
+    chainId: number;
+  };
+  [Routes.HOOKOS_EVENTS_SCREEN]:
+    | {
+        chainId?: number;
+      }
+    | undefined;
+  [Routes.HOOKOS_EVENT_DETAIL_SHEET]: {
+    eventId: number;
+    chainId: number;
+  };
 };
 
 /**

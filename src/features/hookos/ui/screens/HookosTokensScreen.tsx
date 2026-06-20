@@ -1,5 +1,5 @@
 import { memo, useCallback } from 'react';
-import { ActivityIndicator, FlatList, type ListRenderItemInfo, StyleSheet } from 'react-native';
+import { ActivityIndicator, FlatList, type ListRenderItemInfo, ScrollView, StyleSheet } from 'react-native';
 
 import ButtonPressAnimation from '@/components/animations/ButtonPressAnimation';
 import { Box, Separator, Stack, Text, useColorMode, useForegroundColor } from '@/design-system';
@@ -73,10 +73,14 @@ function Header({
   onPressReputation,
   onPressHooks,
   onPressFees,
+  onPressArena,
+  onPressEvents,
 }: {
   onPressReputation: () => void;
   onPressHooks: () => void;
   onPressFees: () => void;
+  onPressArena: () => void;
+  onPressEvents: () => void;
 }) {
   return (
     <Box paddingBottom="12px" paddingHorizontal="20px" paddingTop="8px">
@@ -84,11 +88,17 @@ function Header({
         <Text color="label" size="26pt" weight="heavy">
           {'HookOS Tokens'}
         </Text>
-        <Box alignItems="center" flexDirection="row" gap={8}>
+        <ScrollView
+          contentContainerStyle={styles.navRow}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        >
           <NavPill label="Reputation" onPress={onPressReputation} testID="hookos-open-reputation" />
           <NavPill label="Hooks" onPress={onPressHooks} testID="hookos-open-hooks" />
+          <NavPill label="Arena" onPress={onPressArena} testID="hookos-open-arena" />
+          <NavPill label="Events" onPress={onPressEvents} testID="hookos-open-events" />
           <NavPill label="Fees" onPress={onPressFees} testID="hookos-open-fees" />
-        </Box>
+        </ScrollView>
       </Stack>
     </Box>
   );
@@ -114,6 +124,14 @@ export const HookosTokensScreen = memo(function HookosTokensScreen() {
     navigate(Routes.HOOKOS_FEES_SCREEN, { chainId: HOOKOS_CHAIN_IDS.base });
   }, []);
 
+  const handlePressArena = useCallback(() => {
+    navigate(Routes.HOOKOS_ARENA_SCREEN, { chainId: HOOKOS_CHAIN_IDS.base });
+  }, []);
+
+  const handlePressEvents = useCallback(() => {
+    navigate(Routes.HOOKOS_EVENTS_SCREEN, { chainId: HOOKOS_CHAIN_IDS.base });
+  }, []);
+
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<HookToken>) => <HookTokenRow onPress={handlePressToken} token={item} />,
     [handlePressToken]
@@ -124,7 +142,13 @@ export const HookosTokensScreen = memo(function HookosTokensScreen() {
       background="surfacePrimary"
       style={[styles.container, { paddingTop: safeAreaInsetValues.top }]}
     >
-      <Header onPressFees={handlePressFees} onPressHooks={handlePressHooks} onPressReputation={handlePressReputation} />
+      <Header
+        onPressArena={handlePressArena}
+        onPressEvents={handlePressEvents}
+        onPressFees={handlePressFees}
+        onPressHooks={handlePressHooks}
+        onPressReputation={handlePressReputation}
+      />
       {tokens === null ? (
         <LoadingState />
       ) : (
@@ -148,5 +172,8 @@ const styles = StyleSheet.create({
   },
   listContent: {
     paddingBottom: safeAreaInsetValues.bottom + 24,
+  },
+  navRow: {
+    gap: 8,
   },
 });

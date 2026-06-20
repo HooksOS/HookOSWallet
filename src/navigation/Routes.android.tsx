@@ -19,7 +19,11 @@ import RegisterENSNavigator from '@/features/ens/navigation/RegisterENSNavigator
 import ENSAdditionalRecordsSheet from '@/features/ens/screens/ENSAdditionalRecordsSheet';
 import ENSConfirmRegisterSheet from '@/features/ens/screens/ENSConfirmRegisterSheet';
 import SelectENSSheet from '@/features/ens/screens/SelectENSSheet';
+import { HookosArenaScreen } from '@/features/hookos/ui/screens/HookosArenaScreen';
+import { HookosBattleDetailSheet } from '@/features/hookos/ui/screens/HookosBattleDetailSheet';
 import { HookosBridgeSheet } from '@/features/hookos/ui/screens/HookosBridgeSheet';
+import { HookosEventDetailSheet } from '@/features/hookos/ui/screens/HookosEventDetailSheet';
+import { HookosEventsScreen } from '@/features/hookos/ui/screens/HookosEventsScreen';
 import { HookosFeesScreen } from '@/features/hookos/ui/screens/HookosFeesScreen';
 import { HookosHookDetailSheet } from '@/features/hookos/ui/screens/HookosHookDetailSheet';
 import { HookosHooksScreen } from '@/features/hookos/ui/screens/HookosHooksScreen';
@@ -168,6 +172,8 @@ function MainNavigator() {
       <Stack.Screen component={HookosTokensScreen} name={Routes.HOOKOS_TOKENS_SCREEN} options={expandedPreset} />
       <Stack.Screen component={HookosHooksScreen} name={Routes.HOOKOS_HOOKS_SCREEN} options={expandedPreset} />
       <Stack.Screen component={HookosFeesScreen} name={Routes.HOOKOS_FEES_SCREEN} options={expandedPreset} />
+      <Stack.Screen component={HookosArenaScreen} name={Routes.HOOKOS_ARENA_SCREEN} options={expandedPreset} />
+      <Stack.Screen component={HookosEventsScreen} name={Routes.HOOKOS_EVENTS_SCREEN} options={expandedPreset} />
       <Stack.Screen component={RestoreSheet} name={Routes.RESTORE_SHEET} options={bottomSheetPreset} />
       <Stack.Screen component={WelcomeScreen} name={Routes.WELCOME_SCREEN} options={{ animationEnabled: false, gestureEnabled: false }} />
       <Stack.Screen component={ShowSecretView} name="ShowSecretView" options={bottomSheetPreset} />
@@ -321,6 +327,8 @@ function BSNavigator() {
       <BSStack.Screen component={HookosBridgeSheet} name={Routes.HOOKOS_BRIDGE_SHEET} />
       <BSStack.Screen component={HookosReputationSheet} name={Routes.HOOKOS_REPUTATION_SHEET} />
       <BSStack.Screen component={HookosHookDetailSheet} name={Routes.HOOKOS_HOOK_DETAIL_SHEET} />
+      <BSStack.Screen component={HookosBattleDetailSheet} name={Routes.HOOKOS_BATTLE_DETAIL_SHEET} />
+      <BSStack.Screen component={HookosEventDetailSheet} name={Routes.HOOKOS_EVENT_DETAIL_SHEET} />
 
       <BSStack.Screen component={PerpsTradeDetailsSheet} name={Routes.PERPS_TRADE_DETAILS_SHEET} />
       <BSStack.Screen component={PolymarketEventScreen} name={Routes.POLYMARKET_EVENT_SCREEN} />

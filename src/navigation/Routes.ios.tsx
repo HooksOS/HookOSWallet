@@ -19,7 +19,11 @@ import RegisterENSNavigator from '@/features/ens/navigation/RegisterENSNavigator
 import ENSAdditionalRecordsSheet from '@/features/ens/screens/ENSAdditionalRecordsSheet';
 import ENSConfirmRegisterSheet from '@/features/ens/screens/ENSConfirmRegisterSheet';
 import SelectENSSheet from '@/features/ens/screens/SelectENSSheet';
+import { HookosArenaScreen } from '@/features/hookos/ui/screens/HookosArenaScreen';
+import { HookosBattleDetailSheet } from '@/features/hookos/ui/screens/HookosBattleDetailSheet';
 import { HookosBridgeSheet } from '@/features/hookos/ui/screens/HookosBridgeSheet';
+import { HookosEventDetailSheet } from '@/features/hookos/ui/screens/HookosEventDetailSheet';
+import { HookosEventsScreen } from '@/features/hookos/ui/screens/HookosEventsScreen';
 import { HookosFeesScreen } from '@/features/hookos/ui/screens/HookosFeesScreen';
 import { HookosHookDetailSheet } from '@/features/hookos/ui/screens/HookosHookDetailSheet';
 import { HookosHooksScreen } from '@/features/hookos/ui/screens/HookosHooksScreen';
@@ -187,6 +191,8 @@ function MainNavigator() {
       <Stack.Screen component={HookosTokensScreen} name={Routes.HOOKOS_TOKENS_SCREEN} />
       <Stack.Screen component={HookosHooksScreen} name={Routes.HOOKOS_HOOKS_SCREEN} />
       <Stack.Screen component={HookosFeesScreen} name={Routes.HOOKOS_FEES_SCREEN} />
+      <Stack.Screen component={HookosArenaScreen} name={Routes.HOOKOS_ARENA_SCREEN} />
+      <Stack.Screen component={HookosEventsScreen} name={Routes.HOOKOS_EVENTS_SCREEN} />
     </Stack.Navigator>
   );
 }
@@ -355,6 +361,8 @@ function NativeStackNavigator() {
       <NativeStack.Screen component={HookosBridgeSheet} name={Routes.HOOKOS_BRIDGE_SHEET} {...panelConfig} />
       <NativeStack.Screen component={HookosReputationSheet} name={Routes.HOOKOS_REPUTATION_SHEET} {...panelConfig} />
       <NativeStack.Screen component={HookosHookDetailSheet} name={Routes.HOOKOS_HOOK_DETAIL_SHEET} {...panelConfig} />
+      <NativeStack.Screen component={HookosBattleDetailSheet} name={Routes.HOOKOS_BATTLE_DETAIL_SHEET} {...panelConfig} />
+      <NativeStack.Screen component={HookosEventDetailSheet} name={Routes.HOOKOS_EVENT_DETAIL_SHEET} {...panelConfig} />
       <NativeStack.Screen
         component={PerpsTradeDetailsSheet}
         name={Routes.PERPS_TRADE_DETAILS_SHEET}

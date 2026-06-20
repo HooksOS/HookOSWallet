@@ -94,6 +94,67 @@ export interface ReputationLeaderboardEntry {
   rank: HookosRank;
 }
 
+/** Arena battle lifecycle status — mirrors the `Arena` enum `{ Open, Active, Settled, Cancelled }`. */
+export enum BattleStatus {
+  Open = 0,
+  Active = 1,
+  Settled = 2,
+  Cancelled = 3,
+}
+
+/** Which side of a battle — mirrors the `Arena` enum `{ TeamA, TeamB }`. */
+export enum BattleSide {
+  TeamA = 0,
+  TeamB = 1,
+}
+
+/** A PvP token battle from the HookOS `Arena` contract. */
+export interface Battle {
+  battleId: number;
+  tokenA: Address;
+  tokenB: Address;
+  /** Total pot in wei. */
+  pot: bigint;
+  teamAPot: bigint;
+  teamBPot: bigint;
+  minWager: bigint;
+  /** 0 = no max. */
+  maxWager: bigint;
+  startTime: number;
+  endTime: number;
+  round: number;
+  status: BattleStatus;
+  /** Only meaningful once `status` is `Settled`. */
+  winner: BattleSide;
+  wagerCount: number;
+}
+
+/** Event lifecycle status — mirrors the `Events` enum `{ Upcoming, Live, Ended, Cancelled }`. */
+export enum HookosEventStatus {
+  Upcoming = 0,
+  Live = 1,
+  Ended = 2,
+  Cancelled = 3,
+}
+
+/** A seasonal competition from the HookOS `Events` contract. */
+export interface HookosEvent {
+  eventId: number;
+  name: string;
+  category: string;
+  metadataURI: string;
+  /** Prize pool in wei. */
+  prizePool: bigint;
+  entryFee: bigint;
+  /** 0 = unlimited. */
+  maxPlayers: number;
+  playerCount: number;
+  startTime: number;
+  endTime: number;
+  season: number;
+  status: HookosEventStatus;
+}
+
 /** A single fee recipient in the FeeRouter split. */
 export interface FeeShare {
   wallet: Address;

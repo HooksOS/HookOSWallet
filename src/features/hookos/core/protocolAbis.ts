@@ -213,3 +213,121 @@ export const FEE_ROUTER_READ_ABI = [
     outputs: [{ name: '', type: 'uint256' }],
   },
 ] as const;
+
+/**
+ * Arena read fragments: PvP token battles (pot split, status, winner).
+ * `battles(id)` is the public mapping getter for the `Battle` struct.
+ * Source: `protocol/contracts/contracts/gamification/Arena.sol`.
+ */
+export const ARENA_READ_ABI = [
+  {
+    name: 'battleCount',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ name: '', type: 'uint256' }],
+  },
+  {
+    name: 'protocolFeeBps',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ name: '', type: 'uint256' }],
+  },
+  {
+    name: 'battles',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [{ name: '', type: 'uint256' }],
+    outputs: [
+      { name: 'tokenA', type: 'address' },
+      { name: 'tokenB', type: 'address' },
+      { name: 'pot', type: 'uint256' },
+      { name: 'teamAPot', type: 'uint256' },
+      { name: 'teamBPot', type: 'uint256' },
+      { name: 'minWager', type: 'uint256' },
+      { name: 'maxWager', type: 'uint256' },
+      { name: 'startTime', type: 'uint64' },
+      { name: 'endTime', type: 'uint64' },
+      { name: 'round', type: 'uint16' },
+      { name: 'status', type: 'uint8' },
+      { name: 'winner', type: 'uint8' },
+      { name: 'wagerCount', type: 'uint256' },
+    ],
+  },
+  {
+    name: 'hasWagered',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [
+      { name: '', type: 'uint256' },
+      { name: '', type: 'address' },
+    ],
+    outputs: [{ name: '', type: 'bool' }],
+  },
+  {
+    name: 'paused',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ name: '', type: 'bool' }],
+  },
+] as const;
+
+/**
+ * Events read fragments: seasonal competitions (prize pool, entry fee, status).
+ * `events(id)` is the public mapping getter for the `EventInfo` struct.
+ * Source: `protocol/contracts/contracts/Events.sol`.
+ */
+export const EVENTS_READ_ABI = [
+  {
+    name: 'eventCount',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ name: '', type: 'uint256' }],
+  },
+  {
+    name: 'currentSeason',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ name: '', type: 'uint16' }],
+  },
+  {
+    name: 'events',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [{ name: '', type: 'uint256' }],
+    outputs: [
+      { name: 'name', type: 'string' },
+      { name: 'category', type: 'string' },
+      { name: 'metadataURI', type: 'string' },
+      { name: 'prizePool', type: 'uint256' },
+      { name: 'entryFee', type: 'uint256' },
+      { name: 'maxPlayers', type: 'uint256' },
+      { name: 'playerCount', type: 'uint256' },
+      { name: 'startTime', type: 'uint64' },
+      { name: 'endTime', type: 'uint64' },
+      { name: 'season', type: 'uint16' },
+      { name: 'status', type: 'uint8' },
+    ],
+  },
+  {
+    name: 'isRegistered',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [
+      { name: '', type: 'uint256' },
+      { name: '', type: 'address' },
+    ],
+    outputs: [{ name: '', type: 'bool' }],
+  },
+  {
+    name: 'paused',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ name: '', type: 'bool' }],
+  },
+] as const;
