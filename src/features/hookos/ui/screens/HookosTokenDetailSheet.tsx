@@ -1,11 +1,11 @@
 import { memo, useCallback, useMemo } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
+import { type Address } from 'viem';
 
 import ButtonPressAnimation from '@/components/animations/ButtonPressAnimation';
 import { ImgixImage } from '@/components/images';
 import { PanelSheet } from '@/components/PanelSheet/PanelSheet';
 import { Box, Separator, Stack, Text, useForegroundColor } from '@/design-system';
-import { type HookToken } from '@/features/hookos/core/types';
 import { useHookosTokensStore } from '@/features/hookos/data/protocol/hookosTokensStore';
 import { BondingCurveProgressBar } from '@/features/hookos/ui/components/BondingCurveProgressBar';
 import { useRoute } from '@/navigation/Navigation';
@@ -62,7 +62,7 @@ export const HookosTokenDetailSheet = memo(function HookosTokenDetailSheet() {
   const fallbackColor = useForegroundColor('fillSecondary');
 
   // Reads are real: pull the token straight from the protocol query store.
-  const token = useHookosTokensStore(state => state.getToken(params.address)) as HookToken | null;
+  const token = useHookosTokensStore(state => state.getToken(params.address as Address));
 
   const handleBuy = useCallback(() => {
     // TODO: wire to src/raps execution + src/model/wallet signer (user-confirmed)
@@ -82,7 +82,7 @@ export const HookosTokenDetailSheet = memo(function HookosTokenDetailSheet() {
   if (!token) {
     return (
       <PanelSheet innerBorderWidth={THICKER_BORDER_WIDTH}>
-        <Box alignItems="center" justifyContent="center" paddingHorizontal="24px" paddingVertical="48px">
+        <Box alignItems="center" justifyContent="center" paddingHorizontal="24px" paddingVertical="44px">
           <Text align="center" color="labelTertiary" size="17pt" weight="bold">
             {'Token not found'}
           </Text>
@@ -131,7 +131,7 @@ export const HookosTokenDetailSheet = memo(function HookosTokenDetailSheet() {
 
           <Separator color="separatorTertiary" direction="horizontal" thickness={1} />
 
-          <Stack space="14px">
+          <Stack space="12px">
             <StatRow label="Price" value={token.priceEth ? `${token.priceEth} ETH` : '—'} />
             <StatRow label="Market cap" value={token.marketCapEth ? `${token.marketCapEth} ETH` : '—'} />
             <StatRow label="Creator" value={truncateAddress(token.creator)} />

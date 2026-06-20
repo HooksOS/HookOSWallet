@@ -20,8 +20,12 @@ const STALE_TIME = time.seconds(15);
 const CACHE_TIME = time.minutes(5);
 
 interface BridgeStatusState {
-  /** Normalized latest lane health, or `null` before the first successful fetch. */
-  getStatus: () => BridgeStatus | null;
+  /**
+   * Normalized latest lane health, or `null` before the first successful fetch.
+   * Named `getLaneStatus` (not `getStatus`) to avoid colliding with the built-in
+   * `createQueryStore` `getStatus()` selector, which returns query meta (`QueryStatusInfo`).
+   */
+  getLaneStatus: () => BridgeStatus | null;
   /** True when the lane and both chains are healthy. */
   isLaneHealthy: () => boolean;
 }
@@ -34,7 +38,7 @@ export const useBridgeStatusStore = createQueryStore<BridgeStatus, Record<string
   },
 
   (_set, get) => ({
-    getStatus: () => get().getData() ?? null,
+    getLaneStatus: () => get().getData() ?? null,
     isLaneHealthy: () => Boolean(get().getData()?.healthy),
   })
 );
@@ -66,7 +70,7 @@ function toChainEntry(chainId: HookosChainId, status: InfuraChainStatus): Bridge
 
 /** Imperative selector: latest normalized lane health, or `null` before first fetch. */
 export function getStatus(): BridgeStatus | null {
-  return useBridgeStatusStore.getState().getStatus();
+  return useBridgeStatusStore.getState().getLaneStatus();
 }
 
 /** Imperative selector: true when the lane and both chains are healthy. */

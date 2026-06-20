@@ -4,17 +4,17 @@ import { StyleSheet, TextInput, View } from 'react-native';
 import ButtonPressAnimation from '@/components/animations/ButtonPressAnimation';
 import { PanelSheet } from '@/components/PanelSheet/PanelSheet';
 import { Box, Separator, Stack, Text, useColorMode, useForegroundColor } from '@/design-system';
-import { HOOKOS_CHAIN_IDS, type HookosChainId } from '@/features/hookos/core/chains';
+import { HOOKOS_CHAIN_IDS, type BridgeChainId } from '@/features/hookos/core/chains';
 import { useBridgeStatusStore } from '@/features/hookos/data/bridge/bridgeStatusStore';
 import { opacity } from '@/framework/ui/utils/opacity';
 import { THICKER_BORDER_WIDTH } from '@/styles/constants';
 
-const CHAIN_LABELS: Record<HookosChainId, string> = {
+const CHAIN_LABELS: Record<BridgeChainId, string> = {
   [HOOKOS_CHAIN_IDS.base]: 'Base',
   [HOOKOS_CHAIN_IDS.megaeth]: 'MegaETH',
 };
 
-function HealthChip({ chainId, healthy }: { chainId: HookosChainId; healthy: boolean }) {
+function HealthChip({ chainId, healthy }: { chainId: BridgeChainId; healthy: boolean }) {
   const green = useForegroundColor('green');
   const red = useForegroundColor('red');
   const labelColor = healthy ? green : red;
@@ -63,15 +63,15 @@ export const HookosBridgeSheet = memo(function HookosBridgeSheet() {
   const labelTertiary = useForegroundColor('labelTertiary');
   const fill = useForegroundColor('fillSecondary');
 
-  const status = useBridgeStatusStore(state => state.getStatus());
+  const status = useBridgeStatusStore(state => state.getLaneStatus());
   const laneHealthy = useBridgeStatusStore(state => state.isLaneHealthy());
 
   // From/To are fixed to the live Base <-> MegaETH lane; tapping swaps direction.
-  const [fromChainId, setFromChainId] = useState<HookosChainId>(HOOKOS_CHAIN_IDS.base);
+  const [fromChainId, setFromChainId] = useState<BridgeChainId>(HOOKOS_CHAIN_IDS.base);
   const toChainId = fromChainId === HOOKOS_CHAIN_IDS.base ? HOOKOS_CHAIN_IDS.megaeth : HOOKOS_CHAIN_IDS.base;
   const [amount, setAmount] = useState('');
 
-  const chipChains = useMemo<HookosChainId[]>(() => [HOOKOS_CHAIN_IDS.base, HOOKOS_CHAIN_IDS.megaeth], []);
+  const chipChains = useMemo<BridgeChainId[]>(() => [HOOKOS_CHAIN_IDS.base, HOOKOS_CHAIN_IDS.megaeth], []);
 
   const chainHealth = useMemo(() => {
     const map = new Map<number, boolean>();

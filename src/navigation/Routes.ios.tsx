@@ -20,6 +20,10 @@ import ENSAdditionalRecordsSheet from '@/features/ens/screens/ENSAdditionalRecor
 import ENSConfirmRegisterSheet from '@/features/ens/screens/ENSConfirmRegisterSheet';
 import SelectENSSheet from '@/features/ens/screens/SelectENSSheet';
 import { HookosBridgeSheet } from '@/features/hookos/ui/screens/HookosBridgeSheet';
+import { HookosFeesScreen } from '@/features/hookos/ui/screens/HookosFeesScreen';
+import { HookosHookDetailSheet } from '@/features/hookos/ui/screens/HookosHookDetailSheet';
+import { HookosHooksScreen } from '@/features/hookos/ui/screens/HookosHooksScreen';
+import { HookosReputationSheet } from '@/features/hookos/ui/screens/HookosReputationSheet';
 import { HookosTokenDetailSheet } from '@/features/hookos/ui/screens/HookosTokenDetailSheet';
 import { HookosTokensScreen } from '@/features/hookos/ui/screens/HookosTokensScreen';
 import { useShowKingOfTheHill } from '@/features/king-of-the-hill/hooks/useShowKingOfTheHill';
@@ -181,6 +185,8 @@ function MainNavigator() {
       <Stack.Screen component={AvatarBuilder} name={Routes.AVATAR_BUILDER_WALLET} options={emojiPresetWallet} />
       <Stack.Screen component={FiatOnRampSheet} name={Routes.FIAT_ON_RAMP_SHEET} options={fiatOnRampSheet} />
       <Stack.Screen component={HookosTokensScreen} name={Routes.HOOKOS_TOKENS_SCREEN} />
+      <Stack.Screen component={HookosHooksScreen} name={Routes.HOOKOS_HOOKS_SCREEN} />
+      <Stack.Screen component={HookosFeesScreen} name={Routes.HOOKOS_FEES_SCREEN} />
     </Stack.Navigator>
   );
 }
@@ -347,6 +353,8 @@ function NativeStackNavigator() {
       <NativeStack.Screen component={AddCashSheet} name={Routes.ADD_CASH_SHEET} {...panelConfig} />
       <NativeStack.Screen component={HookosTokenDetailSheet} name={Routes.HOOKOS_TOKEN_DETAIL_SHEET} {...panelConfig} />
       <NativeStack.Screen component={HookosBridgeSheet} name={Routes.HOOKOS_BRIDGE_SHEET} {...panelConfig} />
+      <NativeStack.Screen component={HookosReputationSheet} name={Routes.HOOKOS_REPUTATION_SHEET} {...panelConfig} />
+      <NativeStack.Screen component={HookosHookDetailSheet} name={Routes.HOOKOS_HOOK_DETAIL_SHEET} {...panelConfig} />
       <NativeStack.Screen
         component={PerpsTradeDetailsSheet}
         name={Routes.PERPS_TRADE_DETAILS_SHEET}

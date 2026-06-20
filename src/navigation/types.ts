@@ -744,6 +744,24 @@ type RouteParams = {
     chainId: number;
   };
   [Routes.HOOKOS_BRIDGE_SHEET]: undefined;
+  [Routes.HOOKOS_REPUTATION_SHEET]: {
+    address?: string;
+    chainId?: number;
+  };
+  [Routes.HOOKOS_HOOKS_SCREEN]:
+    | {
+        chainId?: number;
+      }
+    | undefined;
+  [Routes.HOOKOS_HOOK_DETAIL_SHEET]: {
+    hookId: string;
+    chainId: number;
+  };
+  [Routes.HOOKOS_FEES_SCREEN]:
+    | {
+        chainId?: number;
+      }
+    | undefined;
 };
 
 /**

@@ -13,7 +13,7 @@ const DEFAULT_HOOKOS_DATA_API_BASE_URL = 'https://api.hookos.fun';
 
 function resolveBaseUrl(): string | undefined {
   // `HOOKOS_DATA_API_BASE_URL` is not declared in the dotenv typings; read it defensively.
-  const fromEnv = (dotenv as Record<string, string | undefined>).HOOKOS_DATA_API_BASE_URL;
+  const fromEnv = (dotenv as unknown as Record<string, string | undefined>).HOOKOS_DATA_API_BASE_URL;
   const value = (fromEnv ?? DEFAULT_HOOKOS_DATA_API_BASE_URL).trim();
   return value.length ? value.replace(/\/+$/, '') : undefined;
 }

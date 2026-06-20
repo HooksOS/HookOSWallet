@@ -4,7 +4,7 @@ import { RainbowError } from '@/logger';
 
 import { getBridgeAddresses, HYPERLANE_DOMAINS, ZERO_ADDRESS } from '../../core/addresses';
 import { INTERCHAIN_GAS_PAYMASTER_ABI, MAILBOX_ABI, WARP_ROUTE_ABI } from '../../core/bridgeAbis';
-import { HOOKOS_CHAIN_IDS, type HookosChainId } from '../../core/chains';
+import { HOOKOS_CHAIN_IDS, type BridgeChainId } from '../../core/chains';
 import { createHookosPublicClient } from '../../core/client';
 import { type BridgeRoute } from '../../core/types';
 
@@ -61,7 +61,7 @@ export function addressToBytes32(address: Address): Hex {
  * the intended lane while `getBridgeRoutes()` consumers gate execution on liveness (see below).
  */
 export function getBridgeRoutes(): BridgeRoute[] {
-  const lane: Array<[HookosChainId, HookosChainId]> = [
+  const lane: Array<[BridgeChainId, BridgeChainId]> = [
     [HOOKOS_CHAIN_IDS.base, HOOKOS_CHAIN_IDS.megaeth],
     [HOOKOS_CHAIN_IDS.megaeth, HOOKOS_CHAIN_IDS.base],
   ];
@@ -75,7 +75,7 @@ export function getBridgeRoutes(): BridgeRoute[] {
 }
 
 /** True when a warp token transfer can actually be built/executed on the given origin chain. */
-export function isWarpTransferLive(origin: HookosChainId): boolean {
+export function isWarpTransferLive(origin: BridgeChainId): boolean {
   return getWarpRouteAddress(origin) !== null;
 }
 
@@ -90,8 +90,8 @@ export function isWarpTransferLive(origin: HookosChainId): boolean {
  *   is null in `core/addresses.ts`), so this read cannot be performed on-chain today.
  */
 export async function quoteBridgeGas(
-  origin: HookosChainId,
-  destination: HookosChainId,
+  origin: BridgeChainId,
+  destination: BridgeChainId,
   gasAmount: bigint,
   options?: { signal?: AbortSignal }
 ): Promise<bigint> {
@@ -114,8 +114,8 @@ export async function quoteBridgeGas(
 /* ------------------------------------------------------------------ */
 
 export interface EncodeWarpTransferParams {
-  origin: HookosChainId;
-  destination: HookosChainId;
+  origin: BridgeChainId;
+  destination: BridgeChainId;
   /** Recipient on the destination chain (20-byte EVM address). */
   recipient: Address;
   /** Amount of token to bridge, in base units (wei). */
@@ -150,8 +150,8 @@ export function encodeWarpTransfer(params: EncodeWarpTransferParams): BridgeCall
 /* ------------------------------------------------------------------ */
 
 export interface EncodeMailboxDispatchParams {
-  origin: HookosChainId;
-  destination: HookosChainId;
+  origin: BridgeChainId;
+  destination: BridgeChainId;
   /** Message recipient contract on the destination chain (20-byte EVM address). */
   recipient: Address;
   /** Raw message body bytes. */
@@ -203,6 +203,6 @@ export async function quoteMailboxDispatch(
  * is not deployed. Liveness is keyed off `warpFeeRecipient` (the warp route registry entry that the
  * Hook-Bridge config leaves null until the canonical route ships).
  */
-function getWarpRouteAddress(origin: HookosChainId): Address | null {
+function getWarpRouteAddress(origin: BridgeChainId): Address | null {
   return getBridgeAddresses(origin).warpFeeRecipient;
 }

@@ -16,6 +16,16 @@ The HookOS Wallet is a React Native crypto wallet (a Rainbow fork) extended to b
 Read this file together with `AGENTS.md` (general Rainbow conventions). This file is the
 **ground truth for HookOS-specific work and engineering governance**.
 
+> **MANDATORY — Stay up to date with HookOS Protocol features.**
+> The HookOS Protocol repo at `C:\Users\avone\OneDrive\Desktop\Jink Labs\protocol`
+> (relative: `../../Jink Labs/protocol`) is the canonical source of truth for protocol
+> features, contracts, ABIs, and addresses. Before doing any HookOS protocol work
+> (token launches, bonding-curve AMM, hooks, arena, gamification, `@hookos/sdk`), you
+> MUST consult that repo for the current state — never rely on memory or a summary.
+> Re-verify addresses against `protocol/contracts/deployments/addresses.json` and pull
+> new/changed features from the protocol source. Keep `src/features/hookos/` aligned
+> with whatever the Protocol repo currently ships.
+
 ---
 
 ## Architecture

@@ -322,7 +322,9 @@ function parseRetryAfter(header: string | null): number | undefined {
 }
 
 function sleep(ms: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
 }
 
 /* ------------------------------------------------------------------ */
@@ -333,5 +335,3 @@ function sleep(ms: number): Promise<void> {
 export function createInfuraClient(config: InfuraClientConfig = {}): InfuraClient {
   return new HookosInfuraClient(config);
 }
-
-export default createInfuraClient;

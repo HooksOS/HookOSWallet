@@ -166,3 +166,50 @@ export const HOOK_REGISTRY_READ_ABI = [
     ],
   },
 ] as const;
+
+/**
+ * FeeRouter read fragments: protocol fee split + lifetime distribution + per-recipient earnings.
+ * `recipients(i)` is the public array getter; `recipientEarnings(addr)` the public mapping getter.
+ * Source: `protocol/contracts/contracts/FeeRouter.sol`.
+ */
+export const FEE_ROUTER_READ_ABI = [
+  {
+    name: 'totalDistributed',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ name: '', type: 'uint256' }],
+  },
+  {
+    name: 'getRecipientCount',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ name: '', type: 'uint256' }],
+  },
+  {
+    name: 'getTotalShareBps',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ name: '', type: 'uint256' }],
+  },
+  {
+    name: 'recipients',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [{ name: '', type: 'uint256' }],
+    outputs: [
+      { name: 'wallet', type: 'address' },
+      { name: 'shareBps', type: 'uint256' },
+      { name: 'label', type: 'string' },
+    ],
+  },
+  {
+    name: 'recipientEarnings',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [{ name: '', type: 'address' }],
+    outputs: [{ name: '', type: 'uint256' }],
+  },
+] as const;
