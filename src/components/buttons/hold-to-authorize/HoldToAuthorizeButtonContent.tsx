@@ -143,7 +143,7 @@ function HoldToAuthorizeButtonContent2({
 
   const bgColor = disabled
     ? (disabledBackgroundColor ?? getButtonDisabledBgColor(themeColors)[theme])
-    : (backgroundColor ?? themeColors.appleBlue);
+    : (backgroundColor ?? (theme === 'dark' ? '#1DB847' : '#0C8A42')); // HookOS accent (was themeColors.appleBlue)
 
   const height = tinyButton ? TINY_BUTTON_HEIGHT : smallButton ? SMALL_BUTTON_HEIGHT : BUTTON_HEIGHT;
 

@@ -3,4 +3,7 @@
     <color name="blue60">#0E76FD</color>
     <color name="blue100">#001E59</color>
     <color name="bootsplash_background">#FFFFFF</color>
+    <!-- HookOS brand (src/features/hookos/ui/theme.ts) -->
+    <color name="hookos_paper">#F1F2EC</color>
+    <color name="hookos_acid_ink">#0C8A42</color>
 </resources>

@@ -122,7 +122,7 @@ const getColorsByTheme = (darkMode?: boolean) => {
     mediumGrey: '#A1A5B3', // '161, 165, 179'
     mintDark: '#00E0A9', // '0, 224, 169'
     neonSkyblue: '#34FFFF', // '52, 255, 255'
-    offWhite: '#F8F9FA', // '248, 249, 250'
+    offWhite: '#F1F2EC', // HookOS paper (Atlas Paper) — was '#F8F9FA'
     offWhite80: '#1C1F27',
     optimismRed: '#FF0420', // '255, 4, 32',
     optimismRed06: 'rgba(255, 4, 32, 0.06)', // '255, 4, 32, 0.06'
@@ -188,7 +188,7 @@ const getColorsByTheme = (darkMode?: boolean) => {
   };
 
   let gradients = {
-    appleBlueTintToAppleBlue: ['#15B1FE', base.appleBlue],
+    appleBlueTintToAppleBlue: ['#38E07B', '#0C8A42'], // HookOS acid → acidInk (legacy key name kept)
     blueToGreen: ['#4764F7', '#23D67F'],
     checkmarkAnimation: ['#1FC24A10', '#1FC24A10', '#1FC24A00'],
     ens: ['#456AFF', '#5FA9EE'],
@@ -206,7 +206,7 @@ const getColorsByTheme = (darkMode?: boolean) => {
     success: ['#FAFF00', '#2CCC00'],
     successTint: ['#FFFFF0', '#FCFEFB'],
     swapPurpleTintToSwapPurple: ['#7D85FF', base.swapPurple],
-    transparentToAppleBlue: [opacity(base.appleBlue, 0.02), opacity(base.appleBlue, 0.06)],
+    transparentToAppleBlue: [opacity('#0C8A42', 0.02), opacity('#0C8A42', 0.06)], // HookOS acidInk (legacy key name kept)
     transparentToRed: [opacity(base.red, 0), opacity(base.red, 0.06)],
     transparentToGreen: [opacity(base.green, 0), opacity(base.green, 0.06)],
     transparentToLightGrey: [opacity(base.blueGreyDark, 0), opacity(base.blueGreyDark, 0.06)],
@@ -277,7 +277,7 @@ const getColorsByTheme = (darkMode?: boolean) => {
     };
 
     gradients = {
-      appleBlueTintToAppleBlue: ['#2FC3FF', base.appleBlue],
+      appleBlueTintToAppleBlue: ['#38E07B', '#0C8A42'], // HookOS acid → acidInk (legacy key name kept)
       blueToGreen: ['#4764F7', '#23D67F'],
       checkmarkAnimation: ['#1FC24A10', '#1FC24A10', '#1FC24A00'],
       ens: ['#456AFF', '#5FA9EE'],
@@ -295,7 +295,7 @@ const getColorsByTheme = (darkMode?: boolean) => {
       success: ['#FAFF00', '#2CCC00'],
       successTint: ['#202118', '#141E18'],
       swapPurpleTintToSwapPurple: ['#7D85FF', base.swapPurple],
-      transparentToAppleBlue: [opacity(base.appleBlue, 0.02), opacity(base.appleBlue, 0.06)],
+      transparentToAppleBlue: [opacity('#0C8A42', 0.02), opacity('#0C8A42', 0.06)], // HookOS acidInk (legacy key name kept)
       transparentToRed: [opacity(base.red, 0), opacity(base.red, 0.06)],
       transparentToGreen: [opacity(base.green, 0), opacity(base.green, 0.06)],
       transparentToLightGrey: [opacity(base.blueGreyDark, 0), opacity(base.blueGreyDark, 0.06)],

@@ -248,7 +248,7 @@
         "never_share": "秘密鍵を共有せず、アプリに入力しないでください。",
         "access": "プライベートキーを持っている人は、あなたのウォレット全体にアクセスできます。",
         "hide": "リカバリーフレーズを表示するときに、画面を他の人が見られないようにしてください。",
-        "support": "Rainbowサポートは、あなたのリカバリーフレーズを求めることはありません。",
+        "support": "HookOSサポートは、あなたのリカバリーフレーズを求めることはありません。",
         "button": "􀎽 %{typeName}を表示"
       }
     },
@@ -408,7 +408,7 @@
           },
           "avoid_scams": {
             "title": "暗号通貨詐欺を回避する",
-            "description": "Rainbowでは、イーサリアムの新しい世界を探索することを楽しく、友好的、安全にすることを目指しています。詐欺は楽しくも友好的でもないものです。誰も詐欺は好きではありません。私たちはあなたが詐欺に遭わないようにお手伝いするために、この短いガイドを作成しました。"
+            "description": "HookOSでは、イーサリアムの新しい世界を探索することを楽しく、友好的、安全にすることを目指しています。詐欺は楽しくも友好的でもないものです。誰も詐欺は好きではありません。私たちはあなたが詐欺に遭わないようにお手伝いするために、この短いガイドを作成しました。"
           },
           "understanding_web3": {
             "title": "Web3の理解",
@@ -449,7 +449,7 @@
     },
     "check_identifier": {
       "title": "認証が必要です",
-      "description": "デバイスを変更するか、またはRainbowを再インストールした可能性があります。キー チェーンデータが健全な状態にあることを確認するために、認証を行ってください。",
+      "description": "デバイスを変更するか、またはHookOSを再インストールした可能性があります。キー チェーンデータが健全な状態にあることを確認するために、認証を行ってください。",
       "action": "認証",
       "dismiss": "閉じる",
       "error_alert": {
@@ -564,7 +564,7 @@
       "simulate_device_transfer": "デバイス転送をシミュレートする",
       "headers": {
         "normie_settings": "一般ユーザー設定",
-        "rainbow_developer_settings": "Rainbow 開発者設定",
+        "rainbow_developer_settings": "HookOS 開発者設定",
         "feature_flags": "機能フラグ",
         "delegation_settings": "委任設定"
       },
@@ -899,7 +899,7 @@
         "maximum_sold": "最大売却数量",
         "minimum_received": "受け取る最小額",
         "preferred_network": "優先ネットワーク",
-        "rainbow_fee": "Rainbow手数料込み",
+        "rainbow_fee": "HookOS手数料込み",
         "smart_wallet_activation_fee": "推定スマートウォレット手数料",
         "settings": "設定"
       },
@@ -1039,15 +1039,15 @@
         "title": "接続に失敗しました"
       },
       "failed_wc_invalid_methods": {
-        "text": "DappがRainbowでサポートされていないウォレット署名（RPC）メソッドを要求しました。",
+        "text": "DappがHookOSでサポートされていないウォレット署名（RPC）メソッドを要求しました。",
         "title": "接続に失敗しました"
       },
       "failed_wc_invalid_chains": {
-        "text": "DappがRainbowでサポートされていないネットワークを要求しました。",
+        "text": "DappがHookOSでサポートされていないネットワークを要求しました。",
         "title": "接続に失敗しました"
       },
       "failed_wc_invalid_chain": {
-        "text": "このリクエストで指定されたネットワークは、Rainbowでサポートされていません。",
+        "text": "このリクエストで指定されたネットワークは、HookOSでサポートされていません。",
         "title": "処理に失敗しました"
       },
       "floor_price": {
@@ -1145,7 +1145,7 @@
         "title": "検証済みトークン"
       },
       "unverified": {
-        "fragment1": "Rainbowはできるだけ多くのトークンを表示しますが、誰でもトークンを作成したり、偽の契約でプロジェクトを代表すると主張することができます。 \n\n こちらの ",
+        "fragment1": "HookOSはできるだけ多くのトークンを表示しますが、誰でもトークンを作成したり、偽の契約でプロジェクトを代表すると主張することができます。 \n\n こちらの ",
         "fragment2": "トークン契約",
         "fragment3": " および必ず研究を行い、信頼できるトークンとやり取りすることを確認してください。",
         "title": "%{symbol} は未検証です",
@@ -1164,7 +1164,7 @@
         "title": "流動性不足"
       },
       "fee_on_transfer": {
-        "fragment1": "%{tokenName} 契約には追加手数料が発生するため、このスワップはRainbowで失敗します。  \n\n 読む ",
+        "fragment1": "%{tokenName} 契約には追加手数料が発生するため、このスワップはHookOSで失敗します。  \n\n 読む ",
         "fragment2": "私たちのガイド",
         "fragment3": " このトークンの交換方法を確認してください！",
         "title": "トランスファートークンの手数料"
@@ -1186,10 +1186,10 @@
         "text": "Hop Bridge 􀮶に移動する"
       },
       "rainbow_fee": {
-        "text": "Rainbowはスワップから %{feePercentage} の手数料を取ります。これが私たちが最高のEthereum体験を提供するための一部です。"
+        "text": "HookOSはスワップから %{feePercentage} の手数料を取ります。これが私たちが最高のEthereum体験を提供するための一部です。"
       },
       "swap_routing": {
-        "text": "Rainbowはデフォルトでスワップに最も安いルートを選択します。もし0xまたは1inchのいずれかを特に使用したい場合は、それも可能です。",
+        "text": "HookOSはデフォルトでスワップに最も安いルートを選択します。もし0xまたは1inchのいずれかを特に使用したい場合は、それも可能です。",
         "title": "スワップルーティング",
         "still_curious": {
           "fragment1": "まだ気になりますか？ ",
@@ -1243,14 +1243,14 @@
       },
       "ens_configuration": {
         "title": "これらのオプションは何を意味しますか？",
-        "text": "ENS 名称を他者に送信し、新しい ENS 名称所有者にする場合、事前に設定を行い、将来の取引を省くことを考えるかもしれません。Rainbow は、現在設定されているプロフィール情報をクリアし、ENS 名称を受信者のアドレスを指すように設定し、受信者アドレスを名称の管理者とすることを可能にします。"
+        "text": "ENS 名称を他者に送信し、新しい ENS 名称所有者にする場合、事前に設定を行い、将来の取引を省くことを考えるかもしれません。HookOS は、現在設定されているプロフィール情報をクリアし、ENS 名称を受信者のアドレスを指すように設定し、受信者アドレスを名称の管理者とすることを可能にします。"
       }
     },
     "fedora": {
       "cannot_verify_bundle": "バンドルを検証できません！これは詐欺かもしれません。インストールがブロックされました。",
       "error": "エラー",
       "fedora": "フェドラ",
-      "this_will_override_bundle": "これによりバンドルが上書きされます。ご注意ください。あなたはRainbowの従業員ですか？",
+      "this_will_override_bundle": "これによりバンドルが上書きされます。ご注意ください。あなたはHookOSの従業員ですか？",
       "wait": "待つ"
     },
     "fields": {
@@ -1355,8 +1355,8 @@
     "image_picker": {
       "cancel": "キャンセル",
       "confirm": "ライブラリのアクセスを有効にする",
-      "message": "これにより、Rainbowはライブラリから写真を使用することができます",
-      "title": "Rainbowがあなたの写真にアクセスすることを許可します"
+      "message": "これにより、HookOSはライブラリから写真を使用することができます",
+      "title": "HookOSがあなたの写真にアクセスすることを許可します"
     },
     "input": {
       "asset_amount": "金額",
@@ -1372,8 +1372,8 @@
     },
     "list": {
       "share": {
-        "check_out_my_wallet": "🌈 Rainbowで私のコレクションをチェックしてください %{showcaseUrl}",
-        "check_out_this_wallet": "🌈 Rainbowでこのウォレットのコレクションをチェックしてください %{showcaseUrl}"
+        "check_out_my_wallet": "🌈 HookOSで私のコレクションをチェックしてください %{showcaseUrl}",
+        "check_out_this_wallet": "🌈 HookOSでこのウォレットのコレクションをチェックしてください %{showcaseUrl}"
       }
     },
     "loading": {
@@ -1485,7 +1485,7 @@
       "external_link_warning": {
         "go_back": "戻る",
         "visit_external_link": "外部リンクを訪問しますか？",
-        "you_are_attempting_to_visit": "Rainbowと関連のないリンクを訪問しようとしています"
+        "you_are_attempting_to_visit": "HookOSと関連のないリンクを訪問しようとしています"
       },
       "gas_average": "平均",
       "gas_fast": "高速",
@@ -2046,7 +2046,7 @@
     },
     "review": {
       "alert": {
-        "are_you_enjoying_rainbow": "Rainbowをお楽しみいただけていますか？ 🥰",
+        "are_you_enjoying_rainbow": "HookOSをお楽しみいただけていますか？ 🥰",
         "leave_a_review": "App Storeでレビューしてください！",
         "no": "いいえ",
         "yes": "はい"
@@ -2250,7 +2250,7 @@
       "done": "完了",
       "feedback_and_reports": "Feedback & Bug Reports",
       "follow_us_on_twitter": "Xでフォローする",
-      "hey_friend_message": "👋️ Hey friend! Rainbowをダウンロードするべきです。これは私のお気に入りのイーサリアムウォレットです 🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️",
+      "hey_friend_message": "👋️ Hey friend! HookOSをダウンロードするべきです。これは私のお気に入りのイーサリアムウォレットです 🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️",
       "label": "設定",
       "language": "Language",
       "learn": "Learn about Ethereum",
@@ -2272,13 +2272,13 @@
         "all": "全て",
         "off": "オフ",
         "plus_n_more": "+ %{n} 件以上",
-        "no_permissions": "通知の許可が無効になっているようです。Rainbowの設定で有効にしてください。",
+        "no_permissions": "通知の許可が無効になっているようです。HookOSの設定で有効にしてください。",
         "no_watched_wallets": "ウォッチリストに財布がありません。",
-        "no_owned_wallets": "Rainbowには財布がありません。秘密のフレーズで財布を作成するか、インポートしてください。",
+        "no_owned_wallets": "HookOSには財布がありません。秘密のフレーズで財布を作成するか、インポートしてください。",
         "open_system_settings": "設定を開く",
         "unsupported_network": "現時点では、通知はEthereum Mainnetのトランザクションのみ利用可能です。",
         "change_network": "ネットワークを変更してください",
-        "no_first_time_permissions": "Rainbowからの通知を許可してください。",
+        "no_first_time_permissions": "HookOSからの通知を許可してください。",
         "first_time_allow_notifications": "通知の許可",
         "error_alert_title": "購読に失敗しました",
         "error_alert_content": "後でもう一度お試しください。",
@@ -2289,15 +2289,15 @@
       "privacy": "プライバシー",
       "privacy_section": {
         "public_showcase": "公開ショーケース",
-        "when_public": "公開にすると、NFTショーケースがRainbowプロフィールで表示されます！",
-        "when_public_prefix": "公開にすると、NFTショーケースがRainbowウェブプロフィールで表示されます！次のリンクでプロフィールをご覧いただけます：",
+        "when_public": "公開にすると、NFTショーケースがHookOSプロフィールで表示されます！",
+        "when_public_prefix": "公開にすると、NFTショーケースがHookOSウェブプロフィールで表示されます！次のリンクでプロフィールをご覧いただけます：",
         "view_profile": "プロフィールを表示",
         "analytics_toggle": "アナリティクス",
-        "analytics_toggle_description": "使用データの分析を許可することで、Rainbowの製品とサービスの改善に役立ちます。収集されたデータは、あなたやあなたのアカウントと関連付けられません。"
+        "analytics_toggle_description": "使用データの分析を許可することで、HookOSの製品とサービスの改善に役立ちます。収集されたデータは、あなたやあなたのアカウントと関連付けられません。"
       },
       "restore": "元の展開に復元",
-      "review": "Rainbowをレビュー",
-      "share_rainbow": "Rainbowを共有",
+      "review": "HookOSをレビュー",
+      "share_rainbow": "HookOSを共有",
       "theme": "テーマ",
       "theme_section": {
         "system": "システム",
@@ -2306,7 +2306,7 @@
       },
       "icon_change": {
         "title": "アイコンの変更を確認",
-        "warning": "アイコンを変更すると、Rainbowが再起動される可能性があります。",
+        "warning": "アイコンを変更すると、HookOSが再起動される可能性があります。",
         "confirm": "確認",
         "cancel": "キャンセル"
       },
@@ -2380,7 +2380,7 @@
         "quote_error": "見積りエラー"
       },
       "aggregators": {
-        "rainbow": "Rainbow"
+        "rainbow": "HookOS"
       },
       "bridging": "ブリッジング中",
       "swapping": "スワップ中",
@@ -2453,7 +2453,7 @@
       "nothing_found": "何も見つかりません",
       "section_header": {
         "recent": "最近の",
-        "popular": "Rainbowの人気",
+        "popular": "HookOSの人気",
         "favorites": "お気に入り",
         "bridge": "ブリッジ",
         "verified": "確認済み",
@@ -2724,7 +2724,7 @@
     },
     "hardware_wallets": {
       "pair_your_nano": "Nano Xをペアリングしてください",
-      "connect_your_ledger": "Bluetooth経由でLedger Nano XをRainbowに接続します。初めての場合、RainbowはBluetoothへのアクセスを要求します。",
+      "connect_your_ledger": "Bluetooth経由でLedger Nano XをHookOSに接続します。初めての場合、HookOSはBluetoothへのアクセスを要求します。",
       "learn_more_about_ledger": "Ledgerについて詳しくはこちら",
       "pair_a_new_ledger": "新しいLedgerをペアリングする",
       "looking_for_devices": "デバイスを検索中",
@@ -2915,7 +2915,7 @@
           "disable_single_network_subtitle": "このネットワークのスマートウォレット委任が削除されます。",
           "disable_single_network_button": "無効化するまで保持",
           "disable_third_party_title": "アカウントを無効化",
-          "disable_third_party_subtitle": "あなたのウォレットは別のスマートウォレットに委任されています。Rainbowを使用するには無効化してください。",
+          "disable_third_party_subtitle": "あなたのウォレットは別のスマートウォレットに委任されています。HookOSを使用するには無効化してください。",
           "disable_third_party_button": "無効化するまで保持",
           "alert_vulnerability_title": "スマートウォレットのセキュリティ",
           "alert_vulnerability_subtitle": "あなたのスマートウォレットコントラクトで脆弱性が検出されました。資産を保護するための予防策として取り消してください。",
@@ -3001,14 +3001,14 @@
         "you_need_to_authenticate_with_your_pin": "ウォレットの秘密情報にアクセスするためには、PINで認証する必要があります",
         "share_application_state": "アプリケーションの状態ダンプを共有する",
         "wallet_details_title": "ウォレットの詳細",
-        "wallet_details_description": "すべてのRainbowに追加されたウォレットの詳細が以下に表示されます。"
+        "wallet_details_description": "すべてのHookOSに追加されたウォレットの詳細が以下に表示されます。"
       },
       "error_displaying_address": "アドレスの表示エラー",
       "feedback": {
         "cancel": "いいえ、結構です",
         "choice": "Would you like to manually copy our feedback email address to your clipboard?",
         "copy_email_address": "Copy email address",
-        "email_subject": "📱 Rainbow Beta フィードバック",
+        "email_subject": "📱 HookOS Beta フィードバック",
         "error": "Error launching email client",
         "send": "フィードバックを送信する"
       },
@@ -3017,7 +3017,7 @@
         "create_wallet": "ウォレットを作成する",
         "instructions": "ウォレットには、失っても構わない範囲を超える金額を保存しないでください。",
         "warning": "これはアルファ版のソフトウェアです。",
-        "welcome": "Rainbowへようこそ"
+        "welcome": "HookOSへようこそ"
       },
       "invalid_address_title": "無効なアドレス",
       "invalid_address_message": "大文字・小文字の区別を確認して、もう一度お試しください。",
@@ -3085,7 +3085,7 @@
           "continue": "続ける",
           "import": {
             "title": "ウォレットを復元する",
-            "description": "Rainbowや他の暗号通貨ウォレットからの回復フレーズまたはプライベートキーで復元する",
+            "description": "HookOSや他の暗号通貨ウォレットからの回復フレーズまたはプライベートキーで復元する",
             "placeholder": "回復フレーズまたはプライベートキーを入力してください",
             "button": "インポート"
           },
@@ -3109,7 +3109,7 @@
         "get_new_wallet": "新しいウォレットを取得する",
         "import_wallet": "ウォレットをインポートする",
         "name_wallet": "ウォレットに名前を付ける",
-        "terms": "続行することにより、Rainbowの ",
+        "terms": "続行することにより、HookOSの ",
         "terms_link": "利用規約"
       },
       "pin_authentication": {
@@ -3123,7 +3123,7 @@
       },
       "push_notifications": {
         "please_enable_body": "WalletConnectを使用しているようです。WalletConnectからのトランザクションリクエストを通知するためにプッシュ通知を有効にしてください",
-        "please_enable_title": "Rainbowからのプッシュ通知の送信を許可しますか"
+        "please_enable_title": "HookOSからのプッシュ通知の送信を許可しますか"
       },
       "qr": {
         "camera_access_needed": "スキャンするにはカメラにアクセスする必要があります！",
@@ -3278,14 +3278,14 @@
         "generic_title": "接続に失敗しました",
         "generic_error": "何か問題が発生しました。もう一度試すか、サポートチームに連絡してください",
         "pairing_timeout": "接続が確立する前にセッションがタイムアウトしました。通常、ネットワークエラーのためです。もう一度試してください",
-        "pairing_unsupported_methods": "DappがRainbowでサポートされていないウォレットRPCメソッドを要求しました",
-        "pairing_unsupported_networks": "DappがRainbowでサポートされていないネットワークを要求しました。",
+        "pairing_unsupported_methods": "DappがHookOSでサポートされていないウォレットRPCメソッドを要求しました",
+        "pairing_unsupported_networks": "DappがHookOSでサポートされていないネットワークを要求しました。",
         "read_only_wallet_on_signing_method": "読み取り専用のウォレットを使用しているようですが、このリクエストには許可されていません。",
-        "namespaces_invalid": "DAppがリクエストした名前空間に問題がありました。もう一度試してみるか、Rainbowと/またはDAppサポートチームに連絡してください。",
-        "request_invalid": "リクエストに無効なパラメータが含まれています。もう一度試すか、Rainbowおよび/またはDappのサポートチームに連絡してください",
-        "eth_sign": "Rainbowは、セキュリティ上の懸念から旧式のeth_signをサポートしていません。  \n ご不明な点がありましたら、Rainbowおよび/またはdappのサポートチームにお問い合わせください。",
-        "request_unsupported_network": "このリクエストで指定されたネットワークは、Rainbowでサポートされていません。",
-        "request_unsupported_methods": "このリクエストで指定されたRPCメソッドはRainbowでサポートされていません",
+        "namespaces_invalid": "DAppがリクエストした名前空間に問題がありました。もう一度試してみるか、HookOSと/またはDAppサポートチームに連絡してください。",
+        "request_invalid": "リクエストに無効なパラメータが含まれています。もう一度試すか、HookOSおよび/またはDappのサポートチームに連絡してください",
+        "eth_sign": "HookOSは、セキュリティ上の懸念から旧式のeth_signをサポートしていません。  \n ご不明な点がありましたら、HookOSおよび/またはdappのサポートチームにお問い合わせください。",
+        "request_unsupported_network": "このリクエストで指定されたネットワークは、HookOSでサポートされていません。",
+        "request_unsupported_methods": "このリクエストで指定されたRPCメソッドはHookOSでサポートされていません",
         "no_accounts_found": "承認された名前空間にアカウントが見つかりませんでした。"
       },
       "dapp_warnings": {
@@ -3401,7 +3401,7 @@
       },
       "no_wc_needed": {
         "title": "おっと！",
-        "description": "WalletConnect 経由でこの dapp に接続しようとしているようです。これは Rainbow のアプリ内ブラウザでは不要です。戻って「MetaMask」を選択すれば、正常に動作するはずです。",
+        "description": "WalletConnect 経由でこの dapp に接続しようとしているようです。これは HookOS のアプリ内ブラウザでは不要です。戻って「MetaMask」を選択すれば、正常に動作するはずです。",
         "cta": "理解しました"
       },
       "provider_error": {
@@ -3447,7 +3447,7 @@
       "filters": {
         "categories": {
           "TRENDING": "トレンド",
-          "RAINBOW": "Rainbow",
+          "RAINBOW": "HookOS",
           "NEW": "新しい",
           "FARCASTER": "Farcaster"
         },

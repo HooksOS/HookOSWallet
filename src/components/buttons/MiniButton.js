@@ -12,7 +12,7 @@ import { RowWithMargins } from '../layout';
 import { Text } from '../text';
 
 const shadowsFactory = darkMode => ({
-  default: [[0, 4, 12, darkMode ? darkModeThemeColors.shadow : lightModeThemeColors.appleBlue, 0.4]],
+  default: [[0, 4, 12, darkMode ? darkModeThemeColors.shadow : '#0C8A42', 0.4]], // HookOS accent shadow (was lightModeThemeColors.appleBlue)
   disabled: [[0, 4, 12, darkMode ? darkModeThemeColors.lightGrey : lightModeThemeColors.lightGrey, darkMode ? 0 : 0.4]],
   none: [[0, 0, 0, lightModeThemeColors.transparent, 0]],
 });
@@ -56,7 +56,7 @@ export default function MiniButton({
 
   const content = (
     <Content
-      backgroundColor={Platform.OS === 'android' ? (disabled ? colors.lightGrey : backgroundColor || colors.appleBlue) : 'none'}
+      backgroundColor={Platform.OS === 'android' ? (disabled ? colors.lightGrey : backgroundColor || (isDarkMode ? '#1DB847' : '#0C8A42')) : 'none'}
       disablePadding={disablePadding}
       hasLeadingIcon={hasLeadingIcon}
       height={height ? height : small ? 27 : 30}
@@ -89,7 +89,7 @@ export default function MiniButton({
       <View style={{ borderRadius }}>
         <ShadowStack
           {...position.coverAsObject}
-          backgroundColor={Platform.OS === 'android' ? 'none' : disabled ? colors.lightGrey : backgroundColor || colors.appleBlue}
+          backgroundColor={Platform.OS === 'android' ? 'none' : disabled ? colors.lightGrey : backgroundColor || (isDarkMode ? '#1DB847' : '#0C8A42')}
           borderRadius={borderRadius}
           height={height}
           shadows={hideShadow ? shadows.none : disabled ? shadows.disabled : shadows.default}

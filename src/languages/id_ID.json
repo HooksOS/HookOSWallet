@@ -248,7 +248,7 @@
         "never_share": "Jangan pernah membagikan %{typeName} Anda atau memasukkannya ke dalam aplikasi atau situs web.",
         "access": "Siapa saja dengan %{typeName} Anda bisa mengakses seluruh dompet Anda.",
         "hide": "Pastikan tidak ada yang bisa melihat layar Anda saat melihat %{typeName} Anda.",
-        "support": "Dukungan Rainbow tidak akan pernah meminta %{typeName} Anda.",
+        "support": "Dukungan HookOS tidak akan pernah meminta %{typeName} Anda.",
         "button": "􀎽 Tampilkan %{typeName}"
       }
     },
@@ -387,8 +387,8 @@
         "learn": "Belajar",
         "cards": {
           "get_started": {
-            "title": "Mulai dengan Rainbow",
-            "description": "Selamat datang di Rainbow! Kami sangat senang Anda berada di sini. Kami telah membuat panduan ini untuk membantu Anda memahami dasar-dasar Rainbow dan memulai perjalanan Web3 dan Ethereum baru Anda."
+            "title": "Mulai dengan HookOS",
+            "description": "Selamat datang di HookOS! Kami sangat senang Anda berada di sini. Kami telah membuat panduan ini untuk membantu Anda memahami dasar-dasar HookOS dan memulai perjalanan Web3 dan Ethereum baru Anda."
           },
           "backups": {
             "title": "Pentingnya Backup",
@@ -396,11 +396,11 @@
           },
           "crypto_and_wallets": {
             "title": "Crypto dan Dompet",
-            "description": "Pada level yang sangat sederhana, dompet hanyalah kunci kriptografi yang unik dan pribadi (seperti yang ditunjukkan di bawah). Aplikasi dompet seperti Rainbow adalah antarmuka pengguna yang memungkinkan Anda untuk membuat, menyimpan, dan mengelola kunci kriptografi tanpa harus memiliki keterampilan atau pengetahuan teknis."
+            "description": "Pada level yang sangat sederhana, dompet hanyalah kunci kriptografi yang unik dan pribadi (seperti yang ditunjukkan di bawah). Aplikasi dompet seperti HookOS adalah antarmuka pengguna yang memungkinkan Anda untuk membuat, menyimpan, dan mengelola kunci kriptografi tanpa harus memiliki keterampilan atau pengetahuan teknis."
           },
           "protect_wallet": {
             "title": "Lindungi Dompet Anda",
-            "description": "Salah satu bagian terbaik dari memiliki dompet Ethereum seperti Rainbow adalah Anda memiliki kendali penuh atas uang Anda. Tidak seperti rekening bank dari Wells Fargo atau bursa kripto seperti Coinbase, kami tidak menahan aset Anda atas nama Anda."
+            "description": "Salah satu bagian terbaik dari memiliki dompet Ethereum seperti HookOS adalah Anda memiliki kendali penuh atas uang Anda. Tidak seperti rekening bank dari Wells Fargo atau bursa kripto seperti Coinbase, kami tidak menahan aset Anda atas nama Anda."
           },
           "connect_to_dapp": {
             "title": "Terhubung ke Situs Web atau Aplikasi",
@@ -408,7 +408,7 @@
           },
           "avoid_scams": {
             "title": "Hindari Penipuan Kripto",
-            "description": "Di sini di Rainbow, salah satu tujuan kami adalah membuat penjelajahan dunia baru Ethereum menjadi menyenangkan, ramah, dan aman. Taukah Anda apa yang bukan dari salah satu hal tersebut? Penipuan. Mereka jahat, dan tidak ada yang menyukainya. Kami ingin membantu Anda menghindarinya, jadi kami menulis panduan singkat ini untuk membantu Anda melakukan hal itu!"
+            "description": "Di sini di HookOS, salah satu tujuan kami adalah membuat penjelajahan dunia baru Ethereum menjadi menyenangkan, ramah, dan aman. Taukah Anda apa yang bukan dari salah satu hal tersebut? Penipuan. Mereka jahat, dan tidak ada yang menyukainya. Kami ingin membantu Anda menghindarinya, jadi kami menulis panduan singkat ini untuk membantu Anda melakukan hal itu!"
           },
           "understanding_web3": {
             "title": "Memahami Web3",
@@ -420,7 +420,7 @@
           },
           "supported_networks": {
             "title": "Jaringan yang Didukung",
-            "description": "Hingga baru-baru ini, Rainbow dan banyak proyek blockchain lainnya hanya kompatibel dengan Ethereum — buku besar publik desentralisasi dunia. Ethereum sangat aman dan sangat handal, tetapi tidak selalu cocok untuk kecepatan dan efisiensi."
+            "description": "Hingga baru-baru ini, HookOS dan banyak proyek blockchain lainnya hanya kompatibel dengan Ethereum — buku besar publik desentralisasi dunia. Ethereum sangat aman dan sangat handal, tetapi tidak selalu cocok untuk kecepatan dan efisiensi."
           },
           "collect_nfts": {
             "title": "Kumpulkan NFTs di OpenSea",
@@ -439,7 +439,7 @@
       },
       "ledger": {
         "title": "Pasangkan Dompet Perangkat Keras",
-        "body": "Hubungkan Ledger Nano X Anda ke Rainbow melalui Bluetooth."
+        "body": "Hubungkan Ledger Nano X Anda ke HookOS melalui Bluetooth."
       },
       "receive": {
         "receive_assets": "Terima aset",
@@ -449,7 +449,7 @@
     },
     "check_identifier": {
       "title": "Otentikasi Diperlukan",
-      "description": "Sepertinya Anda mungkin telah mengganti perangkat atau menginstal ulang Rainbow. Harap otentikasi sehingga kami dapat memvalidasi data keychain Anda masih dalam kondisi sehat.",
+      "description": "Sepertinya Anda mungkin telah mengganti perangkat atau menginstal ulang HookOS. Harap otentikasi sehingga kami dapat memvalidasi data keychain Anda masih dalam kondisi sehat.",
       "action": "Otentikasi",
       "dismiss": "Tutup",
       "error_alert": {
@@ -484,7 +484,7 @@
         "insufficient_funds": "Dana Tidak Cukup",
         "hold_to_claim": "Tahan untuk Mengklaim",
         "creator_lp_fees": "Biaya LP Pembuat",
-        "rainbow_token_launcher": "Rainbow Token Launcher",
+        "rainbow_token_launcher": "HookOS Token Launcher",
         "claim_amount": "Klaim %{amount}",
         "done": "Selesai",
         "try_again": "Coba Lagi",
@@ -564,7 +564,7 @@
       "simulate_device_transfer": "Simulasikan Transfer Perangkat",
       "headers": {
         "normie_settings": "Pengaturan Normie",
-        "rainbow_developer_settings": "Pengaturan Pengembang Rainbow",
+        "rainbow_developer_settings": "Pengaturan Pengembang HookOS",
         "feature_flags": "Flag Fitur",
         "delegation_settings": "Pengaturan Delegasi"
       },
@@ -621,7 +621,7 @@
     },
     "error_boundary": {
       "error_boundary_oops": "Ups!",
-      "restart_rainbow": "Mulai ulang Rainbow",
+      "restart_rainbow": "Mulai ulang HookOS",
       "something_went_wrong": "Ada yang salah.",
       "wallets_are_safe": "Jangan khawatir, dompet Anda aman! Cukup mulai ulang aplikasi untuk kembali berbisnis."
     },
@@ -878,7 +878,7 @@
       "swap_details": {
         "reward": "Hadiah",
         "exchange_rate": "Nilai tukar",
-        "rainbow_fee": "Biaya Rainbow yang sudah termasuk",
+        "rainbow_fee": "Biaya HookOS yang sudah termasuk",
         "refuel": "Token jaringan extra",
         "review": "Tinjau",
         "show_details": "Lebih banyak detail",
@@ -899,7 +899,7 @@
         "maximum_sold": "Maksimum Dijual",
         "minimum_received": "Minimum yang diterima",
         "preferred_network": "Jaringan yang Disukai",
-        "rainbow_fee": "Termasuk biaya Rainbow",
+        "rainbow_fee": "Termasuk biaya HookOS",
         "smart_wallet_activation_fee": "Perkiraan Biaya Smart Wallet",
         "settings": "Pengaturan"
       },
@@ -1000,11 +1000,11 @@
     },
     "explain": {
       "output_disabled": {
-        "text": "Untuk %{fromNetwork}, Rainbow tidak bisa menyiapkan tukaran berdasarkan jumlah %{outputToken} yang ingin Anda terima. \n\n Coba masukkan jumlah %{inputToken} yang ingin Anda tukar.",
+        "text": "Untuk %{fromNetwork}, HookOS tidak bisa menyiapkan tukaran berdasarkan jumlah %{outputToken} yang ingin Anda terima. \n\n Coba masukkan jumlah %{inputToken} yang ingin Anda tukar.",
         "title": "Masukkan %{inputToken} Sebagai Gantinya",
         "title_crosschain": "Masukkan %{fromNetwork} %{inputToken} Sebagai Gantinya",
-        "text_crosschain": "Rainbow tidak dapat menyiapkan pertukaran berdasarkan jumlah %{outputToken} yang ingin Anda terima. \n\n Coba masukkan jumlah %{inputToken} yang ingin Anda tukar.",
-        "text_bridge": "Rainbow tidak dapat menyiapkan jembatan berdasarkan jumlah %{outputToken} yang ingin Anda terima di tujuan %{toNetwork} . \n\n Coba masukkan jumlah %{fromNetwork} %{inputToken} yang ingin Anda jembatani.",
+        "text_crosschain": "HookOS tidak dapat menyiapkan pertukaran berdasarkan jumlah %{outputToken} yang ingin Anda terima. \n\n Coba masukkan jumlah %{inputToken} yang ingin Anda tukar.",
+        "text_bridge": "HookOS tidak dapat menyiapkan jembatan berdasarkan jumlah %{outputToken} yang ingin Anda terima di tujuan %{toNetwork} . \n\n Coba masukkan jumlah %{fromNetwork} %{inputToken} yang ingin Anda jembatani.",
         "title_empty": "Pilih Token"
       },
       "available_networks": {
@@ -1039,15 +1039,15 @@
         "title": "Koneksi gagal"
       },
       "failed_wc_invalid_methods": {
-        "text": "Dapp meminta metode penandatanganan dompet (RPC) yang tidak didukung oleh Rainbow.",
+        "text": "Dapp meminta metode penandatanganan dompet (RPC) yang tidak didukung oleh HookOS.",
         "title": "Koneksi gagal"
       },
       "failed_wc_invalid_chains": {
-        "text": "Dapp meminta jaringan yang tidak didukung oleh Rainbow.",
+        "text": "Dapp meminta jaringan yang tidak didukung oleh HookOS.",
         "title": "Koneksi gagal"
       },
       "failed_wc_invalid_chain": {
-        "text": "Jaringan yang ditentukan dalam permintaan ini tidak didukung oleh Rainbow.",
+        "text": "Jaringan yang ditentukan dalam permintaan ini tidak didukung oleh HookOS.",
         "title": "Penanganan gagal"
       },
       "floor_price": {
@@ -1145,7 +1145,7 @@
         "title": "Token Terverifikasi"
       },
       "unverified": {
-        "fragment1": "Rainbow menampilkan sebanyak mungkin token, tetapi siapa saja bisa membuat token, atau mengklaim mewakili proyek dengan kontrak palsu. \n\n Harap tinjau ",
+        "fragment1": "HookOS menampilkan sebanyak mungkin token, tetapi siapa saja bisa membuat token, atau mengklaim mewakili proyek dengan kontrak palsu. \n\n Harap tinjau ",
         "fragment2": "kontrak token",
         "fragment3": " dan selalu melakukan penelitian untuk memastikan bahwa Anda berinteraksi dengan token yang Anda percaya.",
         "title": "%{symbol} Belum diverifikasi",
@@ -1164,7 +1164,7 @@
         "title": "Likuiditas Tidak Cukup"
       },
       "fee_on_transfer": {
-        "fragment1": "Pertukaran ini akan gagal di Rainbow karena kontrak %{tokenName} menambahkan biaya ekstra.  \n\n Baca ",
+        "fragment1": "Pertukaran ini akan gagal di HookOS karena kontrak %{tokenName} menambahkan biaya ekstra.  \n\n Baca ",
         "fragment2": "panduan kami",
         "fragment3": " untuk membantu pertukaran token ini!",
         "title": "Biaya pada Token Transfer"
@@ -1186,10 +1186,10 @@
         "text": "Pergi ke Jembatan Hop 􀮶"
       },
       "rainbow_fee": {
-        "text": "Rainbow mengambil biaya %{feePercentage} dari swap. Itu adalah bagian dari apa yang memungkinkan kami memberikan Anda pengalaman Ethereum terbaik yang mungkin."
+        "text": "HookOS mengambil biaya %{feePercentage} dari swap. Itu adalah bagian dari apa yang memungkinkan kami memberikan Anda pengalaman Ethereum terbaik yang mungkin."
       },
       "swap_routing": {
-        "text": "Secara default, Rainbow memilih rute termurah yang mungkin untuk swap Anda. Jika Anda lebih suka menggunakan 0x atau 1inch secara spesifik, Anda juga bisa melakukan itu.",
+        "text": "Secara default, HookOS memilih rute termurah yang mungkin untuk swap Anda. Jika Anda lebih suka menggunakan 0x atau 1inch secara spesifik, Anda juga bisa melakukan itu.",
         "title": "Rute Swap",
         "still_curious": {
           "fragment1": "Masih penasaran? ",
@@ -1243,14 +1243,14 @@
       },
       "ens_configuration": {
         "title": "Apa maksud opsi-opsi ini?",
-        "text": "Saat mengirimkan nama ENS kepada orang lain dan menjadikan mereka pemilik nama ENS yang baru, Anda mungkin ingin mengkonfigurasinya untuk mereka di muka dan menyimpan mereka dari transaksi di masa depan. Rainbow memungkinkan Anda untuk menghapus informasi profil apa pun yang saat ini diatur untuk nama tersebut, mengkonfigurasi nama ENS untuk diarahkan ke alamat penerima, dan menjadikan alamat penerima sebagai pengelola nama tersebut."
+        "text": "Saat mengirimkan nama ENS kepada orang lain dan menjadikan mereka pemilik nama ENS yang baru, Anda mungkin ingin mengkonfigurasinya untuk mereka di muka dan menyimpan mereka dari transaksi di masa depan. HookOS memungkinkan Anda untuk menghapus informasi profil apa pun yang saat ini diatur untuk nama tersebut, mengkonfigurasi nama ENS untuk diarahkan ke alamat penerima, dan menjadikan alamat penerima sebagai pengelola nama tersebut."
       }
     },
     "fedora": {
       "cannot_verify_bundle": "Tidak bisa memverifikasi bundel! Ini mungkin adalah penipuan. Penginstalan diblokir.",
       "error": "GALAT",
       "fedora": "Fedora",
-      "this_will_override_bundle": "Ini akan menimpa bundel Anda. Hati-hati. Apakah Anda seorang karyawan Rainbow?",
+      "this_will_override_bundle": "Ini akan menimpa bundel Anda. Hati-hati. Apakah Anda seorang karyawan HookOS?",
       "wait": "tunggu"
     },
     "fields": {
@@ -1355,8 +1355,8 @@
     "image_picker": {
       "cancel": "Batal",
       "confirm": "Aktifkan akses perpustakaan",
-      "message": "Ini memungkinkan Rainbow untuk menggunakan foto Anda dari perpustakaan Anda",
-      "title": "Rainbow ingin mengakses foto Anda"
+      "message": "Ini memungkinkan HookOS untuk menggunakan foto Anda dari perpustakaan Anda",
+      "title": "HookOS ingin mengakses foto Anda"
     },
     "input": {
       "asset_amount": "Jumlah",
@@ -1372,8 +1372,8 @@
     },
     "list": {
       "share": {
-        "check_out_my_wallet": "Lihat kolektibel saya di 🌈 Rainbow di %{showcaseUrl}",
-        "check_out_this_wallet": "Lihat kolektibel dompet ini di 🌈 Rainbow di %{showcaseUrl}"
+        "check_out_my_wallet": "Lihat kolektibel saya di 🌈 HookOS di %{showcaseUrl}",
+        "check_out_this_wallet": "Lihat kolektibel dompet ini di 🌈 HookOS di %{showcaseUrl}"
       }
     },
     "loading": {
@@ -1485,7 +1485,7 @@
       "external_link_warning": {
         "go_back": "Kembali",
         "visit_external_link": "Kunjungi tautan eksternal?",
-        "you_are_attempting_to_visit": "Anda sedang mencoba mengunjungi tautan yang tidak berafiliasi dengan Rainbow."
+        "you_are_attempting_to_visit": "Anda sedang mencoba mengunjungi tautan yang tidak berafiliasi dengan HookOS."
       },
       "gas_average": "Rata-rata",
       "gas_fast": "Cepat",
@@ -1591,7 +1591,7 @@
         "selling": "Menjual",
         "error": {
           "title": "Kesalahan menjual NFT",
-          "message": "Silakan hubungi dukungan Rainbow untuk bantuan."
+          "message": "Silakan hubungi dukungan HookOS untuk bantuan."
         }
       }
     },
@@ -2046,7 +2046,7 @@
     },
     "review": {
       "alert": {
-        "are_you_enjoying_rainbow": "Apakah Anda menikmati Rainbow? 🥰",
+        "are_you_enjoying_rainbow": "Apakah Anda menikmati HookOS? 🥰",
         "leave_a_review": "Tinggalkan ulasan di App Store!",
         "no": "Tidak",
         "yes": "Ya"
@@ -2250,7 +2250,7 @@
       "done": "Selesai",
       "feedback_and_reports": "Umpan Balik & Laporan Bug",
       "follow_us_on_twitter": "Ikuti kami di X",
-      "hey_friend_message": "👋️ Hai teman! Anda harus mengunduh Rainbow, dompet Ethereum favorit saya 🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️",
+      "hey_friend_message": "👋️ Hai teman! Anda harus mengunduh HookOS, dompet Ethereum favorit saya 🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️",
       "label": "Pengaturan",
       "language": "Bahasa",
       "learn": "Pelajari tentang Ethereum",
@@ -2272,13 +2272,13 @@
         "all": "Semua",
         "off": "Mati",
         "plus_n_more": "+ %{n} lebih",
-        "no_permissions": "Sepertinya izin notifikasi Anda dinonaktifkan. Harap aktifkan mereka di Pengaturan untuk menerima notifikasi dari Rainbow.",
+        "no_permissions": "Sepertinya izin notifikasi Anda dinonaktifkan. Harap aktifkan mereka di Pengaturan untuk menerima notifikasi dari HookOS.",
         "no_watched_wallets": "Anda tidak sedang mengawasi dompet apa pun.",
-        "no_owned_wallets": "Anda tidak memiliki dompet apa pun di Rainbow. Buat dompet atau impor satu dengan frasa rahasia Anda.",
+        "no_owned_wallets": "Anda tidak memiliki dompet apa pun di HookOS. Buat dompet atau impor satu dengan frasa rahasia Anda.",
         "open_system_settings": "Buka Pengaturan",
         "unsupported_network": "Notifikasi hanya tersedia untuk transaksi Ethereum Mainnet saat ini.",
         "change_network": "Ubah Jaringan Anda",
-        "no_first_time_permissions": "Harap izinkan Rainbow untuk mengirimkan notifikasi kepada Anda.",
+        "no_first_time_permissions": "Harap izinkan HookOS untuk mengirimkan notifikasi kepada Anda.",
         "first_time_allow_notifications": "Izinkan Notifikasi",
         "error_alert_title": "Berlangganan Gagal",
         "error_alert_content": "Silakan coba lagi nanti.",
@@ -2289,15 +2289,15 @@
       "privacy": "Privasi",
       "privacy_section": {
         "public_showcase": "Pameran Publik",
-        "when_public": "Ketika publik, Pameran NFT Anda akan terlihat di profil Rainbow Anda!",
-        "when_public_prefix": "Ketika publik, Pameran NFT Anda akan terlihat di profil web Rainbow Anda! Anda dapat melihat profil Anda di",
+        "when_public": "Ketika publik, Pameran NFT Anda akan terlihat di profil HookOS Anda!",
+        "when_public_prefix": "Ketika publik, Pameran NFT Anda akan terlihat di profil web HookOS Anda! Anda dapat melihat profil Anda di",
         "view_profile": "Lihat profil Anda",
         "analytics_toggle": "Analitik",
-        "analytics_toggle_description": "Bantu Rainbow meningkatkan produk dan layanannya dengan memungkinkan analitik dari data penggunaan. Data yang dikumpulkan tidak terkait dengan Anda atau akun Anda."
+        "analytics_toggle_description": "Bantu HookOS meningkatkan produk dan layanannya dengan memungkinkan analitik dari data penggunaan. Data yang dikumpulkan tidak terkait dengan Anda atau akun Anda."
       },
       "restore": "Kembalikan ke penyebaran asli",
-      "review": "Ulas Rainbow",
-      "share_rainbow": "Bagikan Rainbow",
+      "review": "Ulas HookOS",
+      "share_rainbow": "Bagikan HookOS",
       "theme": "Tema",
       "theme_section": {
         "system": "Sistem",
@@ -2306,7 +2306,7 @@
       },
       "icon_change": {
         "title": "Konfirmasi perubahan ikon",
-        "warning": "Mengubah ikon Anda mungkin menyebabkan Rainbow untuk restart.",
+        "warning": "Mengubah ikon Anda mungkin menyebabkan HookOS untuk restart.",
         "confirm": "Konfirmasi",
         "cancel": "Batal"
       },
@@ -2380,7 +2380,7 @@
         "quote_error": "Kesalahan Kutipan"
       },
       "aggregators": {
-        "rainbow": "Biaya Rainbow"
+        "rainbow": "Biaya HookOS"
       },
       "bridging": "Membuat Jembatan",
       "swapping": "Menukar",
@@ -2453,7 +2453,7 @@
       "nothing_found": "Tidak ada yang ditemukan",
       "section_header": {
         "recent": "Baru-baru ini",
-        "popular": "Populer di Rainbow",
+        "popular": "Populer di HookOS",
         "favorites": "Favorit",
         "bridge": "Jembatan",
         "verified": "Terverifikasi",
@@ -2724,7 +2724,7 @@
     },
     "hardware_wallets": {
       "pair_your_nano": "Pasangkan Nano X Anda",
-      "connect_your_ledger": "Hubungkan Ledger Nano X Anda ke Rainbow melalui Bluetooth. Jika ini adalah kali pertama Anda, Rainbow akan meminta akses Bluetooth.",
+      "connect_your_ledger": "Hubungkan Ledger Nano X Anda ke HookOS melalui Bluetooth. Jika ini adalah kali pertama Anda, HookOS akan meminta akses Bluetooth.",
       "learn_more_about_ledger": "Pelajari lebih lanjut tentang Ledger",
       "pair_a_new_ledger": "Pasangkan Ledger baru",
       "looking_for_devices": "Mencari perangkat",
@@ -2915,7 +2915,7 @@
           "disable_single_network_subtitle": "Ini akan menghapus delegasi Smart Wallet untuk jaringan ini.",
           "disable_single_network_button": "Tahan untuk Menonaktifkan",
           "disable_third_party_title": "Nonaktifkan Akun",
-          "disable_third_party_subtitle": "Dompet Anda didelegasikan ke Smart Wallet yang berbeda. Nonaktifkan untuk menggunakan Rainbow.",
+          "disable_third_party_subtitle": "Dompet Anda didelegasikan ke Smart Wallet yang berbeda. Nonaktifkan untuk menggunakan HookOS.",
           "disable_third_party_button": "Tahan untuk Menonaktifkan",
           "alert_vulnerability_title": "Keamanan Smart Wallet",
           "alert_vulnerability_subtitle": "Kerentanan terdeteksi di kontrak Smart Wallet Anda. Cabut sebagai tindakan pencegahan untuk melindungi aset Anda.",
@@ -3001,14 +3001,14 @@
         "you_need_to_authenticate_with_your_pin": "Anda perlu mengautentikasi dengan PIN Anda untuk mengakses rahasia Dompet Anda",
         "share_application_state": "Bagikan status aplikasi dump",
         "wallet_details_title": "Detail Dompet",
-        "wallet_details_description": "Di bawah ini adalah detail dari semua dompet yang ditambahkan ke Rainbow."
+        "wallet_details_description": "Di bawah ini adalah detail dari semua dompet yang ditambahkan ke HookOS."
       },
       "error_displaying_address": "Kesalahan menampilkan alamat",
       "feedback": {
         "cancel": "Tidak, terima kasih",
         "choice": "Apakah Anda ingin menyalin alamat email umpan balik kita ke papan klip Anda secara manual?",
         "copy_email_address": "Salin alamat email",
-        "email_subject": "📱 Masukan Beta Rainbow",
+        "email_subject": "📱 Masukan Beta HookOS",
         "error": "Kesalahan membuka klien email",
         "send": "Kirim Masukan"
       },
@@ -3017,7 +3017,7 @@
         "create_wallet": "Buat Dompet",
         "instructions": "Harap jangan menyimpan lebih banyak di dompet Anda daripada yang Anda bersedia untuk kehilangan.",
         "warning": "Ini adalah perangkat lunak alpha.",
-        "welcome": "Selamat datang di Rainbow"
+        "welcome": "Selamat datang di HookOS"
       },
       "invalid_address_title": "Alamat tidak valid",
       "invalid_address_message": "Periksa kembali kapitalisasi hurufnya dan coba lagi.",
@@ -3085,7 +3085,7 @@
           "continue": "Lanjutkan",
           "import": {
             "title": "Pulihkan dompet",
-            "description": "Pulihkan dengan frase pemulihan atau kunci pribadi dari Rainbow atau dompet kripto lainnya",
+            "description": "Pulihkan dengan frase pemulihan atau kunci pribadi dari HookOS atau dompet kripto lainnya",
             "placeholder": "Masukkan frase pemulihan atau kunci pribadi",
             "button": "Impor"
           },
@@ -3109,7 +3109,7 @@
         "get_new_wallet": "Dapatkan dompet baru",
         "import_wallet": "Impor Dompet",
         "name_wallet": "Berikan nama dompet Anda",
-        "terms": "Dengan melanjutkan, Anda setuju dengan Rainbow’s ",
+        "terms": "Dengan melanjutkan, Anda setuju dengan HookOS’s ",
         "terms_link": "Syarat Penggunaan"
       },
       "pin_authentication": {
@@ -3123,7 +3123,7 @@
       },
       "push_notifications": {
         "please_enable_body": "Sepertinya Anda menggunakan WalletConnect. Tolong aktifkan notifikasi push untuk mendapatkan pemberitahuan permintaan transaksi dari WalletConnect.",
-        "please_enable_title": "Rainbow ingin mengirimkan notifikasi push kepada Anda"
+        "please_enable_title": "HookOS ingin mengirimkan notifikasi push kepada Anda"
       },
       "qr": {
         "camera_access_needed": "Akses kamera diperlukan untuk memindai!",
@@ -3210,7 +3210,7 @@
         "no_thanks": "Tidak, terima kasih",
         "message": "Apakah Anda ingin menyalin manual alamat email dukungan kami ke clipboard Anda?",
         "title": "Kesalahan membuka klien email",
-        "subject": "Dukungan Rainbow"
+        "subject": "Dukungan HookOS"
       },
       "wallet_alert": {
         "message_support": "Pesan Dukungan",
@@ -3278,14 +3278,14 @@
         "generic_title": "Koneksi gagal",
         "generic_error": "Ada yang salah. Silakan coba lagi, atau hubungi tim dukungan kami.",
         "pairing_timeout": "Sesi ini habis waktu sebelum koneksi dapat dibuat. Biasanya ini disebabkan oleh kesalahan jaringan. Silakan coba lagi.",
-        "pairing_unsupported_methods": "Beranda meminta metode RPC dompet yang tidak didukung oleh Rainbow.",
-        "pairing_unsupported_networks": "Dapp meminta jaringan yang tidak didukung oleh Rainbow.",
+        "pairing_unsupported_methods": "Beranda meminta metode RPC dompet yang tidak didukung oleh HookOS.",
+        "pairing_unsupported_networks": "Dapp meminta jaringan yang tidak didukung oleh HookOS.",
         "read_only_wallet_on_signing_method": "Sepertinya Anda menggunakan dompet hanya untuk membaca, yang tidak diizinkan untuk permintaan ini.",
-        "namespaces_invalid": "Terdapat masalah dengan namespace yang diminta oleh dapp. Silakan coba lagi atau hubungi tim dukungan Rainbow dan/atau dapp.",
-        "request_invalid": "Permintaan berisi parameter yang tidak valid. Silakan coba lagi atau hubungi tim dukungan Rainbow dan/atau beranda.",
-        "eth_sign": "Rainbow tidak mendukung eth_sign lama karena pertimbangan keamanan.  \n Silakan Hubungi tim dukungan Rainbow dan/atau dapp jika Anda memiliki pertanyaan.",
-        "request_unsupported_network": "Jaringan yang ditentukan dalam permintaan ini tidak didukung oleh Rainbow.",
-        "request_unsupported_methods": "Metode RPC yang ditentukan dalam permintaan ini tidak didukung oleh Rainbow.",
+        "namespaces_invalid": "Terdapat masalah dengan namespace yang diminta oleh dapp. Silakan coba lagi atau hubungi tim dukungan HookOS dan/atau dapp.",
+        "request_invalid": "Permintaan berisi parameter yang tidak valid. Silakan coba lagi atau hubungi tim dukungan HookOS dan/atau beranda.",
+        "eth_sign": "HookOS tidak mendukung eth_sign lama karena pertimbangan keamanan.  \n Silakan Hubungi tim dukungan HookOS dan/atau dapp jika Anda memiliki pertanyaan.",
+        "request_unsupported_network": "Jaringan yang ditentukan dalam permintaan ini tidak didukung oleh HookOS.",
+        "request_unsupported_methods": "Metode RPC yang ditentukan dalam permintaan ini tidak didukung oleh HookOS.",
         "no_accounts_found": "Tidak ada akun yang ditemukan di ruang nama yang disetujui."
       },
       "dapp_warnings": {
@@ -3401,7 +3401,7 @@
       },
       "no_wc_needed": {
         "title": "Ups!",
-        "description": "Tampaknya Anda mencoba untuk menghubungkan ke dapp ini melalui WalletConnect. Ini tidak lagi diperlukan dengan browser dalam aplikasi Rainbow. Kembali dan pilih \"MetaMask\" dan semuanya akan berfungsi dengan baik.",
+        "description": "Tampaknya Anda mencoba untuk menghubungkan ke dapp ini melalui WalletConnect. Ini tidak lagi diperlukan dengan browser dalam aplikasi HookOS. Kembali dan pilih \"MetaMask\" dan semuanya akan berfungsi dengan baik.",
         "cta": "Mengerti"
       },
       "provider_error": {
@@ -3447,7 +3447,7 @@
       "filters": {
         "categories": {
           "TRENDING": "Tren",
-          "RAINBOW": "Biaya Rainbow",
+          "RAINBOW": "Biaya HookOS",
           "NEW": "Baru",
           "FARCASTER": "Farcaster"
         },

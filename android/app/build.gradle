@@ -156,7 +156,7 @@ android {
 
     namespace 'me.rainbow'
     defaultConfig {
-        applicationId "me.rainbow"
+        applicationId "com.hookos.wallet"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 313

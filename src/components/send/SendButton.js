@@ -18,7 +18,7 @@ export default function SendButton({
 }) {
   const { colors, isDarkMode } = useTheme();
   const isHardwareWallet = useWalletsStore(state => state.getIsHardwareWallet());
-  const colorForAsset = isNft ? colors.appleBlue : backgroundColor;
+  const colorForAsset = isNft ? (isDarkMode ? '#1DB847' : '#0C8A42') : backgroundColor; // HookOS accent (was colors.appleBlue)
 
   const shadows = {
     colored: [

@@ -19,7 +19,7 @@ import { REGISTRATION_MODES } from '../utils/helpers';
 
 const TRANSLATIONS = i18n.l.cards.ens_search;
 const GRADIENT: Gradient = {
-  colors: ['#0E76FD', '#61B5FF'],
+  colors: ['#0C8A42', '#38E07B'], // HookOS acidInk → acid (was Rainbow blue)
   start: { x: 0, y: 0 },
   end: { x: 1, y: 0 },
 };

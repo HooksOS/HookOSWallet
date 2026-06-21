@@ -248,7 +248,7 @@
         "never_share": "Nunca compartas tu %{typeName} ni lo ingreses en aplicaciones o sitios web.",
         "access": "Cualquier persona con tu %{typeName} puede acceder a toda tu billetera.",
         "hide": "Asegúrate de que nadie pueda ver tu pantalla al ver tu %{typeName}.",
-        "support": "El soporte de Rainbow nunca te pedirá tu %{typeName}.",
+        "support": "El soporte de HookOS nunca te pedirá tu %{typeName}.",
         "button": "􀎽 Mostrar %{typeName}"
       }
     },
@@ -387,8 +387,8 @@
         "learn": "Aprender",
         "cards": {
           "get_started": {
-            "title": "Comience con Rainbow",
-            "description": "¡Bienvenido a Rainbow! Estamos muy contentos de que estés aquí. Hemos creado esta guía para ayudarte con los conceptos básicos de Rainbow y comenzar tu nuevo viaje en Web3 y Ethereum."
+            "title": "Comience con HookOS",
+            "description": "¡Bienvenido a HookOS! Estamos muy contentos de que estés aquí. Hemos creado esta guía para ayudarte con los conceptos básicos de HookOS y comenzar tu nuevo viaje en Web3 y Ethereum."
           },
           "backups": {
             "title": "La importancia de las copias de seguridad",
@@ -396,11 +396,11 @@
           },
           "crypto_and_wallets": {
             "title": "Cripto y Billeteras",
-            "description": "En un nivel muy simple, una billetera es solo una clave criptográfica personal y única (como se muestra a continuación). Las aplicaciones de billetera como Rainbow son interfaces de usuario que te permiten crear, almacenar y administrar claves criptográficas sin necesidad de tener habilidades o conocimientos técnicos."
+            "description": "En un nivel muy simple, una billetera es solo una clave criptográfica personal y única (como se muestra a continuación). Las aplicaciones de billetera como HookOS son interfaces de usuario que te permiten crear, almacenar y administrar claves criptográficas sin necesidad de tener habilidades o conocimientos técnicos."
           },
           "protect_wallet": {
             "title": "Protege tu billetera",
-            "description": "Una de las mejores partes de tener una billetera de Ethereum como Rainbow es que tienes el control total de tu dinero. A diferencia de una cuenta bancaria de Wells Fargo o un intercambio de criptomonedas como Coinbase, no mantenemos tus activos en tu nombre."
+            "description": "Una de las mejores partes de tener una billetera de Ethereum como HookOS es que tienes el control total de tu dinero. A diferencia de una cuenta bancaria de Wells Fargo o un intercambio de criptomonedas como Coinbase, no mantenemos tus activos en tu nombre."
           },
           "connect_to_dapp": {
             "title": "Conéctate a un sitio web o aplicación",
@@ -408,7 +408,7 @@
           },
           "avoid_scams": {
             "title": "Evita las estafas de criptomonedas",
-            "description": "Aquí en Rainbow, uno de nuestros objetivos es hacer que explorar el nuevo mundo de Ethereum sea divertido, amigable y seguro. ¿Sabes qué no es ninguna de esas cosas? Las estafas. Son malas y a nadie le gustan. Queremos ayudarte a evitarlas, por eso hemos escrito esta breve guía para ayudarte a hacer exactamente eso."
+            "description": "Aquí en HookOS, uno de nuestros objetivos es hacer que explorar el nuevo mundo de Ethereum sea divertido, amigable y seguro. ¿Sabes qué no es ninguna de esas cosas? Las estafas. Son malas y a nadie le gustan. Queremos ayudarte a evitarlas, por eso hemos escrito esta breve guía para ayudarte a hacer exactamente eso."
           },
           "understanding_web3": {
             "title": "Comprensión de Web3",
@@ -420,7 +420,7 @@
           },
           "supported_networks": {
             "title": "Redes compatibles",
-            "description": "Hasta hace poco, Rainbow y muchos otros proyectos de blockchain solo eran compatibles con Ethereum, el libro mayor descentralizado público del mundo. Ethereum es extremadamente seguro y altamente confiable, pero no siempre es adecuado para la velocidad y eficiencia."
+            "description": "Hasta hace poco, HookOS y muchos otros proyectos de blockchain solo eran compatibles con Ethereum, el libro mayor descentralizado público del mundo. Ethereum es extremadamente seguro y altamente confiable, pero no siempre es adecuado para la velocidad y eficiencia."
           },
           "collect_nfts": {
             "title": "Colecciona NFTs en OpenSea",
@@ -439,7 +439,7 @@
       },
       "ledger": {
         "title": "Asociar una billetera de hardware",
-        "body": "Conecte su Ledger Nano X a Rainbow a través de Bluetooth."
+        "body": "Conecte su Ledger Nano X a HookOS a través de Bluetooth."
       },
       "receive": {
         "receive_assets": "Recibir activos",
@@ -449,7 +449,7 @@
     },
     "check_identifier": {
       "title": "Autenticación Necesaria",
-      "description": "Parece que has cambiado de dispositivo o reinstalado Rainbow. Por favor, autentícate para que podamos validar que los datos de tu llavero aún están en buen estado.",
+      "description": "Parece que has cambiado de dispositivo o reinstalado HookOS. Por favor, autentícate para que podamos validar que los datos de tu llavero aún están en buen estado.",
       "action": "Autenticar",
       "dismiss": "Descartar",
       "error_alert": {
@@ -484,7 +484,7 @@
         "insufficient_funds": "Fondos Insuficientes",
         "hold_to_claim": "Mantener para Reclamar",
         "creator_lp_fees": "Cuota del Creador LP",
-        "rainbow_token_launcher": "Lanzador de Tokens de Rainbow",
+        "rainbow_token_launcher": "Lanzador de Tokens de HookOS",
         "claim_amount": "Reclamar %{amount}",
         "done": "Listo",
         "try_again": "Intenta de Nuevo",
@@ -564,7 +564,7 @@
       "simulate_device_transfer": "Simular transferencia de dispositivo",
       "headers": {
         "normie_settings": "Configuración para normies",
-        "rainbow_developer_settings": "Configuración de desarrollador de Rainbow",
+        "rainbow_developer_settings": "Configuración de desarrollador de HookOS",
         "feature_flags": "Flags de funciones",
         "delegation_settings": "Configuración de delegación"
       },
@@ -621,7 +621,7 @@
     },
     "error_boundary": {
       "error_boundary_oops": "¡Ups!",
-      "restart_rainbow": "Reinicie Rainbow",
+      "restart_rainbow": "Reinicie HookOS",
       "something_went_wrong": "Algo salió mal.",
       "wallets_are_safe": "No te preocupes, tus billeteras están seguras. Sólo reinicia la aplicación para continuar con tus negocios."
     },
@@ -878,7 +878,7 @@
       "swap_details": {
         "reward": "Recompensa",
         "exchange_rate": "Tipo de cambio",
-        "rainbow_fee": "Tarifa de Rainbow incluida",
+        "rainbow_fee": "Tarifa de HookOS incluida",
         "refuel": "Tokens adicionales de red",
         "review": "Revisar",
         "show_details": "Más detalles",
@@ -899,7 +899,7 @@
         "maximum_sold": "Máximo Vendido",
         "minimum_received": "Mínimo Recibido",
         "preferred_network": "Red preferida",
-        "rainbow_fee": "Tarifa Rainbow incluida",
+        "rainbow_fee": "Tarifa HookOS incluida",
         "smart_wallet_activation_fee": "Tarifa estimada de Smart Wallet",
         "settings": "Configuraciones"
       },
@@ -1000,11 +1000,11 @@
     },
     "explain": {
       "output_disabled": {
-        "text": "Para %{fromNetwork}, Rainbow no puede preparar intercambios basados en la cantidad de %{outputToken} que deseas recibir. \n\n Intenta ingresar la cantidad de %{inputToken} que te gustaría intercambiar.",
+        "text": "Para %{fromNetwork}, HookOS no puede preparar intercambios basados en la cantidad de %{outputToken} que deseas recibir. \n\n Intenta ingresar la cantidad de %{inputToken} que te gustaría intercambiar.",
         "title": "Ingresa %{inputToken} En Su Lugar",
         "title_crosschain": "Ingresa %{fromNetwork} %{inputToken} En Su Lugar",
-        "text_crosschain": "Rainbow no puede preparar intercambios basados en la cantidad de %{outputToken} que deseas recibir. \n\n Intenta ingresar la cantidad de %{inputToken} que te gustaría intercambiar.",
-        "text_bridge": "Rainbow no puede preparar un puente basado en la cantidad de %{outputToken} que deseas recibir en el destino %{toNetwork}. \n\n Intenta ingresar la cantidad de %{inputToken} de %{fromNetwork} que te gustaría transferir en su lugar.",
+        "text_crosschain": "HookOS no puede preparar intercambios basados en la cantidad de %{outputToken} que deseas recibir. \n\n Intenta ingresar la cantidad de %{inputToken} que te gustaría intercambiar.",
+        "text_bridge": "HookOS no puede preparar un puente basado en la cantidad de %{outputToken} que deseas recibir en el destino %{toNetwork}. \n\n Intenta ingresar la cantidad de %{inputToken} de %{fromNetwork} que te gustaría transferir en su lugar.",
         "title_empty": "Elige un Token"
       },
       "available_networks": {
@@ -1039,15 +1039,15 @@
         "title": "Error de conexión"
       },
       "failed_wc_invalid_methods": {
-        "text": "La dapp solicitó métodos de firma (RPC) que no son compatibles con Rainbow.",
+        "text": "La dapp solicitó métodos de firma (RPC) que no son compatibles con HookOS.",
         "title": "Error de conexión"
       },
       "failed_wc_invalid_chains": {
-        "text": "La dapp solicitó redes que no son compatibles con Rainbow.",
+        "text": "La dapp solicitó redes que no son compatibles con HookOS.",
         "title": "Error de conexión"
       },
       "failed_wc_invalid_chain": {
-        "text": "La red especificada en esta solicitud no es compatible con Rainbow.",
+        "text": "La red especificada en esta solicitud no es compatible con HookOS.",
         "title": "Manejo fallido"
       },
       "floor_price": {
@@ -1145,7 +1145,7 @@
         "title": "Tokens verificados"
       },
       "unverified": {
-        "fragment1": "Rainbow muestra tantos tokens como sea posible, pero cualquiera puede crear un token o afirmar representar un proyecto con un contrato falso. \n\n Por favor revisa el ",
+        "fragment1": "HookOS muestra tantos tokens como sea posible, pero cualquiera puede crear un token o afirmar representar un proyecto con un contrato falso. \n\n Por favor revisa el ",
         "fragment2": "contrato del token",
         "fragment3": " y siempre investigue para asegurarse de interactuar con tokens en los que confía.",
         "title": "%{symbol} no está verificado",
@@ -1164,7 +1164,7 @@
         "title": "Liquidez insuficiente"
       },
       "fee_on_transfer": {
-        "fragment1": "Este intercambio fallará en Rainbow porque el contrato %{tokenName} agrega cargos adicionales.  \n\n Lea ",
+        "fragment1": "Este intercambio fallará en HookOS porque el contrato %{tokenName} agrega cargos adicionales.  \n\n Lea ",
         "fragment2": "nuestra guía",
         "fragment3": " para obtener ayuda para intercambiar este token!",
         "title": "Cargo en Token de Transferencia"
@@ -1186,10 +1186,10 @@
         "text": "Ir al puente de Hop 􀮶"
       },
       "rainbow_fee": {
-        "text": "Rainbow cobra una tarifa de %{feePercentage} en los intercambios. Es parte de lo que nos permite ofrecerte la mejor experiencia de Ethereum posible."
+        "text": "HookOS cobra una tarifa de %{feePercentage} en los intercambios. Es parte de lo que nos permite ofrecerte la mejor experiencia de Ethereum posible."
       },
       "swap_routing": {
-        "text": "Por defecto, Rainbow elige la ruta más económica para tu intercambio. Si prefieres usar específicamente 0x o 1inch, también puedes hacerlo.",
+        "text": "Por defecto, HookOS elige la ruta más económica para tu intercambio. Si prefieres usar específicamente 0x o 1inch, también puedes hacerlo.",
         "title": "Enrutamiento de intercambio",
         "still_curious": {
           "fragment1": "¿Aún tienes curiosidad? ",
@@ -1243,14 +1243,14 @@
       },
       "ens_configuration": {
         "title": "¿Qué significan estas opciones?",
-        "text": "Al enviar un nombre ENS a otra persona y hacerla propietaria del nuevo nombre ENS, es posible que desees configurarlo para ellos por adelantado y ahorrarles una transacción futura. Rainbow te permite borrar cualquier información de perfil actualmente configurada para el nombre, configurar el nombre ENS para que apunte a la dirección del destinatario y hacer que la dirección del destinatario se convierta en el administrador del nombre."
+        "text": "Al enviar un nombre ENS a otra persona y hacerla propietaria del nuevo nombre ENS, es posible que desees configurarlo para ellos por adelantado y ahorrarles una transacción futura. HookOS te permite borrar cualquier información de perfil actualmente configurada para el nombre, configurar el nombre ENS para que apunte a la dirección del destinatario y hacer que la dirección del destinatario se convierta en el administrador del nombre."
       }
     },
     "fedora": {
       "cannot_verify_bundle": "¡No se puede verificar el paquete! Esto puede ser un fraude. Instalación bloqueada.",
       "error": "ERROR",
       "fedora": "Fedora",
-      "this_will_override_bundle": "Esto sobrescribirá tu paquete. Ten cuidado. ¿Eres un empleado de Rainbow?",
+      "this_will_override_bundle": "Esto sobrescribirá tu paquete. Ten cuidado. ¿Eres un empleado de HookOS?",
       "wait": "esperar"
     },
     "fields": {
@@ -1355,8 +1355,8 @@
     "image_picker": {
       "cancel": "Cancelar",
       "confirm": "Habilitar acceso a la biblioteca",
-      "message": "Esto permite a Rainbow usar tus fotos de tu biblioteca",
-      "title": "Rainbow desea acceder a tus fotos"
+      "message": "Esto permite a HookOS usar tus fotos de tu biblioteca",
+      "title": "HookOS desea acceder a tus fotos"
     },
     "input": {
       "asset_amount": "Cantidad",
@@ -1372,8 +1372,8 @@
     },
     "list": {
       "share": {
-        "check_out_my_wallet": "Consulta mis coleccionables en 🌈 Rainbow en %{showcaseUrl}",
-        "check_out_this_wallet": "Consulta los coleccionables de esta billetera en 🌈 Rainbow en %{showcaseUrl}"
+        "check_out_my_wallet": "Consulta mis coleccionables en 🌈 HookOS en %{showcaseUrl}",
+        "check_out_this_wallet": "Consulta los coleccionables de esta billetera en 🌈 HookOS en %{showcaseUrl}"
       }
     },
     "loading": {
@@ -1485,7 +1485,7 @@
       "external_link_warning": {
         "go_back": "Volver",
         "visit_external_link": "¿Visitar enlace externo?",
-        "you_are_attempting_to_visit": "Estás intentando visitar un enlace que no está afiliado con Rainbow."
+        "you_are_attempting_to_visit": "Estás intentando visitar un enlace que no está afiliado con HookOS."
       },
       "gas_average": "Promedio",
       "gas_fast": "Rápido",
@@ -1591,7 +1591,7 @@
         "selling": "Vendiendo",
         "error": {
           "title": "Error al vender NFT",
-          "message": "Por favor contacta al soporte de Rainbow para asistencia."
+          "message": "Por favor contacta al soporte de HookOS para asistencia."
         }
       }
     },
@@ -2046,7 +2046,7 @@
     },
     "review": {
       "alert": {
-        "are_you_enjoying_rainbow": "¿Disfrutas de Rainbow? 🥰",
+        "are_you_enjoying_rainbow": "¿Disfrutas de HookOS? 🥰",
         "leave_a_review": "Deja una reseña en la App Store!",
         "no": "No",
         "yes": "Sí"
@@ -2250,7 +2250,7 @@
       "done": "Listo",
       "feedback_and_reports": "Comentarios y reportes de errores",
       "follow_us_on_twitter": "Síguenos en X",
-      "hey_friend_message": "👋️ ¡Hola amigo! Deberías descargar Rainbow, es mi billetera de Ethereum favorita 🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️",
+      "hey_friend_message": "👋️ ¡Hola amigo! Deberías descargar HookOS, es mi billetera de Ethereum favorita 🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️",
       "label": "Configuraciones",
       "language": "Idioma",
       "learn": "Aprende sobre Ethereum",
@@ -2272,13 +2272,13 @@
         "all": "Todos",
         "off": "Desactivado",
         "plus_n_more": "+ %{n} más",
-        "no_permissions": "Parece que tus permisos de notificación están desactivados. Por favor, habilítalos en Configuración para recibir notificaciones de Rainbow.",
+        "no_permissions": "Parece que tus permisos de notificación están desactivados. Por favor, habilítalos en Configuración para recibir notificaciones de HookOS.",
         "no_watched_wallets": "No estás observando ninguna billetera.",
-        "no_owned_wallets": "No tienes ninguna billetera en Rainbow. Crea una billetera o importa una con tu frase secreta.",
+        "no_owned_wallets": "No tienes ninguna billetera en HookOS. Crea una billetera o importa una con tu frase secreta.",
         "open_system_settings": "Abrir Configuración",
         "unsupported_network": "Las notificaciones solo están disponibles para transacciones en la red principal de Ethereum en este momento.",
         "change_network": "Cambia tu Red",
-        "no_first_time_permissions": "Por favor, permite que Rainbow te envíe notificaciones.",
+        "no_first_time_permissions": "Por favor, permite que HookOS te envíe notificaciones.",
         "first_time_allow_notifications": "Permitir Notificaciones",
         "error_alert_title": "Suscripción Fallida",
         "error_alert_content": "Por favor, inténtalo de nuevo más tarde.",
@@ -2289,15 +2289,15 @@
       "privacy": "Privacidad",
       "privacy_section": {
         "public_showcase": "Mostrar Públicamente",
-        "when_public": "¡Cuando sea pública, tu vitrina de NFT será visible en tu perfil de Rainbow!",
-        "when_public_prefix": "¡Cuando sea pública, tu vitrina de NFT será visible en tu perfil web de Rainbow! Puedes ver tu perfil en",
+        "when_public": "¡Cuando sea pública, tu vitrina de NFT será visible en tu perfil de HookOS!",
+        "when_public_prefix": "¡Cuando sea pública, tu vitrina de NFT será visible en tu perfil web de HookOS! Puedes ver tu perfil en",
         "view_profile": "Ver tu perfil",
         "analytics_toggle": "Analítica",
-        "analytics_toggle_description": "Ayuda a Rainbow a mejorar sus productos y servicios permitiendo el uso de datos analíticos. Los datos recopilados no están asociados contigo ni con tu cuenta."
+        "analytics_toggle_description": "Ayuda a HookOS a mejorar sus productos y servicios permitiendo el uso de datos analíticos. Los datos recopilados no están asociados contigo ni con tu cuenta."
       },
       "restore": "Restaurar a implementación original",
-      "review": "Revisar Rainbow",
-      "share_rainbow": "Compartir Rainbow",
+      "review": "Revisar HookOS",
+      "share_rainbow": "Compartir HookOS",
       "theme": "Tema",
       "theme_section": {
         "system": "Sistema",
@@ -2306,7 +2306,7 @@
       },
       "icon_change": {
         "title": "Confirmar cambio de icono",
-        "warning": "Cambiar tu icono puede hacer que Rainbow se reinicie.",
+        "warning": "Cambiar tu icono puede hacer que HookOS se reinicie.",
         "confirm": "Confirmar",
         "cancel": "Cancelar"
       },
@@ -2380,7 +2380,7 @@
         "quote_error": "Error en la cotización"
       },
       "aggregators": {
-        "rainbow": "Rainbow"
+        "rainbow": "HookOS"
       },
       "bridging": "Puentificando",
       "swapping": "Intercambiando",
@@ -2453,7 +2453,7 @@
       "nothing_found": "Nada encontrado",
       "section_header": {
         "recent": "Reciente",
-        "popular": "Popular en Rainbow",
+        "popular": "Popular en HookOS",
         "favorites": "Favoritos",
         "bridge": "Puente",
         "verified": "Verificado",
@@ -2724,7 +2724,7 @@
     },
     "hardware_wallets": {
       "pair_your_nano": "Parear tu Nano X",
-      "connect_your_ledger": "Conecta tu Ledger Nano X a Rainbow a través de Bluetooth. Si es la primera vez, Rainbow solicitará acceso a Bluetooth.",
+      "connect_your_ledger": "Conecta tu Ledger Nano X a HookOS a través de Bluetooth. Si es la primera vez, HookOS solicitará acceso a Bluetooth.",
       "learn_more_about_ledger": "Más información sobre Ledger",
       "pair_a_new_ledger": "Parear un nuevo Ledger",
       "looking_for_devices": "Buscando dispositivos",
@@ -2915,7 +2915,7 @@
           "disable_single_network_subtitle": "Esto eliminará la delegación de Smart Wallet para esta red.",
           "disable_single_network_button": "Mantener para deshabilitar",
           "disable_third_party_title": "Deshabilitar cuenta",
-          "disable_third_party_subtitle": "Tu billetera está delegada a una Smart Wallet diferente. Deshabilita para usar Rainbow.",
+          "disable_third_party_subtitle": "Tu billetera está delegada a una Smart Wallet diferente. Deshabilita para usar HookOS.",
           "disable_third_party_button": "Mantener para deshabilitar",
           "alert_vulnerability_title": "Seguridad de Smart Wallet",
           "alert_vulnerability_subtitle": "Se detectó una vulnerabilidad en tu contrato de Smart Wallet. Revócalo como precaución para proteger tus activos.",
@@ -3001,14 +3001,14 @@
         "you_need_to_authenticate_with_your_pin": "Necesitas autenticarte con tu PIN para acceder a los secretos de tu cartera.",
         "share_application_state": "Compartir volcado de estado de la aplicación",
         "wallet_details_title": "Detalles de la cartera",
-        "wallet_details_description": "A continuación se muestran los detalles de todas las carteras agregadas a Rainbow."
+        "wallet_details_description": "A continuación se muestran los detalles de todas las carteras agregadas a HookOS."
       },
       "error_displaying_address": "Error al mostrar la dirección",
       "feedback": {
         "cancel": "No, gracias",
         "choice": "¿Te gustaría copiar manualmente nuestra dirección de correo electrónico de comentarios en tu portapapeles?",
         "copy_email_address": "Copiar dirección de correo electrónico",
-        "email_subject": "📱 Retroalimentación de Rainbow Beta",
+        "email_subject": "📱 Retroalimentación de HookOS Beta",
         "error": "Error al abrir el cliente de correo electrónico",
         "send": "Enviar retroalimentación"
       },
@@ -3017,7 +3017,7 @@
         "create_wallet": "Crear una cartera",
         "instructions": "Por favor, no guardes más en tu cartera de lo que estás dispuesto a perder.",
         "warning": "Este es un software alfa.",
-        "welcome": "Bienvenido a Rainbow"
+        "welcome": "Bienvenido a HookOS"
       },
       "invalid_address_title": "Dirección inválida",
       "invalid_address_message": "Verifica el uso de mayúsculas y minúsculas e inténtalo de nuevo.",
@@ -3085,7 +3085,7 @@
           "continue": "Continuar",
           "import": {
             "title": "Restaurar una billetera",
-            "description": "Restaurar con una frase de recuperación o clave privada de Rainbow u otra billetera de criptomonedas",
+            "description": "Restaurar con una frase de recuperación o clave privada de HookOS u otra billetera de criptomonedas",
             "placeholder": "Ingresa una frase de recuperación o clave privada",
             "button": "Importar"
           },
@@ -3123,7 +3123,7 @@
       },
       "push_notifications": {
         "please_enable_body": "Parece que estás usando WalletConnect. Habilita las notificaciones push para recibir solicitudes de transacción de WalletConnect.",
-        "please_enable_title": "Rainbow desea enviarte notificaciones push"
+        "please_enable_title": "HookOS desea enviarte notificaciones push"
       },
       "qr": {
         "camera_access_needed": "¡Se necesita acceso a la cámara para escanear!",
@@ -3210,7 +3210,7 @@
         "no_thanks": "No, gracias",
         "message": "¿Le gustaría copiar manualmente nuestra dirección de correo electrónico de soporte en su portapapeles?",
         "title": "Error al abrir el cliente de correo electrónico",
-        "subject": "Soporte de Rainbow"
+        "subject": "Soporte de HookOS"
       },
       "wallet_alert": {
         "message_support": "Soporte de Mensajes",
@@ -3278,14 +3278,14 @@
         "generic_title": "Error de conexión",
         "generic_error": "Algo salió mal. Por favor, intenta nuevamente o contáctate con nuestro equipo de soporte.",
         "pairing_timeout": "Esta sesión se agotó antes de que se pudiera establecer una conexión. Esto suele ser debido a un error de red. Por favor, intenta nuevamente.",
-        "pairing_unsupported_methods": "La dapp solicitó métodos RPC de billetera que no son compatibles con Rainbow.",
-        "pairing_unsupported_networks": "La dapp solicitó redes que no son compatibles con Rainbow.",
+        "pairing_unsupported_methods": "La dapp solicitó métodos RPC de billetera que no son compatibles con HookOS.",
+        "pairing_unsupported_networks": "La dapp solicitó redes que no son compatibles con HookOS.",
         "read_only_wallet_on_signing_method": "Parece que estás usando una cartera de solo lectura, lo cual no está permitido para esta solicitud.",
-        "namespaces_invalid": "Hubo un problema con los espacios de nombres solicitados por la dapp. Intente de nuevo o contacte a los equipos de soporte de Rainbow y/o dapp.",
-        "request_invalid": "La solicitud contiene parámetros no válidos. Por favor, intenta nuevamente o contacta con los equipos de soporte de Rainbow y/o la dapp.",
-        "eth_sign": "Rainbow no admite el antiguo eth_sign debido a preocupaciones de seguridad.  \n Por favor, contacte a los equipos de soporte de Rainbow y/o dapp si tiene alguna pregunta.",
-        "request_unsupported_network": "La red especificada en esta solicitud no es compatible con Rainbow.",
-        "request_unsupported_methods": "El/los método(s) RPC especificado(s) en esta solicitud no son compatibles con Rainbow.",
+        "namespaces_invalid": "Hubo un problema con los espacios de nombres solicitados por la dapp. Intente de nuevo o contacte a los equipos de soporte de HookOS y/o dapp.",
+        "request_invalid": "La solicitud contiene parámetros no válidos. Por favor, intenta nuevamente o contacta con los equipos de soporte de HookOS y/o la dapp.",
+        "eth_sign": "HookOS no admite el antiguo eth_sign debido a preocupaciones de seguridad.  \n Por favor, contacte a los equipos de soporte de HookOS y/o dapp si tiene alguna pregunta.",
+        "request_unsupported_network": "La red especificada en esta solicitud no es compatible con HookOS.",
+        "request_unsupported_methods": "El/los método(s) RPC especificado(s) en esta solicitud no son compatibles con HookOS.",
         "no_accounts_found": "No se encontraron cuentas en los espacios de nombres aprobados."
       },
       "dapp_warnings": {
@@ -3401,7 +3401,7 @@
       },
       "no_wc_needed": {
         "title": "¡Ups!",
-        "description": "Parece que estás intentando conectarte a esta dapp a través de WalletConnect. Esto ya no es necesario con el navegador en la aplicación de Rainbow. Vuelve atrás y elige \"MetaMask\" y todo debería funcionar bien.",
+        "description": "Parece que estás intentando conectarte a esta dapp a través de WalletConnect. Esto ya no es necesario con el navegador en la aplicación de HookOS. Vuelve atrás y elige \"MetaMask\" y todo debería funcionar bien.",
         "cta": "Entendido"
       },
       "provider_error": {
@@ -3447,7 +3447,7 @@
       "filters": {
         "categories": {
           "TRENDING": "Tendencia",
-          "RAINBOW": "Rainbow",
+          "RAINBOW": "HookOS",
           "NEW": "Nuevo",
           "FARCASTER": "Farcaster"
         },
@@ -3595,7 +3595,7 @@
       "airdrops_sheet": {
         "claim_button_text": "Reclamar",
         "empty_state_title": "Aún No Hay Airdrops",
-        "title": "Reclamar Monedas Rainbow"
+        "title": "Reclamar Monedas HookOS"
       },
       "cards": {
         "airdrops": {

@@ -15,12 +15,12 @@
   <string>export</string>
   <key>provisioningProfiles</key>
   <dict>
-    <key>me.rainbow</key><string>match AdHoc me.rainbow</string>
-    <key>me.rainbow.PriceWidget</key><string>match AdHoc me.rainbow.PriceWidget</string>
-    <key>me.rainbow.SelectTokenIntent</key><string>match AdHoc me.rainbow.SelectTokenIntent</string>
-    <key>me.rainbow.ImageNotification</key><string>match AdHoc me.rainbow.ImageNotification</string>
-    <key>me.rainbow.OpenInRainbow</key><string>match AdHoc me.rainbow.OpenInRainbow</string>
-    <key>me.rainbow.ShareWithRainbow</key><string>match AdHoc me.rainbow.ShareWithRainbow</string>
+    <key>com.hookos.wallet</key><string>match AdHoc com.hookos.wallet</string>
+    <key>com.hookos.wallet.PriceWidget</key><string>match AdHoc com.hookos.wallet.PriceWidget</string>
+    <key>com.hookos.wallet.SelectTokenIntent</key><string>match AdHoc com.hookos.wallet.SelectTokenIntent</string>
+    <key>com.hookos.wallet.ImageNotification</key><string>match AdHoc com.hookos.wallet.ImageNotification</string>
+    <key>com.hookos.wallet.OpenInHookOS</key><string>match AdHoc com.hookos.wallet.OpenInHookOS</string>
+    <key>com.hookos.wallet.ShareWithHookOS</key><string>match AdHoc com.hookos.wallet.ShareWithHookOS</string>
   </dict>
 </dict>
 </plist>

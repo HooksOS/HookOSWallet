@@ -107,7 +107,9 @@ const SheetActionButton: React.FC<SheetActionButtonProps> = ({
   ...props
 }) => {
   const { isDarkMode, colors } = useTheme();
-  const color = givenColor || colors.appleBlue;
+  // HookOS accent (was colors.appleBlue) — mirrors the design-system default accent so white
+  // button text stays readable. acidInk on light, brighter green on dark.
+  const color = givenColor || (isDarkMode ? '#1DB847' : '#0C8A42');
   const isWhite = color === colors.white;
   const textColor = givenTextColor || colors.whiteLabel;
   const shadowsForButtonColor = useMemo(() => {

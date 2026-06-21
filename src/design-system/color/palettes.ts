@@ -205,7 +205,7 @@ export type BackgroundColorValue = {
 export const backgroundColors: Record<BackgroundColor, ContextualColorValue<BackgroundColorValue>> = {
   'surfacePrimary': {
     light: {
-      color: globalColors.white100,
+      color: '#F1F2EC', // HookOS paper (Atlas Paper app background)
       mode: 'light',
     },
     dark: {
@@ -225,7 +225,7 @@ export const backgroundColors: Record<BackgroundColor, ContextualColorValue<Back
   },
   'surfaceSecondary': {
     light: {
-      color: globalColors.blueGrey10,
+      color: '#E7E9E1', // HookOS paper2 (wells / insets)
       mode: 'light',
     },
     dark: {
@@ -506,19 +506,19 @@ function selectBackgroundAsForeground(backgroundName: BackgroundColor): Contextu
 
 export const foregroundColors: Record<ForegroundColor, ContextualColorValue<string>> = {
   'label': {
-    light: globalColors.grey100,
+    light: '#0D100C', // HookOS ink (Atlas Paper)
     dark: globalColors.white100,
   },
   'labelSecondary': {
-    light: globalColors.grey80,
+    light: '#494C44', // HookOS ink2
     dark: globalColors.white80,
   },
   'labelTertiary': {
-    light: globalColors.grey70,
+    light: '#86887E', // HookOS ink3
     dark: globalColors.white70,
   },
   'labelQuaternary': {
-    light: globalColors.grey60,
+    light: '#AEB0A6', // HookOS ink4
     dark: globalColors.white60,
   },
   'labelQuinary': {
@@ -743,7 +743,14 @@ export function getValueForColorMode<Value>(value: Value | ContextualColorValue<
 
 export function getDefaultAccentColorForColorMode(colorMode: ColorMode) {
   'worklet';
-  const defaultAccentColor = backgroundColors.blue;
+  // HookOS brand accent (was backgroundColors.blue / Apple blue). The accent is used both as a
+  // button FILL (needs white text on it) and as tinted TEXT (needs to read on light surfaces), so
+  // we use dark-enough greens — never raw `acid` (#38e07b), which the brand reserves for fills/glows.
+  // Source: src/features/hookos/ui/theme.ts (acidInk #0c8a42).
+  const defaultAccentColor: ContextualColorValue<BackgroundColorValue> = {
+    light: { color: '#0C8A42', mode: 'dark' },
+    dark: { color: '#1DB847', mode: 'dark' },
+  };
   return getValueForColorMode(defaultAccentColor, colorMode);
 }
 

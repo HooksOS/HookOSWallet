@@ -75,10 +75,10 @@ export function TokenImageBadge({
           <Shadow dx={0} dy={0} blur={22} color="rgba(245, 248, 255, 0.2)" />
         </Path>
 
-        {/* Blue linear gradient overlay with opacity */}
+        {/* HookOS green linear gradient overlay with opacity */}
         <Path path={outterPath} opacity={0.7}>
           {/* TODO: adjust start and end to match scale */}
-          <LinearGradient start={vec(71, 148.309)} end={vec(299, 148.309)} colors={['#0E76FD', '#61B5FF']} />
+          <LinearGradient start={vec(71, 148.309)} end={vec(299, 148.309)} colors={['#0C8A42', '#38E07B']} />
         </Path>
 
         {/* Primary accent color fill */}

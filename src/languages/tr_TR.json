@@ -248,7 +248,7 @@
         "never_share": "%{typeName} 'inizi asla paylaşmayın ya da uygulamalara veya web sitelerine girmeyin.",
         "access": "%{typeName} 'ye sahip olan herkes tüm cüzdanınıza erişebilir.",
         "hide": "%{typeName} 'yi görüntülerken kimsenin ekranınızı göremediğinden emin olun.",
-        "support": "Rainbow Destek sizden asla %{typeName} 'nizi istemeyecektir.",
+        "support": "HookOS Destek sizden asla %{typeName} 'nizi istemeyecektir.",
         "button": "􀎽 %{typeName} 'yi göster"
       }
     },
@@ -387,8 +387,8 @@
         "learn": "Öğren",
         "cards": {
           "get_started": {
-            "title": "Rainbow ile Başlamak",
-            "description": "Rainbow'a hoş geldiniz! Burada olduğunuz için çok mutluyuz. Rainbow'un temelleri ve yeni Web3 ve Ethereum yolculuğunuzda size yardımcı olmak için bu rehberi oluşturduk."
+            "title": "HookOS ile Başlamak",
+            "description": "HookOS'a hoş geldiniz! Burada olduğunuz için çok mutluyuz. HookOS'un temelleri ve yeni Web3 ve Ethereum yolculuğunuzda size yardımcı olmak için bu rehberi oluşturduk."
           },
           "backups": {
             "title": "Yedeklemelerin Önemi",
@@ -396,11 +396,11 @@
           },
           "crypto_and_wallets": {
             "title": "Kripto ve Cüzdanlar",
-            "description": "Gerçekten basit bir düzeyde, bir cüzdan sadece kişisel ve benzersiz bir kriptografik anahtardır (aşağıda gösterildiği gibi). Rainbow gibi cüzdan uygulamaları, teknik becerilere veya bilgiye sahip olmanız gerekmeden kriptografik anahtarları oluşturmanıza, saklamanıza ve yönetmenize izin veren kullanıcı arayüzleridir."
+            "description": "Gerçekten basit bir düzeyde, bir cüzdan sadece kişisel ve benzersiz bir kriptografik anahtardır (aşağıda gösterildiği gibi). HookOS gibi cüzdan uygulamaları, teknik becerilere veya bilgiye sahip olmanız gerekmeden kriptografik anahtarları oluşturmanıza, saklamanıza ve yönetmenize izin veren kullanıcı arayüzleridir."
           },
           "protect_wallet": {
             "title": "Cüzdanınızı Koruyun",
-            "description": "Rainbow gibi bir Ethereum cüzdanına sahip olmanın en iyi kısımlarından biri, paranızın tam kontrolüne sahip olmanızdır. Wells Fargo'dan bir banka hesabı veya Coinbase gibi bir kripto borsası aksine, varlıklarınızı sizin adınıza tutmuyoruz."
+            "description": "HookOS gibi bir Ethereum cüzdanına sahip olmanın en iyi kısımlarından biri, paranızın tam kontrolüne sahip olmanızdır. Wells Fargo'dan bir banka hesabı veya Coinbase gibi bir kripto borsası aksine, varlıklarınızı sizin adınıza tutmuyoruz."
           },
           "connect_to_dapp": {
             "title": "Bir Web Sitesine veya Uygulamaya Bağlan",
@@ -408,7 +408,7 @@
           },
           "avoid_scams": {
             "title": "Kripto Dolandırıcılıklarından Kaçının",
-            "description": "Rainbow'da hedeflerimizden biri, Ethereum'un yeni dünyasını keşfetmeyi eğlenceli, dostça ve güvenli hale getirmektir. Hiçbiri bunlar değil mi bilir misiniz? Dolandırıcılıklar. Onlar kaba ve kimse onları sevmez. Onlardan kaçınmanıza yardımcı olmak istiyoruz, bu yüzden bunu tam olarak yapmanıza yardımcı olacak bu kısa rehberi yazdık!"
+            "description": "HookOS'da hedeflerimizden biri, Ethereum'un yeni dünyasını keşfetmeyi eğlenceli, dostça ve güvenli hale getirmektir. Hiçbiri bunlar değil mi bilir misiniz? Dolandırıcılıklar. Onlar kaba ve kimse onları sevmez. Onlardan kaçınmanıza yardımcı olmak istiyoruz, bu yüzden bunu tam olarak yapmanıza yardımcı olacak bu kısa rehberi yazdık!"
           },
           "understanding_web3": {
             "title": "Web3'ü Anlamak",
@@ -420,7 +420,7 @@
           },
           "supported_networks": {
             "title": "Desteklenen Ağlar",
-            "description": "Son zamanlara kadar, Rainbow ve birçok diğer blockchain projeleri sadece Ethereum ile uyumlu olmuştur - dünyanın kamusal merkezsiz defteri. Ethereum son derece güvenlidir ve oldukça güvenilir, ancak her zaman hız ve verimlilik için ideal olmayabilir."
+            "description": "Son zamanlara kadar, HookOS ve birçok diğer blockchain projeleri sadece Ethereum ile uyumlu olmuştur - dünyanın kamusal merkezsiz defteri. Ethereum son derece güvenlidir ve oldukça güvenilir, ancak her zaman hız ve verimlilik için ideal olmayabilir."
           },
           "collect_nfts": {
             "title": "OpenSea'de NFT Topla",
@@ -439,7 +439,7 @@
       },
       "ledger": {
         "title": "Donanım Cüzdanı Eşleştirme",
-        "body": "Ledger Nano X'inizi Rainbow ile Bluetooth üzerinden bağlayın."
+        "body": "Ledger Nano X'inizi HookOS ile Bluetooth üzerinden bağlayın."
       },
       "receive": {
         "receive_assets": "Varlıklar al",
@@ -449,7 +449,7 @@
     },
     "check_identifier": {
       "title": "Kimlik Doğrulama Gerekiyor",
-      "description": "Cihaz değiştirmiş veya Rainbow'u yeniden yüklemiş olabilirsiniz. Lütfen kimlik doğrulaması yapın, böylece anahtar zincirinizi sağlıklı bir durumda olduğunu doğrulayabiliriz.",
+      "description": "Cihaz değiştirmiş veya HookOS'u yeniden yüklemiş olabilirsiniz. Lütfen kimlik doğrulaması yapın, böylece anahtar zincirinizi sağlıklı bir durumda olduğunu doğrulayabiliriz.",
       "action": "Kimlik Doğrula",
       "dismiss": "İptal Et",
       "error_alert": {
@@ -484,7 +484,7 @@
         "insufficient_funds": "Yetersiz Bakiye",
         "hold_to_claim": "Talep Etmek İçin Basılı Tutun",
         "creator_lp_fees": "Yaratıcı LP Ücretleri",
-        "rainbow_token_launcher": "Rainbow Jeton Başlatıcısı",
+        "rainbow_token_launcher": "HookOS Jeton Başlatıcısı",
         "claim_amount": "%{amount} Talep Et",
         "done": "Tamamlandı",
         "try_again": "Tekrar Deneyin",
@@ -564,7 +564,7 @@
       "simulate_device_transfer": "Cihaz Transferini Simüle Et",
       "headers": {
         "normie_settings": "Normie Ayarları",
-        "rainbow_developer_settings": "Rainbow Geliştirici Ayarları",
+        "rainbow_developer_settings": "HookOS Geliştirici Ayarları",
         "feature_flags": "Özellik Bayrakları",
         "delegation_settings": "Delegasyon Ayarları"
       },
@@ -621,7 +621,7 @@
     },
     "error_boundary": {
       "error_boundary_oops": "Hata!",
-      "restart_rainbow": "Rainbow'u Yeniden Başlat",
+      "restart_rainbow": "HookOS'u Yeniden Başlat",
       "something_went_wrong": "Bir şeyler ters gitti.",
       "wallets_are_safe": "Endişelenme, cüzdanlarınız güvende! İşi geri almak için uygulamayı yeniden başlatın."
     },
@@ -878,7 +878,7 @@
       "swap_details": {
         "reward": "Ödül",
         "exchange_rate": "Döviz kuru",
-        "rainbow_fee": "Dahil Rainbow ücreti",
+        "rainbow_fee": "Dahil HookOS ücreti",
         "refuel": "Ekstra ağ tokenleri",
         "review": "İncele",
         "show_details": "Daha fazla detay",
@@ -899,7 +899,7 @@
         "maximum_sold": "Azami Satılan",
         "minimum_received": "Asgari Alınan",
         "preferred_network": "Tercih Edilen Ağ",
-        "rainbow_fee": "Dahil Olan Rainbow Ücreti",
+        "rainbow_fee": "Dahil Olan HookOS Ücreti",
         "smart_wallet_activation_fee": "Tahmini Akıllı Cüzdan Ücreti",
         "settings": "Ayarlar"
       },
@@ -1000,11 +1000,11 @@
     },
     "explain": {
       "output_disabled": {
-        "text": "%{fromNetwork} için, Rainbow %{outputToken} almak istediğiniz miktar üzerinden swapları hazırlayamaz. \n\n Bunun yerine swap etmek istediğiniz %{inputToken} miktarını girmeyi deneyin.",
+        "text": "%{fromNetwork} için, HookOS %{outputToken} almak istediğiniz miktar üzerinden swapları hazırlayamaz. \n\n Bunun yerine swap etmek istediğiniz %{inputToken} miktarını girmeyi deneyin.",
         "title": "%{inputToken} Yerine girin",
         "title_crosschain": "%{fromNetwork} %{inputToken} yerine girin",
-        "text_crosschain": "Rainbow, istediğiniz %{outputToken} miktarına dayalı takaslar hazırlayamaz. \n\n Bunun yerine takas etmek istediğiniz %{inputToken} miktarını girin.",
-        "text_bridge": "Rainbow, %{toNetwork} hedefinde almak istediğiniz %{outputToken} miktarına dayalı bir köprü hazırlayamaz. \n\n Bunun yerine köprülemek istediğiniz %{fromNetwork} %{inputToken} miktarını girin.",
+        "text_crosschain": "HookOS, istediğiniz %{outputToken} miktarına dayalı takaslar hazırlayamaz. \n\n Bunun yerine takas etmek istediğiniz %{inputToken} miktarını girin.",
+        "text_bridge": "HookOS, %{toNetwork} hedefinde almak istediğiniz %{outputToken} miktarına dayalı bir köprü hazırlayamaz. \n\n Bunun yerine köprülemek istediğiniz %{fromNetwork} %{inputToken} miktarını girin.",
         "title_empty": "Bir Token Seçin"
       },
       "available_networks": {
@@ -1039,15 +1039,15 @@
         "title": "Bağlantı başarısız oldu"
       },
       "failed_wc_invalid_methods": {
-        "text": "Dapp, Rainbow tarafından desteklenmeyen cüzdan imzalama (RPC) yöntemlerini istedi.",
+        "text": "Dapp, HookOS tarafından desteklenmeyen cüzdan imzalama (RPC) yöntemlerini istedi.",
         "title": "Bağlantı başarısız oldu"
       },
       "failed_wc_invalid_chains": {
-        "text": "Dapp, Rainbow tarafından desteklenmeyen ağları istedi.",
+        "text": "Dapp, HookOS tarafından desteklenmeyen ağları istedi.",
         "title": "Bağlantı başarısız oldu"
       },
       "failed_wc_invalid_chain": {
-        "text": "Bu istekte belirtilen ağ, Rainbow tarafından desteklenmiyor.",
+        "text": "Bu istekte belirtilen ağ, HookOS tarafından desteklenmiyor.",
         "title": "İşlem başarısız oldu"
       },
       "floor_price": {
@@ -1145,7 +1145,7 @@
         "title": "Onaylanmış Tokenler"
       },
       "unverified": {
-        "fragment1": "Rainbow, mümkün olduğunca çok tokeni ortaya çıkarır, ancak herkes bir token oluşturabilir veya sahte bir sözleşme ile bir projeyi temsil ettiğini iddia edebilir. \n\n Lütfen ",
+        "fragment1": "HookOS, mümkün olduğunca çok tokeni ortaya çıkarır, ancak herkes bir token oluşturabilir veya sahte bir sözleşme ile bir projeyi temsil ettiğini iddia edebilir. \n\n Lütfen ",
         "fragment2": "token sözleşmesini",
         "fragment3": " inceleyin ve yalnızca güvendiğiniz tokenlerle iletişim kurduğunuzdan emin olmak için her zaman araştırma yapın.",
         "title": "%{symbol} Doğrulanmamıştır",
@@ -1164,7 +1164,7 @@
         "title": "Yetersiz Likidite"
       },
       "fee_on_transfer": {
-        "fragment1": "Bu değiş tokuş, %{tokenName} sözleşmesi ek ücretler eklediği için Rainbow'da başarısız olacak.  \n\n Oku ",
+        "fragment1": "Bu değiş tokuş, %{tokenName} sözleşmesi ek ücretler eklediği için HookOS'da başarısız olacak.  \n\n Oku ",
         "fragment2": "rehberimiz",
         "fragment3": " bu token'ı değiştirmek için yardım alın!",
         "title": "Transfer Tokeni Üzerinden Ücret"
@@ -1186,10 +1186,10 @@
         "text": "Hop Köprüsü'ne Git 􀮶"
       },
       "rainbow_fee": {
-        "text": "Rainbow, swaplardan %{feePercentage} ücret alır. Bu, size en iyi Ethereum deneyimini sağlama konusunda bize yardımcı olur."
+        "text": "HookOS, swaplardan %{feePercentage} ücret alır. Bu, size en iyi Ethereum deneyimini sağlama konusunda bize yardımcı olur."
       },
       "swap_routing": {
-        "text": "Varsayılan olarak, Rainbow swapınız için mümkün olan en ucuz yolu seçer. 0x'i veya 1inch'i özellikle kullanmayı tercih ederseniz, bunu da yapabilirsiniz.",
+        "text": "Varsayılan olarak, HookOS swapınız için mümkün olan en ucuz yolu seçer. 0x'i veya 1inch'i özellikle kullanmayı tercih ederseniz, bunu da yapabilirsiniz.",
         "title": "Swap Yönlendirme",
         "still_curious": {
           "fragment1": "Hala merak mı ediyorsunuz? ",
@@ -1243,14 +1243,14 @@
       },
       "ens_configuration": {
         "title": "Bu seçenekler ne anlama geliyor?",
-        "text": "Bir ENS ismini başka birine gönderip yeni ENS isim sahibi yaptığınızda, önceden yapılandırma yapmak ve ileride bir işlemden tasarruf etmelerini sağlamak isteyebilirsiniz. Rainbow, şu anda isim için ayarlanmış tüm profil bilgilerini silmenize, ENS ismini alıcının adresini işaret edecek şekilde yapılandırmanıza ve alıcı adresini ismin yöneticisi yapmanıza olanak tanır."
+        "text": "Bir ENS ismini başka birine gönderip yeni ENS isim sahibi yaptığınızda, önceden yapılandırma yapmak ve ileride bir işlemden tasarruf etmelerini sağlamak isteyebilirsiniz. HookOS, şu anda isim için ayarlanmış tüm profil bilgilerini silmenize, ENS ismini alıcının adresini işaret edecek şekilde yapılandırmanıza ve alıcı adresini ismin yöneticisi yapmanıza olanak tanır."
       }
     },
     "fedora": {
       "cannot_verify_bundle": "Paketi doğrulama başarısız! Bu bir dolandırıcılık olabilir. Kurulum engellendi.",
       "error": "HATA",
       "fedora": "Fedora",
-      "this_will_override_bundle": "Bu, paketinizi geçersiz kılacak. Dikkatli olun. Bir Rainbow çalışanı mısınız?",
+      "this_will_override_bundle": "Bu, paketinizi geçersiz kılacak. Dikkatli olun. Bir HookOS çalışanı mısınız?",
       "wait": "bekle"
     },
     "fields": {
@@ -1299,7 +1299,7 @@
       "edit_miner_tip": "Madenci Bahşişini Düzenle"
     },
     "homepage": {
-      "back": "Rainbow.me'ye geri dön",
+      "back": "HookOS.me'ye geri dön",
       "coming_soon": "Yakında.",
       "connect_ledger": {
         "button": "Ledger'i Bağla",
@@ -1355,8 +1355,8 @@
     "image_picker": {
       "cancel": "İptal",
       "confirm": "Kütüphane erişimini etkinleştir",
-      "message": "Bu, Rainbow'un kütüphanenizden fotoğraflarınızı kullanmasına izin verir.",
-      "title": "Rainbow, fotoğraflarınıza erişmek istiyor."
+      "message": "Bu, HookOS'un kütüphanenizden fotoğraflarınızı kullanmasına izin verir.",
+      "title": "HookOS, fotoğraflarınıza erişmek istiyor."
     },
     "input": {
       "asset_amount": "Miktar",
@@ -1372,8 +1372,8 @@
     },
     "list": {
       "share": {
-        "check_out_my_wallet": "🌈 Rainbow'daki koleksiyonlarımı kontrol edin %{showcaseUrl}",
-        "check_out_this_wallet": "Bu cüzdanın 🌈 Rainbow'daki koleksiyonlarını kontrol edin %{showcaseUrl}"
+        "check_out_my_wallet": "🌈 HookOS'daki koleksiyonlarımı kontrol edin %{showcaseUrl}",
+        "check_out_this_wallet": "Bu cüzdanın 🌈 HookOS'daki koleksiyonlarını kontrol edin %{showcaseUrl}"
       }
     },
     "loading": {
@@ -1485,7 +1485,7 @@
       "external_link_warning": {
         "go_back": "geri dön",
         "visit_external_link": "Dış bağlantıyı ziyaret et?",
-        "you_are_attempting_to_visit": "Rainbow ile bağlantısı olmayan bir bağlantıyı ziyaret etmeye çalışıyorsunuz."
+        "you_are_attempting_to_visit": "HookOS ile bağlantısı olmayan bir bağlantıyı ziyaret etmeye çalışıyorsunuz."
       },
       "gas_average": "Ortalama",
       "gas_fast": "Hızlı",
@@ -1591,7 +1591,7 @@
         "selling": "Satış",
         "error": {
           "title": "NFT satarken hata",
-          "message": "Lütfen yardım için Rainbow destek hattına başvurun."
+          "message": "Lütfen yardım için HookOS destek hattına başvurun."
         }
       }
     },
@@ -2046,7 +2046,7 @@
     },
     "review": {
       "alert": {
-        "are_you_enjoying_rainbow": "Rainbow'dan memnun musunuz? 🥰",
+        "are_you_enjoying_rainbow": "HookOS'dan memnun musunuz? 🥰",
         "leave_a_review": "App Store'da bir inceleme bırakın!",
         "no": "Hayır",
         "yes": "Evet"
@@ -2250,7 +2250,7 @@
       "done": "Tamamlandı",
       "feedback_and_reports": "Geri Bildirim & Hata Raporları",
       "follow_us_on_twitter": "Bizi X'te takip edin",
-      "hey_friend_message": "👋️ Hey dostum! Rainbow'u indirmelisin, benim en sevdiğim Ethereum cüzdanı 🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️",
+      "hey_friend_message": "👋️ Hey dostum! HookOS'u indirmelisin, benim en sevdiğim Ethereum cüzdanı 🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️🌈️",
       "label": "Ayarlar",
       "language": "Dil",
       "learn": "Ethereum Hakkında Bilgi Edinin",
@@ -2272,13 +2272,13 @@
         "all": "Tümü",
         "off": "Kapalı",
         "plus_n_more": "+ %{n} daha fazla",
-        "no_permissions": "Görünüşe göre bildirim izinleriniz devre dışı. Rainbow'dan bildirim almak için lütfen Ayarlar'dan etkinleştirin.",
+        "no_permissions": "Görünüşe göre bildirim izinleriniz devre dışı. HookOS'dan bildirim almak için lütfen Ayarlar'dan etkinleştirin.",
         "no_watched_wallets": "Herhangi bir cüzdanı izlemiyorsunuz.",
-        "no_owned_wallets": "Rainbow'da herhangi bir cüzdanınız yok. Bir cüzdan oluşturun veya gizli ifadenizle bir tane içe aktarın.",
+        "no_owned_wallets": "HookOS'da herhangi bir cüzdanınız yok. Bir cüzdan oluşturun veya gizli ifadenizle bir tane içe aktarın.",
         "open_system_settings": "Ayarları Aç",
         "unsupported_network": "Bildirimler şu anda yalnızca Ethereum Mainnet işlemleri için geçerlidir.",
         "change_network": "Ağınızı Değiştirin",
-        "no_first_time_permissions": "Lütfen Rainbow'un size bildirimler göndermesine izin verin.",
+        "no_first_time_permissions": "Lütfen HookOS'un size bildirimler göndermesine izin verin.",
         "first_time_allow_notifications": "Bildirimlere İzin Ver",
         "error_alert_title": "Abonelik Başarısız",
         "error_alert_content": "Lütfen daha sonra tekrar deneyin.",
@@ -2289,15 +2289,15 @@
       "privacy": "Gizlilik",
       "privacy_section": {
         "public_showcase": "Halka Açık Sergi",
-        "when_public": "Herkese açık olduğunda, NFT Vitrininiz Rainbow profilinizde görünür olacak!",
-        "when_public_prefix": "Herkese açık olduğunda, NFT Vitrininiz Rainbow web profilinizde görünür olacak! Profilinizi buradan görüntüleyebilirsiniz",
+        "when_public": "Herkese açık olduğunda, NFT Vitrininiz HookOS profilinizde görünür olacak!",
+        "when_public_prefix": "Herkese açık olduğunda, NFT Vitrininiz HookOS web profilinizde görünür olacak! Profilinizi buradan görüntüleyebilirsiniz",
         "view_profile": "Profilinizi görüntüleyin",
         "analytics_toggle": "Analitik",
-        "analytics_toggle_description": "Kullanım verilerinin analizine izin vererek Rainbow'un ürünlerini ve hizmetlerini geliştirmesine yardımcı olun. Toplanan veriler sizinle veya hesabınızla ilişkilendirilmez."
+        "analytics_toggle_description": "Kullanım verilerinin analizine izin vererek HookOS'un ürünlerini ve hizmetlerini geliştirmesine yardımcı olun. Toplanan veriler sizinle veya hesabınızla ilişkilendirilmez."
       },
       "restore": "Orijinal dağıtıma geri yükleyin",
-      "review": "Rainbow'ı inceleyin",
-      "share_rainbow": "Rainbow'ı paylaşın",
+      "review": "HookOS'ı inceleyin",
+      "share_rainbow": "HookOS'ı paylaşın",
       "theme": "Tema",
       "theme_section": {
         "system": "Sistem",
@@ -2306,7 +2306,7 @@
       },
       "icon_change": {
         "title": "Simge değişikliğini onayla",
-        "warning": "Simgeyi değiştirmek Rainbow'un yeniden başlamasına neden olabilir.",
+        "warning": "Simgeyi değiştirmek HookOS'un yeniden başlamasına neden olabilir.",
         "confirm": "Onayla",
         "cancel": "İptal"
       },
@@ -2380,7 +2380,7 @@
         "quote_error": "Teklif Hatası"
       },
       "aggregators": {
-        "rainbow": "Rainbow"
+        "rainbow": "HookOS"
       },
       "bridging": "Köprüleme",
       "swapping": "Takas Yapılıyor",
@@ -2453,7 +2453,7 @@
       "nothing_found": "Hiçbir şey bulunamadı",
       "section_header": {
         "recent": "Son",
-        "popular": "Rainbow'da Popüler",
+        "popular": "HookOS'da Popüler",
         "favorites": "Favoriler",
         "bridge": "Köprü",
         "verified": "Doğrulanmış",
@@ -2724,7 +2724,7 @@
     },
     "hardware_wallets": {
       "pair_your_nano": "Nano X'inizi eşleştirin",
-      "connect_your_ledger": "Ledger Nano X'inizi Bluetooth üzerinden Rainbow'a bağlayın. Eğer ilk kez yapıyorsanız, Rainbow Bluetooth erişimi için izin isteyecektir.",
+      "connect_your_ledger": "Ledger Nano X'inizi Bluetooth üzerinden HookOS'a bağlayın. Eğer ilk kez yapıyorsanız, HookOS Bluetooth erişimi için izin isteyecektir.",
       "learn_more_about_ledger": "Ledger hakkında daha fazla bilgi edinin",
       "pair_a_new_ledger": "Yeni bir Ledger eşleştirin",
       "looking_for_devices": "Cihaz arıyor",
@@ -2915,7 +2915,7 @@
           "disable_single_network_subtitle": "Bu, bu ağ için Akıllı Cüzdan yetki devrini kaldıracaktır.",
           "disable_single_network_button": "Devre Dışı Bırakmak İçin Basılı Tutun",
           "disable_third_party_title": "Hesabı Devre Dışı Bırak",
-          "disable_third_party_subtitle": "Cüzdanınız farklı bir Akıllı Cüzdan'a devredildi. Rainbow'u kullanmak için devre dışı bırakın.",
+          "disable_third_party_subtitle": "Cüzdanınız farklı bir Akıllı Cüzdan'a devredildi. HookOS'u kullanmak için devre dışı bırakın.",
           "disable_third_party_button": "Devre Dışı Bırakmak İçin Basılı Tutun",
           "alert_vulnerability_title": "Akıllı Cüzdan Güvenliği",
           "alert_vulnerability_subtitle": "Akıllı Cüzdan sözleşmenizde bir güvenlik açığı tespit edildi. Varlıklarınızı korumak için önlem olarak iptal edin.",
@@ -3001,14 +3001,14 @@
         "you_need_to_authenticate_with_your_pin": "Cüzdan sırlarına erişmek için PIN'inizle doğrulama yapmanız gerekiyor",
         "share_application_state": "Uygulama durum dökümünü paylaş",
         "wallet_details_title": "Cüzdan detayları",
-        "wallet_details_description": "Aşağıda, Rainbow'a eklenen tüm cüzdanların detayları bulunmaktadır."
+        "wallet_details_description": "Aşağıda, HookOS'a eklenen tüm cüzdanların detayları bulunmaktadır."
       },
       "error_displaying_address": "Adres gösterme hatası",
       "feedback": {
         "cancel": "Hayır, teşekkür ederim",
         "choice": "Geri bildirim e-posta adresimizi manuel olarak panonuza kopyalamak ister misiniz?",
         "copy_email_address": "E-posta adresini kopyala",
-        "email_subject": "📱 Rainbow Beta Geribildirim",
+        "email_subject": "📱 HookOS Beta Geribildirim",
         "error": "E-posta istemcisi başlatılırken hata",
         "send": "Geribildirim Gönder"
       },
@@ -3017,7 +3017,7 @@
         "create_wallet": "Bir Cüzdan Oluştur",
         "instructions": "Lütfen cüzdanınızda kaybetmeyi göze alabileceğinizden daha fazlasını saklamayın.",
         "warning": "Bu bir alfa yazılımıdır.",
-        "welcome": "Rainbow'a Hoş Geldiniz"
+        "welcome": "HookOS'a Hoş Geldiniz"
       },
       "invalid_address_title": "Geçersiz adres",
       "invalid_address_message": "Büyük/küçük harf kullanımını tekrar kontrol edip yeniden deneyin.",
@@ -3085,7 +3085,7 @@
           "continue": "Devam Et",
           "import": {
             "title": "Bir cüzdanı geri yükleyin",
-            "description": "Rainbow ya da başka bir kripto cüzdanından kurtarma ifadesi veya özel anahtar ile geri yükle",
+            "description": "HookOS ya da başka bir kripto cüzdanından kurtarma ifadesi veya özel anahtar ile geri yükle",
             "placeholder": "Bir kurtarma ifadesi veya özel anahtar girin",
             "button": "İçe Aktar"
           },
@@ -3109,7 +3109,7 @@
         "get_new_wallet": "Yeni bir cüzdan alın",
         "import_wallet": "Cüzdanı İçe Aktar",
         "name_wallet": "Cüzdanınıza bir isim verin",
-        "terms": "Devam ederek, Rainbow’un ",
+        "terms": "Devam ederek, HookOS’un ",
         "terms_link": "Kullanım Şartları"
       },
       "pin_authentication": {
@@ -3123,7 +3123,7 @@
       },
       "push_notifications": {
         "please_enable_body": "Görünüşe göre WalletConnect kullanıyorsunuz. WalletConnect'ten gelen işlem istekleri hakkında bildirim almak için lütfen bildirimleri etkinleştirin.",
-        "please_enable_title": "Rainbow sana bildirimler göndermek istiyor"
+        "please_enable_title": "HookOS sana bildirimler göndermek istiyor"
       },
       "qr": {
         "camera_access_needed": "Tarama yapmak için kamera erişimi gereklidir!",
@@ -3278,14 +3278,14 @@
         "generic_title": "Bağlantı başarısız oldu",
         "generic_error": "Bir şeyler yanlış gitti. Lütfen tekrar deneyin veya destek ekibimize başvurun.",
         "pairing_timeout": "Bağlantı kurulmadan önce bu oturumun süresi doldu. Bu genellikle bir ağ hatası nedeniyle olur. Lütfen tekrar deneyin.",
-        "pairing_unsupported_methods": "Dapp, Rainbow tarafından desteklenmeyen cüzdan RPC yöntemlerini istedi.",
-        "pairing_unsupported_networks": "Dapp, Rainbow tarafından desteklenmeyen ağları istedi.",
+        "pairing_unsupported_methods": "Dapp, HookOS tarafından desteklenmeyen cüzdan RPC yöntemlerini istedi.",
+        "pairing_unsupported_networks": "Dapp, HookOS tarafından desteklenmeyen ağları istedi.",
         "read_only_wallet_on_signing_method": "Bu istek için izin verilmeyen bir salt okunur cüzdan kullandığınız görünüyor.",
-        "namespaces_invalid": "Dapp tarafından istenen isim alanları ile ilgili bir sorun oluştu. Lütfen tekrar deneyin veya Rainbow ve/veya dapp destek ekipleriyle iletişime geçin.",
-        "request_invalid": "İstekte geçersiz parametreler bulunuyordu. Lütfen tekrar deneyin veya Rainbow ve/veya dapp destek ekipleri ile iletişime geçin.",
-        "eth_sign": "Güvenlik endişeleri nedeniyle Rainbow, eski eth_sign'ı desteklememektedir.  \n Herhangi bir sorunuz varsa lütfen Rainbow ve/veya dapp destek ekipleriyle iletişime geçin.",
-        "request_unsupported_network": "Bu istekte belirtilen ağ, Rainbow tarafından desteklenmiyor.",
-        "request_unsupported_methods": "Bu istekte belirtilen RPC yöntemi(ler) Rainbow tarafından desteklenmiyor.",
+        "namespaces_invalid": "Dapp tarafından istenen isim alanları ile ilgili bir sorun oluştu. Lütfen tekrar deneyin veya HookOS ve/veya dapp destek ekipleriyle iletişime geçin.",
+        "request_invalid": "İstekte geçersiz parametreler bulunuyordu. Lütfen tekrar deneyin veya HookOS ve/veya dapp destek ekipleri ile iletişime geçin.",
+        "eth_sign": "Güvenlik endişeleri nedeniyle HookOS, eski eth_sign'ı desteklememektedir.  \n Herhangi bir sorunuz varsa lütfen HookOS ve/veya dapp destek ekipleriyle iletişime geçin.",
+        "request_unsupported_network": "Bu istekte belirtilen ağ, HookOS tarafından desteklenmiyor.",
+        "request_unsupported_methods": "Bu istekte belirtilen RPC yöntemi(ler) HookOS tarafından desteklenmiyor.",
         "no_accounts_found": "Onaylanmış ad alanlarında hiç hesap bulunamadı."
       },
       "dapp_warnings": {
@@ -3401,7 +3401,7 @@
       },
       "no_wc_needed": {
         "title": "Hoppala!",
-        "description": "Görünüşe göre bu dapp'a WalletConnect aracılığıyla bağlanmaya çalışıyorsunuz. Rainbow'un uygulama içi tarayıcısıyla bu artık gerekli değil. Geri dönüp \"MetaMask\"'ı seçin ve her şey yolunda çalışmalıdır.",
+        "description": "Görünüşe göre bu dapp'a WalletConnect aracılığıyla bağlanmaya çalışıyorsunuz. HookOS'un uygulama içi tarayıcısıyla bu artık gerekli değil. Geri dönüp \"MetaMask\"'ı seçin ve her şey yolunda çalışmalıdır.",
         "cta": "Anladım"
       },
       "provider_error": {
@@ -3447,7 +3447,7 @@
       "filters": {
         "categories": {
           "TRENDING": "Gündemde",
-          "RAINBOW": "Rainbow",
+          "RAINBOW": "HookOS",
           "NEW": "Yeni",
           "FARCASTER": "Farcaster"
         },
@@ -3595,7 +3595,7 @@
       "airdrops_sheet": {
         "claim_button_text": "Talep Et",
         "empty_state_title": "Henüz Airdrop Yok",
-        "title": "Rainbow Coin Talep Et"
+        "title": "HookOS Coin Talep Et"
       },
       "cards": {
         "airdrops": {

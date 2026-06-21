@@ -73,11 +73,11 @@ export default async function handleDeeplink({ url, initialRoute, handleRequestU
     /**
      * Any native iOS deep link OR universal links via HTTPS
      */
-    logger.debug(`[handleDeeplink]: https:// or rainbow:// protocol`);
+    logger.debug(`[handleDeeplink]: https:// or hookos:// protocol`);
 
     /**
      * The first path following the host (universal link) or protocol
-     * (deeplink) e.g. `https://rainbow.me/foo` or `rainbow://foo` where `foo`
+     * (deeplink) e.g. `https://rainbow.me/foo` or `hookos://foo` where `foo`
      * is the action.
      */
     const action = protocol === 'https:' ? pathname.split('/')[1] : host;
@@ -95,7 +95,7 @@ export default async function handleDeeplink({ url, initialRoute, handleRequestU
 
       /**
        * Links from website to an individual token
-       * ex. rainbow://token/base/0x0578d8A44db98B23BF096A382e016e29a5Ce0ffe
+       * ex. hookos://token/base/0x0578d8A44db98B23BF096A382e016e29a5Ce0ffe
        */
       case 'token': {
         logger.debug(`[handleDeeplink]: token`);

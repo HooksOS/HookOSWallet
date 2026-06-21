@@ -193,8 +193,8 @@ export default function useScanner(enabled: boolean, onSuccess: () => unknown) {
         return getPoapAndOpenSheetWithQRHash(secretWordOrQrHash, true);
       }
 
-      if (lowerCaseData.startsWith(`rainbow://poap`)) {
-        const secretWordOrQrHash = lowerCaseData.split(`rainbow://poap/`)?.[1];
+      if (lowerCaseData.startsWith(`hookos://poap`)) {
+        const secretWordOrQrHash = lowerCaseData.split(`hookos://poap/`)?.[1];
         logger.debug('[useScanner]: handling poap scan', { secretWordOrQrHash });
         await getPoapAndOpenSheetWithSecretWord(secretWordOrQrHash, true);
         return getPoapAndOpenSheetWithQRHash(secretWordOrQrHash, true);

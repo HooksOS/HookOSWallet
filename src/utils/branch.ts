@@ -43,7 +43,7 @@ export const branchListener = async (handleOpenLinkingURL: (url: string) => void
       logger.debug(`[branchListener]: handling non-Branch link`, {}, logger.DebugContext.deeplinks);
 
       if (typeof nonBranchUrl === 'string') {
-        if (nonBranchUrl?.startsWith('rainbow://open')) {
+        if (nonBranchUrl?.startsWith('hookos://open')) {
           logger.debug(`[branchListener]: aggressive Safari redirect mode`, {}, logger.DebugContext.deeplinks);
 
           /**
@@ -54,7 +54,7 @@ export const branchListener = async (handleOpenLinkingURL: (url: string) => void
            * uses a native deeplink to refocus the app. This deeplink has a
            * base64 encoded parameter that contains the original universal link.
            *
-           *    Example: rainbow://open?_branch_referrer=A&link_click_id=B
+           *    Example: hookos://open?_branch_referrer=A&link_click_id=B
            *
            * We decode that here and then handle it normally.
            */
@@ -135,7 +135,7 @@ export const branchListener = async (handleOpenLinkingURL: (url: string) => void
 
 /**
  * Sometimes branch deeplinks have the following form:
- * rainbow://open?_branch_referrer=a&link_click_id=b
+ * hookos://open?_branch_referrer=a&link_click_id=b
  * in which case they seemingly don't contain any info about the original URL.
  *
  * However, it turns out that query param `_branch_referrer` contains that URL

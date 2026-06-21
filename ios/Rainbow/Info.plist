@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Rainbow</string>
+	<string>HookOS</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -205,10 +205,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>me.rainbow</string>
+			<string>com.hookos.wallet</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>rainbow</string>
+				<string>hookos</string>
 				<string>wc</string>
 				<string>ethereum</string>
 			</array>
@@ -235,23 +235,23 @@
 		<true/>
 	</dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>This allows Rainbow to find and pair a Ledger Nano X</string>
+	<string>This allows HookOS to find and pair a Ledger Nano X</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This lets you scan QR codes for connecting to dApps and discovering wallets</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Used to sign transactions and access wallet keys</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>This allows Rainbow to save images to your Camera Roll</string>
+	<string>This allows HookOS to save images to your Camera Roll</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This allows Rainbow to display selected photos as avatars across each of your wallet addresses</string>
+	<string>This allows HookOS to display selected photos as avatars across each of your wallet addresses</string>
 	<key>NSUbiquitousContainers</key>
 	<dict>
-		<key>iCloud.me.rainbow</key>
+		<key>iCloud.com.hookos.wallet</key>
 		<dict>
 			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
 			<true/>
 			<key>NSUbiquitousContainerName</key>
-			<string>me.rainbow</string>
+			<string>com.hookos.wallet</string>
 			<key>NSUbiquitousContainerSupportedFolderLevels</key>
 			<string>One</string>
 		</dict>

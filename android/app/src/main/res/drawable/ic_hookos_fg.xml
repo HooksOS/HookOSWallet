@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HookOS adaptive-icon foreground: hexagon "market" + hook, ported from
+     src/features/hookos/ui/components/HexHookGlyph.tsx (26-space scaled into the
+     108dp adaptive viewport, centered in the safe zone). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- hexagon (filled acidInk) -->
+    <path
+        android:pathData="M54,26.7 L77.4,39.7 L77.4,68.3 L54,81.3 L30.6,68.3 L30.6,39.7 Z"
+        android:fillColor="#0C8A42" />
+    <!-- hook (paper stroke, knockout look) -->
+    <path
+        android:pathData="M44.9,48.8 Q44.9,60.5 54,60.5 Q63.1,60.5 63.1,48.8 Q63.1,42.0 56.6,42.0"
+        android:strokeColor="#F1F2EC"
+        android:strokeWidth="4.4"
+        android:strokeLineCap="round" />
+</vector>
