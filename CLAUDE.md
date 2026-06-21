@@ -107,6 +107,23 @@ Live chains today: **Base 8453** and **MegaETH 4326**.
 
 ---
 
+## Approval policy (this repo)
+
+To reduce prompt fatigue, routine work auto-proceeds and **only major/risky changes require
+explicit approval**. This is enforced by `.claude/settings.json` (`permissions`) and applies to
+this repo only:
+
+- **Auto-allowed (no prompt):** file reads/searches, in-repo file edits, and safe dev commands —
+  `yarn lint:*`, `yarn lint:ts`, `yarn test`/`yarn jest`, `yarn tsc`, `yarn check:cycles`,
+  `yarn madge`, read-only `git` (`status`/`diff`/`log`/`show`/`branch`/`fetch`) and read-only `gh`.
+- **Always ask first (major changes):** `git push` / force-push, `git reset --hard`, `git rebase`,
+  `git clean`, `git checkout` (discards), file/dir deletes (`rm`, `Remove-Item`), package publishes
+  (`npm`/`yarn publish`, `npm version`), `gh release create`, and `gh pr merge`.
+
+If you add a new destructive or outward-facing command, put it in the `ask` list (not `allow`).
+
+---
+
 ## Verification (run before declaring work done)
 
 Same as `AGENTS.md`:
