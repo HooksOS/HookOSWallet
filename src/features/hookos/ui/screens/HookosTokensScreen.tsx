@@ -75,12 +75,26 @@ function Header({
   onPressFees,
   onPressArena,
   onPressEvents,
+  onPressQuests,
+  onPressClans,
+  onPressLaunchWars,
+  onPressBattlePass,
+  onPressStaking,
+  onPressNft,
+  onPressLicenses,
 }: {
   onPressReputation: () => void;
   onPressHooks: () => void;
   onPressFees: () => void;
   onPressArena: () => void;
   onPressEvents: () => void;
+  onPressQuests: () => void;
+  onPressClans: () => void;
+  onPressLaunchWars: () => void;
+  onPressBattlePass: () => void;
+  onPressStaking: () => void;
+  onPressNft: () => void;
+  onPressLicenses: () => void;
 }) {
   return (
     <Box paddingBottom="12px" paddingHorizontal="20px" paddingTop="8px">
@@ -94,8 +108,15 @@ function Header({
           showsHorizontalScrollIndicator={false}
         >
           <NavPill label="Reputation" onPress={onPressReputation} testID="hookos-open-reputation" />
+          <NavPill label="Battle Pass" onPress={onPressBattlePass} testID="hookos-open-battle-pass" />
+          <NavPill label="Staking" onPress={onPressStaking} testID="hookos-open-staking" />
+          <NavPill label="NFTs" onPress={onPressNft} testID="hookos-open-nft" />
           <NavPill label="Hooks" onPress={onPressHooks} testID="hookos-open-hooks" />
+          <NavPill label="Licenses" onPress={onPressLicenses} testID="hookos-open-licenses" />
           <NavPill label="Arena" onPress={onPressArena} testID="hookos-open-arena" />
+          <NavPill label="Quests" onPress={onPressQuests} testID="hookos-open-quests" />
+          <NavPill label="Clans" onPress={onPressClans} testID="hookos-open-clans" />
+          <NavPill label="Launch Wars" onPress={onPressLaunchWars} testID="hookos-open-launch-wars" />
           <NavPill label="Events" onPress={onPressEvents} testID="hookos-open-events" />
           <NavPill label="Fees" onPress={onPressFees} testID="hookos-open-fees" />
         </ScrollView>
@@ -132,6 +153,34 @@ export const HookosTokensScreen = memo(function HookosTokensScreen() {
     navigate(Routes.HOOKOS_EVENTS_SCREEN, { chainId: HOOKOS_CHAIN_IDS.base });
   }, []);
 
+  const handlePressQuests = useCallback(() => {
+    navigate(Routes.HOOKOS_QUESTS_SCREEN, { chainId: HOOKOS_CHAIN_IDS.base });
+  }, []);
+
+  const handlePressClans = useCallback(() => {
+    navigate(Routes.HOOKOS_CLANS_SCREEN, { chainId: HOOKOS_CHAIN_IDS.base });
+  }, []);
+
+  const handlePressLaunchWars = useCallback(() => {
+    navigate(Routes.HOOKOS_LAUNCH_WARS_SCREEN, { chainId: HOOKOS_CHAIN_IDS.base });
+  }, []);
+
+  const handlePressBattlePass = useCallback(() => {
+    navigate(Routes.HOOKOS_BATTLE_PASS_SHEET, { address: accountAddress, chainId: HOOKOS_CHAIN_IDS.base });
+  }, [accountAddress]);
+
+  const handlePressStaking = useCallback(() => {
+    navigate(Routes.HOOKOS_STAKING_SHEET, { address: accountAddress, chainId: HOOKOS_CHAIN_IDS.megaeth });
+  }, [accountAddress]);
+
+  const handlePressNft = useCallback(() => {
+    navigate(Routes.HOOKOS_NFT_SHEET, { address: accountAddress, chainId: HOOKOS_CHAIN_IDS.base });
+  }, [accountAddress]);
+
+  const handlePressLicenses = useCallback(() => {
+    navigate(Routes.HOOKOS_LICENSES_SCREEN, { chainId: HOOKOS_CHAIN_IDS.base });
+  }, []);
+
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<HookToken>) => <HookTokenRow onPress={handlePressToken} token={item} />,
     [handlePressToken]
@@ -144,10 +193,17 @@ export const HookosTokensScreen = memo(function HookosTokensScreen() {
     >
       <Header
         onPressArena={handlePressArena}
+        onPressBattlePass={handlePressBattlePass}
+        onPressClans={handlePressClans}
         onPressEvents={handlePressEvents}
         onPressFees={handlePressFees}
         onPressHooks={handlePressHooks}
+        onPressLaunchWars={handlePressLaunchWars}
+        onPressLicenses={handlePressLicenses}
+        onPressNft={handlePressNft}
+        onPressQuests={handlePressQuests}
         onPressReputation={handlePressReputation}
+        onPressStaking={handlePressStaking}
       />
       {tokens === null ? (
         <LoadingState />

@@ -21,13 +21,24 @@ import ENSConfirmRegisterSheet from '@/features/ens/screens/ENSConfirmRegisterSh
 import SelectENSSheet from '@/features/ens/screens/SelectENSSheet';
 import { HookosArenaScreen } from '@/features/hookos/ui/screens/HookosArenaScreen';
 import { HookosBattleDetailSheet } from '@/features/hookos/ui/screens/HookosBattleDetailSheet';
+import { HookosBattlePassSheet } from '@/features/hookos/ui/screens/HookosBattlePassSheet';
 import { HookosBridgeSheet } from '@/features/hookos/ui/screens/HookosBridgeSheet';
+import { HookosClanDetailSheet } from '@/features/hookos/ui/screens/HookosClanDetailSheet';
+import { HookosClansScreen } from '@/features/hookos/ui/screens/HookosClansScreen';
 import { HookosEventDetailSheet } from '@/features/hookos/ui/screens/HookosEventDetailSheet';
 import { HookosEventsScreen } from '@/features/hookos/ui/screens/HookosEventsScreen';
 import { HookosFeesScreen } from '@/features/hookos/ui/screens/HookosFeesScreen';
 import { HookosHookDetailSheet } from '@/features/hookos/ui/screens/HookosHookDetailSheet';
 import { HookosHooksScreen } from '@/features/hookos/ui/screens/HookosHooksScreen';
+import { HookosLaunchEntryDetailSheet } from '@/features/hookos/ui/screens/HookosLaunchEntryDetailSheet';
+import { HookosLaunchWarsScreen } from '@/features/hookos/ui/screens/HookosLaunchWarsScreen';
+import { HookosLicenseDetailSheet } from '@/features/hookos/ui/screens/HookosLicenseDetailSheet';
+import { HookosLicensesScreen } from '@/features/hookos/ui/screens/HookosLicensesScreen';
+import { HookosNftSheet } from '@/features/hookos/ui/screens/HookosNftSheet';
+import { HookosQuestDetailSheet } from '@/features/hookos/ui/screens/HookosQuestDetailSheet';
+import { HookosQuestsScreen } from '@/features/hookos/ui/screens/HookosQuestsScreen';
 import { HookosReputationSheet } from '@/features/hookos/ui/screens/HookosReputationSheet';
+import { HookosStakingSheet } from '@/features/hookos/ui/screens/HookosStakingSheet';
 import { HookosTokenDetailSheet } from '@/features/hookos/ui/screens/HookosTokenDetailSheet';
 import { HookosTokensScreen } from '@/features/hookos/ui/screens/HookosTokensScreen';
 import { useShowKingOfTheHill } from '@/features/king-of-the-hill/hooks/useShowKingOfTheHill';
@@ -174,6 +185,10 @@ function MainNavigator() {
       <Stack.Screen component={HookosFeesScreen} name={Routes.HOOKOS_FEES_SCREEN} options={expandedPreset} />
       <Stack.Screen component={HookosArenaScreen} name={Routes.HOOKOS_ARENA_SCREEN} options={expandedPreset} />
       <Stack.Screen component={HookosEventsScreen} name={Routes.HOOKOS_EVENTS_SCREEN} options={expandedPreset} />
+      <Stack.Screen component={HookosQuestsScreen} name={Routes.HOOKOS_QUESTS_SCREEN} options={expandedPreset} />
+      <Stack.Screen component={HookosClansScreen} name={Routes.HOOKOS_CLANS_SCREEN} options={expandedPreset} />
+      <Stack.Screen component={HookosLaunchWarsScreen} name={Routes.HOOKOS_LAUNCH_WARS_SCREEN} options={expandedPreset} />
+      <Stack.Screen component={HookosLicensesScreen} name={Routes.HOOKOS_LICENSES_SCREEN} options={expandedPreset} />
       <Stack.Screen component={RestoreSheet} name={Routes.RESTORE_SHEET} options={bottomSheetPreset} />
       <Stack.Screen component={WelcomeScreen} name={Routes.WELCOME_SCREEN} options={{ animationEnabled: false, gestureEnabled: false }} />
       <Stack.Screen component={ShowSecretView} name="ShowSecretView" options={bottomSheetPreset} />
@@ -329,6 +344,13 @@ function BSNavigator() {
       <BSStack.Screen component={HookosHookDetailSheet} name={Routes.HOOKOS_HOOK_DETAIL_SHEET} />
       <BSStack.Screen component={HookosBattleDetailSheet} name={Routes.HOOKOS_BATTLE_DETAIL_SHEET} />
       <BSStack.Screen component={HookosEventDetailSheet} name={Routes.HOOKOS_EVENT_DETAIL_SHEET} />
+      <BSStack.Screen component={HookosQuestDetailSheet} name={Routes.HOOKOS_QUEST_DETAIL_SHEET} />
+      <BSStack.Screen component={HookosClanDetailSheet} name={Routes.HOOKOS_CLAN_DETAIL_SHEET} />
+      <BSStack.Screen component={HookosLaunchEntryDetailSheet} name={Routes.HOOKOS_LAUNCH_ENTRY_DETAIL_SHEET} />
+      <BSStack.Screen component={HookosBattlePassSheet} name={Routes.HOOKOS_BATTLE_PASS_SHEET} />
+      <BSStack.Screen component={HookosStakingSheet} name={Routes.HOOKOS_STAKING_SHEET} />
+      <BSStack.Screen component={HookosNftSheet} name={Routes.HOOKOS_NFT_SHEET} />
+      <BSStack.Screen component={HookosLicenseDetailSheet} name={Routes.HOOKOS_LICENSE_DETAIL_SHEET} />
 
       <BSStack.Screen component={PerpsTradeDetailsSheet} name={Routes.PERPS_TRADE_DETAILS_SHEET} />
       <BSStack.Screen component={PolymarketEventScreen} name={Routes.POLYMARKET_EVENT_SCREEN} />

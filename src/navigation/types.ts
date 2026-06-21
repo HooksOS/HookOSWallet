@@ -780,6 +780,55 @@ type RouteParams = {
     eventId: number;
     chainId: number;
   };
+  [Routes.HOOKOS_QUESTS_SCREEN]:
+    | {
+        chainId?: number;
+      }
+    | undefined;
+  [Routes.HOOKOS_QUEST_DETAIL_SHEET]: {
+    questId: number;
+    chainId: number;
+  };
+  [Routes.HOOKOS_CLANS_SCREEN]:
+    | {
+        chainId?: number;
+      }
+    | undefined;
+  [Routes.HOOKOS_CLAN_DETAIL_SHEET]: {
+    clanId: number;
+    chainId: number;
+  };
+  [Routes.HOOKOS_LAUNCH_WARS_SCREEN]:
+    | {
+        chainId?: number;
+      }
+    | undefined;
+  [Routes.HOOKOS_LAUNCH_ENTRY_DETAIL_SHEET]: {
+    seasonId: number;
+    token: string;
+    chainId: number;
+  };
+  [Routes.HOOKOS_BATTLE_PASS_SHEET]: {
+    address?: string;
+    chainId?: number;
+  };
+  [Routes.HOOKOS_STAKING_SHEET]: {
+    address?: string;
+    chainId?: number;
+  };
+  [Routes.HOOKOS_NFT_SHEET]: {
+    address?: string;
+    chainId?: number;
+  };
+  [Routes.HOOKOS_LICENSES_SCREEN]:
+    | {
+        chainId?: number;
+      }
+    | undefined;
+  [Routes.HOOKOS_LICENSE_DETAIL_SHEET]: {
+    licenseId: number;
+    chainId: number;
+  };
 };
 
 /**
