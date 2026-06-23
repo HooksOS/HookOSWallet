@@ -1,0 +1,22 @@
+# HookOS WALLET-owned, ISOLATED Infura API instance.
+# Distinct compose project / image / container / network / port from the production
+# `hookos-infura` stack. Does NOT run validators/relayer (singletons) and does NOT
+# touch any other project. Bound to localhost only; nginx terminates TLS in front.
+# Build context expects api/ + config/ alongside this file (copied from hookos-infura/).
+name: hookos-wallet-infura
+services:
+  infura-api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    image: hookos-wallet-infura-api:latest
+    container_name: hookos-wallet-infura-api
+    env_file: api/.env
+    ports:
+      - "127.0.0.1:18080:8080"
+    restart: always
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5

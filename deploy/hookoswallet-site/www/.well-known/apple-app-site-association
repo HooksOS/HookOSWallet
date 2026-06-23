@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["L74NQAQB8H.com.hookos.wallet", "2897MY7R2W.com.hookos.wallet"],
+        "components": [{ "/": "*", "comment": "Open all HookOS Wallet universal links in-app" }]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["L74NQAQB8H.com.hookos.wallet", "2897MY7R2W.com.hookos.wallet"]
+  }
+}
