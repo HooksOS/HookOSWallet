@@ -13,6 +13,7 @@ import { type Address } from 'viem';
 import { time } from '@/framework/core/utils/time';
 import { logger } from '@/logger';
 import { createQueryStore } from '@/state/internal/createQueryStore';
+import { userAssetsStoreManager } from '@/state/assets/userAssetsStoreManager';
 
 import { ZERO_ADDRESS } from '../../core/addresses';
 import { HOOKOS_CHAIN_IDS, type HookosChainId } from '../../core/chains';
@@ -46,7 +47,9 @@ export const useBattlePassStore = createQueryStore<BattlePassData, BattlePassPar
     cacheTime: CACHE_TIME,
     params: {
       chainId: HOOKOS_CHAIN_IDS.base,
-      address: ZERO_ADDRESS,
+      // Reactive: track the connected wallet so progress refetches on account switch
+      // (falls back to ZERO_ADDRESS when no wallet is connected → season-only fetch).
+      address: $ => ($(userAssetsStoreManager).address || ZERO_ADDRESS) as Address,
     },
     staleTime: STALE_TIME,
   },
