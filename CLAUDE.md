@@ -168,9 +168,12 @@ publishes `:8080` (API) and `:8090` (bridge) and runs the relayer + 10 validator
 | Container | `hookos-infura-api` | `hookos-wallet-infura-api` |
 | Image | `hookos-infura-infura-api` | `hookos-wallet-infura-api:latest` |
 | Network | `hookos-infura_default` | `hookos-wallet-infura_default` |
-| Port | `0.0.0.0:8080` | `127.0.0.1:18080` (localhost-only) |
+| Port | `0.0.0.0:8080` | `127.0.0.1:18080` (localhost-only; nginx terminates TLS) |
 | Host folder | `/home/ubuntu/hookos-infura/` | `/home/ubuntu/hookos-wallet-infura/` |
 | Secrets | their `api/.env` | our own `api/.env` (`chmod 600`, generated key, **public** RPCs + indexer) |
+| Public URL | `https://infura-api.hookos.fun` | **`https://infura.hookoswallet.xyz`** |
+| nginx vhost | `infura-api.conf` | `hookoswallet-infura.conf` (own file) |
+| TLS cert | `infura-api.hookos.fun` | `infura.hookoswallet.xyz` (own Let's Encrypt cert, auto-renew) |
 
 Rules:
 
@@ -189,9 +192,17 @@ Rules:
    ```
 5. **Verify isolation after every deploy:** our container healthy on `:18080`, and the full
    `hookos-infura` prod stack + all other projects still `Up (healthy)` and untouched.
+6. **TLS / nginx — never use `certbot --nginx` here.** Its installer once mis-attached our cert to the
+   shared `wildcard-hookos.conf` (regex catch-all for all `*.hookos.fun`), breaking their TLS. Always
+   use **`certbot certonly --webroot -w /var/www/hookoswallet-infura -d <host>`** (issues the cert,
+   never edits configs), then hand-write our own vhost. After `systemctl reload nginx`, wait a moment
+   before verifying — old workers drain gracefully and briefly serve the previous config (a reload
+   race, not a misconfig). DNS: `*.hookoswallet.xyz` and `*.hookos.fun` both wildcard to the box.
 
-> Status: deployed and healthy — `hookos-wallet-infura-api` on `127.0.0.1:18080`, serving live
-> on-chain `/v1/fees` and `/v1/status`. Production stack and all other projects verified untouched.
+> Status: **deployed, public, and healthy** — `hookos-wallet-infura-api` on `127.0.0.1:18080`, fronted
+> by nginx at **`https://infura.hookoswallet.xyz`** (own Let's Encrypt cert, HTTP→HTTPS 301, HSTS),
+> serving live on-chain `/v1/fees` and `/v1/status`. Production stack and all other projects verified
+> untouched.
 
 ---
 
