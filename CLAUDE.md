@@ -122,6 +122,77 @@ this repo only:
 
 If you add a new destructive or outward-facing command, put it in the `ask` list (not `allow`).
 
+### Major decisions & updates — always get explicit approval first
+
+Routine, reversible, in-repo work proceeds without asking. But **stop and get the user's explicit
+approval before any major decision or update**, i.e. anything outward-facing, hard to reverse, or
+architecturally significant. Present the plan (what, where, blast radius, rollback) and wait for a
+clear "yes" before acting. Approval is **scoped and single-use** — a "yes" for one action does not
+authorize the next one, a different target, or a repeat later.
+
+Treat these as **major (ask first)**:
+
+- **Deployments / infra changes** — deploying, redeploying, restarting, or tearing down anything on
+  the VPS or any server; editing nginx/DNS/TLS; changing ports, networks, or compose projects;
+  touching another project's containers, volumes, or data. (See **VPS deployment** below.)
+- **Production data / secrets** — rotating keys, editing `.env` on a host, migrations, anything that
+  reads or writes another service's secrets or state.
+- **On-chain & money-moving actions** — sending transactions, funding agents, deploying/wiring
+  contracts, changing addresses in `core/addresses.ts` that a live read/write path uses.
+- **Repo/architecture shifts** — new top-level dependencies, changing the chain registry, signing
+  flow, RAPs, or the `ui/data/core` layering; branch/release/publish operations already in the
+  `ask` list above.
+- **Anything governance-gated** — per the divisions below, **no production deployment until the
+  Security & Red Team Division signs off, and all systems must be containerized.**
+
+When unsure whether something is "major," assume it is and ask. Document the outcome of a major
+change (what shipped, where, how to roll back) in this file or the relevant repo doc.
+
+---
+
+## VPS deployment (HookOS Infura — wallet-owned, isolated)
+
+The wallet consumes the HookOS Infura HTTP API (`@hookos/infura-sdk`). A **wallet-owned, fully
+isolated** copy of that read-only API runs on the shared HookOS VPS. It exists alongside — and must
+never interfere with — the production `hookos-infura` stack or any other project on the box.
+
+**Host:** `ubuntu@15.204.8.186` (SSH key `~/.ssh/hookos_deploy`). The box is shared: ~11 compose
+projects (`hookos-infura`, `protocol`, `jinklabs`, `hookos-score`, `railai`, …). Production Infura
+publishes `:8080` (API) and `:8090` (bridge) and runs the relayer + 10 validators.
+
+**Isolation contract for our deployment — never violate:**
+
+| Resource | Production (do NOT touch) | Wallet-owned (ours) |
+| --- | --- | --- |
+| Compose project | `hookos-infura` | `hookos-wallet-infura` |
+| Container | `hookos-infura-api` | `hookos-wallet-infura-api` |
+| Image | `hookos-infura-infura-api` | `hookos-wallet-infura-api:latest` |
+| Network | `hookos-infura_default` | `hookos-wallet-infura_default` |
+| Port | `0.0.0.0:8080` | `127.0.0.1:18080` (localhost-only) |
+| Host folder | `/home/ubuntu/hookos-infura/` | `/home/ubuntu/hookos-wallet-infura/` |
+| Secrets | their `api/.env` | our own `api/.env` (`chmod 600`, generated key, **public** RPCs + indexer) |
+
+Rules:
+
+1. **Our footprint only.** Own compose project, container, image, network, port, and host folder.
+   Bind to `127.0.0.1` (no new public attack surface). Never publish a port already in use.
+2. **No singletons.** Do **not** run a second copy of validators or the relayer — they hold keys and
+   duplicates risk double-signing/slashing. We run the **stateless read-only API only**.
+3. **No shared secrets.** Generate our own API key; use public RPCs (`mainnet.base.org`,
+   `mainnet.megaeth.com/rpc`) and the public indexer (`api.hookos.fun`). Never copy prod `.env`.
+4. **Deploying/redeploying is a major action** — ask first (see policy above). Build + run:
+   ```bash
+   ssh ubuntu@15.204.8.186
+   cd /home/ubuntu/hookos-wallet-infura
+   docker compose -p hookos-wallet-infura up -d --build      # ours only; isolated
+   curl -s http://127.0.0.1:18080/health                     # -> {"ok":true}
+   ```
+5. **Verify isolation after every deploy:** our container healthy on `:18080`, and the full
+   `hookos-infura` prod stack + all other projects still `Up (healthy)` and untouched.
+
+> Status: deployed and healthy — `hookos-wallet-infura-api` on `127.0.0.1:18080`, serving live
+> on-chain `/v1/fees` and `/v1/status`. Production stack and all other projects verified untouched.
+
 ---
 
 ## Verification (run before declaring work done)
