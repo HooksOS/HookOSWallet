@@ -18,8 +18,12 @@ import { createHookosPublicClient } from '../../core/client';
 import { BONDING_CURVE_READ_ABI, TOKEN_FACTORY_READ_ABI } from '../../core/protocolAbis';
 import { type BondingCurveQuote } from '../../core/types';
 
-/** Progress is reported on-chain in basis points (0..10000); we normalize to 0..1. */
-const PROGRESS_BASIS_POINTS = 10_000;
+/**
+ * `BondingCurve.getProgress` returns PERCENT (0..100) — `(ethCollected * 100) / threshold`, and
+ * exactly 100 once graduated (BondingCurve.sol:372-377). Divide by 100 to normalize to 0..1.
+ * (The protocol SDK's `trading.ts` docstring says 0..10000, but it's stale — the contract wins.)
+ */
+const PROGRESS_PERCENT_MAX = 100;
 
 function assertDeployed(address: Address, contractName: string, chainId: HookosChainId): void {
   if (address === ZERO_ADDRESS) {
@@ -111,14 +115,14 @@ export async function getCurveProgress(chainId: HookosChainId, token: Address): 
   assertTokenAddress(token, chainId);
 
   const client = createHookosPublicClient(chainId);
-  const progressBps = await client.readContract({
+  const progressPercent = await client.readContract({
     address: BondingCurve,
     abi: BONDING_CURVE_READ_ABI,
     functionName: 'getProgress',
     args: [token],
   });
 
-  const progress = Number(progressBps) / PROGRESS_BASIS_POINTS;
+  const progress = Number(progressPercent) / PROGRESS_PERCENT_MAX;
   // Clamp defensively in case the curve over-reports near/after graduation.
   return Math.min(1, Math.max(0, progress));
 }

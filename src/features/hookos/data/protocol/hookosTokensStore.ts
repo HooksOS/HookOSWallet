@@ -25,8 +25,12 @@ import { HAS_HOOKOS_DATA_API, HOOKOS_DATA_API_BASE_URL } from './config';
 
 /** Hard cap on per-token on-chain reads in the fallback path, to bound work. */
 const ONCHAIN_TOKEN_CAP = 25;
-/** Progress is reported on-chain in basis points (0..10000); normalize to 0..1. */
-const PROGRESS_BASIS_POINTS = 10_000;
+/**
+ * `BondingCurve.getProgress` returns PERCENT (0..100) — `(ethCollected * 100) / threshold`, and
+ * exactly 100 once graduated (BondingCurve.sol:372-377). Divide by 100 to normalize to 0..1.
+ * (The protocol SDK's `trading.ts` docstring says 0..10000, but it's stale — the contract wins.)
+ */
+const PROGRESS_PERCENT_MAX = 100;
 
 const STALE_TIME = time.seconds(30);
 const CACHE_TIME = time.minutes(10);
@@ -233,13 +237,13 @@ async function readOnChainToken(
       // curves: [token, creator, vTokenReserve, vEthReserve, tokensSold, ethCollected, totalSupply, graduated, ...]
       graduated = curve[7];
 
-      const progressBps = await client.readContract({
+      const progressPercent = await client.readContract({
         address: BondingCurve,
         abi: BONDING_CURVE_READ_ABI,
         functionName: 'getProgress',
         args: [tokenAddress],
       });
-      progress = clampProgress(Number(progressBps) / PROGRESS_BASIS_POINTS);
+      progress = clampProgress(Number(progressPercent) / PROGRESS_PERCENT_MAX);
     } catch {
       // No curve for this token (e.g. external/graduated) — leave defaults.
     }

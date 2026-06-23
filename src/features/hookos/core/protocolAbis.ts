@@ -44,7 +44,10 @@ export const BONDING_CURVE_READ_ABI = [
     type: 'function',
     stateMutability: 'view',
     inputs: [{ name: 'token', type: 'address' }],
-    // Returns basis points (0..10000), per `protocol/sdk/src/modules/trading.ts`.
+    // Returns PERCENT (0..100): `(ethCollected * 100) / graduationThresholdEth`, and exactly 100
+    // once graduated (BondingCurve.sol:372-377). NB: the SDK `trading.ts` docstring claims
+    // 0..10000 but returns the raw 0..100 value — the contract is authoritative. Normalize with
+    // `/ 100` to a 0..1 fraction.
     outputs: [{ name: '', type: 'uint256' }],
   },
   {

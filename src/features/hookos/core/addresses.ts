@@ -401,7 +401,7 @@ export const BRIDGE_ADDRESSES: Record<BridgeChainId, BridgeAddresses> = {
     defaultIsm: '0x7E33D3170d2D789cBEBfc2Da84FA7CaD1c768499',
     merkleTreeHook: '0xb71aD4CD3A578A5571d6E7Dd592DA4646d42D5bF',
     validatorAnnounce: '0xa33347e3763Ce60c69B3BFb2Ad9d2f75179ac902',
-    interchainGasPaymaster: null, // empty in config — not deployed yet
+    interchainGasPaymaster: '0x8B5522e219FB3a455D6Ca90Db4b0866228b394Ef', // verified: addresses.base.json
     HookOSInfuraFeeHook: '0xA7749DA14492E889C4f22Efe3CEf531B2ee927b2',
     CrossChainReputation: '0x7AF31D402fe21De57ab7CE22988Ad71470Dd9E50',
     InterchainActionRouter: '0x5eb97cdF43C8BA034c968424311220726fd19499',
@@ -412,7 +412,7 @@ export const BRIDGE_ADDRESSES: Record<BridgeChainId, BridgeAddresses> = {
     defaultIsm: '0x5936109Cc6e119476a6BCdc5a7c2975ceAdfDca0',
     merkleTreeHook: '0xB92C3B10b4C8E5C1F5eBE3fBFB7D16f28852D9E1',
     validatorAnnounce: '0xA11ceed0991B702f2740Fb7077DD57427f5E66d4',
-    interchainGasPaymaster: null,
+    interchainGasPaymaster: '0x0c8527099FFdBcbb74EBafF4BfB8d85F646c067B', // verified: addresses.megaeth.json
     HookOSInfuraFeeHook: '0x86911Ab7c2eceE072111A66254f09f7dbf1A34fA',
     CrossChainReputation: '0xAAB71EeeEf3bDf7AD51F24A6f591Aac4920CdDc8',
     InterchainActionRouter: '0xd6081eC89ea479eeB2CE090cccEFAaEcc09e52d0',

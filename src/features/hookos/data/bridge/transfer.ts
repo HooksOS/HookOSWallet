@@ -86,8 +86,8 @@ export function isWarpTransferLive(origin: BridgeChainId): boolean {
 /**
  * Quotes interchain gas payment via the IGP's `quoteGasPayment(destinationDomain, gasAmount)`.
  *
- * @throws {BridgeNotLiveError} The IGP is not deployed on the live lane (`interchainGasPaymaster`
- *   is null in `core/addresses.ts`), so this read cannot be performed on-chain today.
+ * @throws {BridgeNotLiveError} Defensive guard for a chain whose `interchainGasPaymaster` is null in
+ *   `core/addresses.ts`. The IGP is deployed on the live Base/MegaETH lane, so this read works there.
  */
 export async function quoteBridgeGas(
   origin: BridgeChainId,
