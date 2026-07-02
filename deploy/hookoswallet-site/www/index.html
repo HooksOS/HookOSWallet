@@ -1,26 +1,86 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HookOS Wallet</title>
-<meta name="description" content="HookOS Wallet — the native client for the HookOS ecosystem.">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HookOS Wallet — Markets are now software.</title>
+<meta name="description" content="HookOS Wallet — the native client for the HookOS ecosystem. Hold your own keys and launch programmable tokens with custom AMM hooks: MEV shields, reflexive burns, PvP wagers, AI-tuned fees, and cross-chain. Live on Base." />
+<meta property="og:title" content="HookOS Wallet — Markets are now software." />
+<meta property="og:description" content="The native client for the HookOS ecosystem. Keys, signing, launches, hooks, cross-chain — one wallet. Live on Base." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#f4f5f1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cpath d='M30 5 L51 17 L51 43 L30 55 L9 43 L9 17 Z' stroke='%230c8a42' stroke-width='4' fill='%23e3f7eb'/%3E%3Cpath d='M22 26 Q22 36 30 36 Q38 36 38 26 Q38 19 32 19' stroke='%230c8a42' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b0c0e;--ink:#f4f6f8;--ink3:#8b9199;--acid:#30e000}
-*{box-sizing:border-box}html,body{margin:0;height:100%}
-body{background:radial-gradient(1200px 600px at 50% -10%,rgba(48,224,0,.10),transparent 60%),var(--bg);
-color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
-.wrap{max-width:560px}
-.logo{width:72px;height:72px;border-radius:18px;margin:0 auto 28px;display:grid;place-items:center;
-background:linear-gradient(135deg,rgba(48,224,0,.18),rgba(48,224,0,.04));border:1px solid rgba(48,224,0,.25)}
-.logo b{color:var(--acid);font-size:34px;font-weight:800}
-h1{font-size:32px;letter-spacing:-.02em;margin:0 0 12px}
-p{color:var(--ink3);margin:0 auto 28px;max-width:42ch}
-.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--acid);
-margin-right:8px;box-shadow:0 0 12px var(--acid)}
-.tag{font:12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);
-border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:8px 14px;display:inline-block}
-</style></head><body><div class="wrap">
-<div class="logo"><b>H</b></div>
-<h1>HookOS Wallet</h1>
-<p>The native client for the HookOS ecosystem — keys, signing, launches, hooks, and cross-chain, in one wallet.</p>
-<span class="tag"><span class="dot"></span>Coming soon</span>
-</div></body></html>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f4f5f1; font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; }
+  button { font-family: inherit; }
+  .lnd-plain { text-decoration: none; color: inherit; }
+  .lnd-navlink { color: #494c44; transition: color 130ms; }
+  .lnd-navlink:hover { color: #0c8a42; }
+  .lnd-btn {
+    background: #0c8a42; color: #fff; font-weight: 600; font-size: 14.5px;
+    padding: 13px 22px; border-radius: 10px; border: none; cursor: pointer;
+    box-shadow: 0 10px 26px -10px rgba(12,138,66,0.5);
+    transition: transform 150ms, box-shadow 150ms;
+  }
+  .lnd-btn:hover { transform: translateY(-1px); box-shadow: 0 14px 32px -10px rgba(12,138,66,0.55); }
+  .lnd-btn-ghost {
+    background: #fff; color: #0d100c; font-weight: 600; font-size: 14.5px;
+    padding: 13px 22px; border-radius: 10px; border: 1px solid rgba(13,16,12,0.14); cursor: pointer;
+    transition: border-color 150ms, transform 150ms;
+  }
+  .lnd-btn-ghost:hover { border-color: rgba(12,138,66,0.5); transform: translateY(-1px); }
+  .lnd-card {
+    background: #fff; border: 1px solid rgba(13,16,12,0.09); border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(13,16,12,0.04);
+  }
+  .lnd-lift { transition: transform 180ms cubic-bezier(0.22,1,0.36,1), box-shadow 180ms; }
+  .lnd-lift:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -16px rgba(13,16,12,0.16); }
+  .lnd-frame {
+    background: #fff; border: 1px solid rgba(13,16,12,0.14); border-radius: 16px;
+    box-shadow: 0 24px 60px -24px rgba(13,16,12,0.18); overflow: hidden;
+  }
+  .lnd-row { transition: background 120ms; }
+  .lnd-row:hover { background: rgba(56,224,123,0.05); }
+  @keyframes lndMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .lnd-marquee { animation: lndMarquee 36s linear infinite; }
+  .lnd-marquee:hover { animation-play-state: paused; }
+  @keyframes lndPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .lnd-pulse { animation: lndPulse 1.8s ease-in-out infinite; }
+  .lnd-fill { transition: width 1200ms cubic-bezier(0.22,1,0.36,1); }
+  @media (prefers-reduced-motion: reduce) {
+    .lnd-marquee { animation: none; }
+    .lnd-pulse { animation: none; }
+  }
+  /* horizontal-scroll wrapper for the dense trending table on small screens */
+  .lnd-tscroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .lnd-tscroll > * { min-width: 720px; }
+  /* responsive: collapse multi-column grids in two steps */
+  @media (max-width: 1024px) {
+    .lnd-cols { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  @media (max-width: 900px) {
+    .lnd-topbar { padding-left: 18px !important; padding-right: 18px !important; gap: 12px !important; }
+    .lnd-search, .lnd-nav { display: none !important; }
+    .lnd-topbar > a:first-child { margin-right: auto; }
+  }
+  @media (max-width: 680px) {
+    .lnd-cols { grid-template-columns: 1fr !important; }
+    section, footer { padding-left: 20px !important; padding-right: 20px !important; }
+    .lnd-hero-map { border-right: none !important; border-bottom: 1px solid rgba(13,16,12,0.09) !important; min-height: 240px !important; }
+    h1 { font-size: 40px !important; }
+    h2 { font-size: 32px !important; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="./vendor/react.production.min.js"></script>
+<script src="./vendor/react-dom.production.min.js"></script>
+<script src="./landing.js" defer></script>
+</body>
+</html>
