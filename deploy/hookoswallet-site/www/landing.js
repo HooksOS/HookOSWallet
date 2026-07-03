@@ -1,6 +1,7 @@
 (function () {
   const LT = {
     paper: "#f4f5f1",
+    paper2: "#eaece5",
     card: "#ffffff",
     ink: "#0d100c",
     ink2: "#494c44",
@@ -8,6 +9,7 @@
     line: "rgba(13,16,12,0.09)",
     line2: "rgba(13,16,12,0.14)",
     acid: "#38e07b",
+    acidBright: "#5af787",
     acidInk: "#0c8a42",
     acidBg: "rgba(56,224,123,0.13)",
     loss: "#c0291f",
@@ -18,133 +20,68 @@
   const HL = {
     wallet: "https://hookoswallet.xyz",
     app: "https://hookos.fun",
+    docs: "https://docs.hookos.fun",
+    dev: "https://dev.hookos.fun",
     x: "https://x.com/hookosfun",
     bot: "https://x.com/hookosbot",
     tg: "https://t.me/hookos_alpha",
     ios: "https://hookos.fun",
     android: "https://hookos.fun"
   };
+  const API = "https://api.hookos.fun";
   function lopen(u) {
     return function () {
       if (u) window.open(u, "_blank", "noopener,noreferrer");
     };
   }
-  const LND_TOKENS = [{
-    s: "VAULT",
-    n: "Vaultline",
-    p: "$0.0₄218",
-    ch: 24.2,
-    mc: "$4.2M",
-    vol: "$1.8M",
-    curve: 84
-  }, {
-    s: "GHOST",
-    n: "Ghostchain",
-    p: "$0.0₅184",
-    ch: 142.0,
-    mc: "$1.7M",
-    vol: "$920K",
-    curve: 100
-  }, {
-    s: "RUNE",
-    n: "Runeforge",
-    p: "$0.142",
-    ch: 218.4,
-    mc: "$8.4M",
-    vol: "$3.1M",
-    curve: 100
-  }, {
-    s: "FLUX",
-    n: "Fluxfield",
-    p: "$12.84",
-    ch: -6.1,
-    mc: "$12.8M",
-    vol: "$2.2M",
-    curve: 100
-  }, {
-    s: "PRISM",
-    n: "Prismatic",
-    p: "$0.821",
-    ch: 84.2,
-    mc: "$2.9M",
-    vol: "$1.1M",
-    curve: 92
-  }, {
-    s: "NEON",
-    n: "Neonbase",
-    p: "$0.0₃92",
-    ch: -2.4,
-    mc: "$890K",
-    vol: "$340K",
-    curve: 61
-  }, {
-    s: "AXIS",
-    n: "Axisline",
-    p: "$0.048",
-    ch: 12.8,
-    mc: "$1.2M",
-    vol: "$480K",
-    curve: 73
-  }, {
-    s: "EMBER",
-    n: "Emberlight",
-    p: "$0.0₄841",
-    ch: 48.1,
-    mc: "$640K",
-    vol: "$210K",
-    curve: 44
-  }, {
-    s: "ORBIT",
-    n: "Orbital",
-    p: "$1.24",
-    ch: 8.4,
-    mc: "$5.1M",
-    vol: "$1.4M",
-    curve: 100
-  }, {
-    s: "DUNE",
-    n: "Dunework",
-    p: "$0.0₅412",
-    ch: -11.2,
-    mc: "$420K",
-    vol: "$180K",
-    curve: 28
-  }];
-  function lndSpark(seed, up) {
-    const out = [];
-    let v = 8;
-    for (let i = 0; i < 14; i++) {
-      const r = Math.abs(Math.sin(seed * 9.17 + i * 1.93));
-      v += (r - (up ? 0.42 : 0.58)) * 3;
-      v = Math.max(1, v);
-      out.push(v);
-    }
-    return out;
+  function weiToEth(wei, dp) {
+    const n = Number(wei || 0) / 1e18;
+    if (!isFinite(n)) return "0";
+    if (n === 0) return "0";
+    if (n < 0.0001) return "<0.0001";
+    return n.toFixed(dp == null ? 4 : dp);
   }
-  function LSpark({
-    pts,
-    w = 64,
-    h = 18,
-    color = LT.acidInk,
-    sw = 1.4
-  }) {
-    const max = Math.max(...pts),
-      min = Math.min(...pts),
-      r = max - min || 1;
-    const d = pts.map((p, i) => `${i ? "L" : "M"}${(i / (pts.length - 1) * w).toFixed(1)},${(h - (p - min) / r * (h - 3) - 1.5).toFixed(1)}`).join("");
-    return React.createElement("svg", {
-      width: w,
-      height: h,
-      style: {
-        display: "block"
-      }
-    }, React.createElement("path", {
-      d: d,
-      stroke: color,
-      strokeWidth: sw,
-      fill: "none",
-      strokeLinecap: "round"
-    }));
+  function fmtInt(n) {
+    return (Number(n) || 0).toLocaleString();
+  }
+  function shortAddr(a) {
+    return a ? a.slice(0, 6) + "…" + a.slice(-4) : "";
+  }
+  function useApi(path) {
+    const [state, setState] = React.useState({
+      data: null,
+      loading: true,
+      error: false
+    });
+    React.useEffect(() => {
+      let alive = true;
+      const ctrl = new AbortController();
+      const to = setTimeout(() => ctrl.abort(), 9000);
+      fetch(`${API}${path}`, {
+        signal: ctrl.signal
+      }).then(r => {
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      }).then(d => {
+        if (alive) setState({
+          data: d,
+          loading: false,
+          error: false
+        });
+      }).catch(() => {
+        if (alive) setState({
+          data: null,
+          loading: false,
+          error: true
+        });
+      }).finally(() => clearTimeout(to));
+      return () => {
+        alive = false;
+        ctrl.abort();
+        clearTimeout(to);
+      };
+    }, [path]);
+    return state;
   }
   function LHex({
     size = 26,
@@ -201,16 +138,15 @@
         const r = el.getBoundingClientRect();
         if (r.top < window.innerHeight + 60 && r.bottom > -60) show();
       };
-      const t1 = setTimeout(check, 350);
-      const t2 = setTimeout(show, 2500);
-      const onScroll = () => check();
-      window.addEventListener("scroll", onScroll, {
+      const t1 = setTimeout(check, 320);
+      const t2 = setTimeout(show, 2400);
+      window.addEventListener("scroll", check, {
         passive: true
       });
       return () => {
         clearTimeout(t1);
         clearTimeout(t2);
-        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("scroll", check);
         ob && ob.disconnect();
       };
     }, []);
@@ -218,7 +154,7 @@
       ref: ref,
       style: {
         opacity: vis ? 1 : 0,
-        transform: vis ? "none" : "translateY(22px)",
+        transform: vis ? "none" : "translateY(20px)",
         transition: `opacity 600ms ease ${delay}ms, transform 600ms cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
         ...style
       }
@@ -242,7 +178,7 @@
         ob && ob.disconnect();
         const t0 = performance.now();
         const tick = now => {
-          const t = Math.min(1, (now - t0) / 1300);
+          const t = Math.min(1, (now - t0) / 1200);
           setV(to * (1 - Math.pow(1 - t, 3)));
           if (t < 1) requestAnimationFrame(tick);
         };
@@ -263,22 +199,38 @@
         const r = el.getBoundingClientRect();
         if (r.top < window.innerHeight && r.bottom > 0) start();
       };
-      const t1 = setTimeout(check, 400);
-      const t2 = setTimeout(start, 2800);
-      const onScroll = () => check();
-      window.addEventListener("scroll", onScroll, {
+      const t1 = setTimeout(check, 360);
+      const t2 = setTimeout(start, 2600);
+      window.addEventListener("scroll", check, {
         passive: true
       });
       return () => {
         clearTimeout(t1);
         clearTimeout(t2);
-        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("scroll", check);
         ob && ob.disconnect();
       };
     }, [to]);
     return React.createElement("span", {
       ref: ref
     }, prefix, decimals ? v.toFixed(decimals) : Math.round(v).toLocaleString(), suffix);
+  }
+  function Skeleton({
+    w = "100%",
+    h = 14,
+    r = 6,
+    style
+  }) {
+    return React.createElement("span", {
+      className: "lnd-sk",
+      style: {
+        display: "inline-block",
+        width: w,
+        height: h,
+        borderRadius: r,
+        ...style
+      }
+    });
   }
   function Kicker({
     children,
@@ -309,7 +261,39 @@
       }
     }, children);
   }
-  function LTopbar() {
+  function Btn({
+    children,
+    href,
+    onClick,
+    ghost,
+    big
+  }) {
+    const cls = ghost ? "lnd-btn-ghost" : "lnd-btn";
+    const st = {
+      display: "inline-block",
+      textDecoration: "none",
+      ...(big ? {
+        padding: "15px 28px",
+        fontSize: 15.5
+      } : null)
+    };
+    if (href && !onClick) {
+      return React.createElement("a", {
+        className: cls,
+        style: st,
+        href: href,
+        target: "_blank",
+        rel: "noopener noreferrer"
+      }, children);
+    }
+    return React.createElement("button", {
+      className: cls,
+      style: st,
+      onClick: onClick
+    }, children);
+  }
+  function Topbar() {
+    const nav = [["Wallet", "#wallet"], ["Live", "#live"], ["Hooks", "#hooks"], ["Docs", HL.docs], ["Community", HL.x]];
     return React.createElement("div", {
       className: "lnd-topbar",
       style: {
@@ -354,24 +338,7 @@
         padding: "1px 5px",
         letterSpacing: "0.08em"
       }
-    }, "WALLET")), React.createElement("a", {
-      href: HL.app,
-      target: "_blank",
-      rel: "noopener noreferrer",
-      className: "lnd-plain lnd-search",
-      style: {
-        display: "flex",
-        alignItems: "center",
-        gap: 7,
-        padding: "7px 13px",
-        background: "rgba(13,16,12,0.04)",
-        borderRadius: 8,
-        fontSize: 12.5,
-        color: LT.ink3,
-        minWidth: 200,
-        cursor: "pointer"
-      }
-    }, React.createElement("span", null, "\u2318K"), React.createElement("span", null, "Search tokens, hooks\u2026")), React.createElement("nav", {
+    }, "WALLET")), React.createElement("nav", {
       className: "lnd-nav",
       style: {
         display: "flex",
@@ -381,28 +348,13 @@
         color: LT.ink2,
         fontWeight: 500
       }
-    }, [{
-      l: "Features",
-      h: "#features"
-    }, {
-      l: "Hooks",
-      h: HL.app
-    }, {
-      l: "Ecosystem",
-      h: HL.app
-    }, {
-      l: "Community",
-      h: HL.x
-    }, {
-      l: "Docs",
-      h: HL.app
-    }].map(n => React.createElement("a", {
-      key: n.l,
-      href: n.h,
-      target: n.h.startsWith("#") ? undefined : "_blank",
-      rel: n.h.startsWith("#") ? undefined : "noopener noreferrer",
+    }, nav.map(([l, h]) => React.createElement("a", {
+      key: l,
+      href: h,
+      target: h.startsWith("#") ? undefined : "_blank",
+      rel: h.startsWith("#") ? undefined : "noopener noreferrer",
       className: "lnd-plain lnd-navlink"
-    }, n.l))), React.createElement("span", {
+    }, l))), React.createElement("span", {
       style: {
         fontFamily: LT.mono,
         fontSize: 11.5,
@@ -420,109 +372,90 @@
         background: LT.acid,
         display: "inline-block"
       }
-    }), "Base"), React.createElement("button", {
+    }), "Base"), React.createElement("a", {
       className: "lnd-btn",
       style: {
         padding: "9px 18px",
-        fontSize: 13.5
+        fontSize: 13.5,
+        display: "inline-block",
+        textDecoration: "none"
       },
-      onClick: lopen(HL.ios)
+      href: HL.ios,
+      target: "_blank",
+      rel: "noopener noreferrer"
     }, "Get the App"));
   }
-  function LTicker() {
-    const row = copy => LND_TOKENS.map(t => React.createElement("span", {
-      key: `${copy}-${t.s}`,
-      style: {
-        display: "inline-flex",
-        gap: 7,
-        marginRight: 34,
-        cursor: "pointer"
-      }
-    }, React.createElement("span", {
-      style: {
-        color: LT.ink2,
-        fontWeight: 600
-      }
-    }, "$", t.s), React.createElement("span", {
-      style: {
-        color: LT.ink3
-      }
-    }, t.p), React.createElement("span", {
-      style: {
-        color: t.ch >= 0 ? LT.acidInk : LT.loss
-      }
-    }, t.ch >= 0 ? "+" : "", t.ch, "%")));
-    return React.createElement("div", {
-      style: {
-        borderBottom: `1px solid ${LT.line}`,
-        background: "#fff",
-        overflow: "hidden",
-        padding: "8px 0",
-        fontFamily: LT.mono,
-        fontSize: 12
-      }
-    }, React.createElement("div", {
-      className: "lnd-marquee",
-      style: {
-        display: "inline-block",
-        whiteSpace: "nowrap"
-      }
-    }, row("a"), row("b")));
-  }
-  function LndHero() {
-    const [tab, setTab] = React.useState(0);
+  function Hero() {
+    const stats = useApi("/stats");
+    const d = stats.data || {};
+    const cells = [{
+      k: "Tokens launched",
+      v: d.totalTokens,
+      dec: 0
+    }, {
+      k: "Hooks available",
+      v: d.totalHooks,
+      dec: 0
+    }, {
+      k: "Fees distributed",
+      v: d.totalFeesDistributed ? Number(d.totalFeesDistributed) / 1e18 : 0,
+      dec: 3,
+      suf: " ETH"
+    }, {
+      k: "Season",
+      v: d.currentSeason,
+      dec: 0,
+      pre: "S"
+    }];
     return React.createElement("section", {
       style: {
         padding: "0 40px"
       }
     }, React.createElement("div", {
       style: {
-        maxWidth: 1280,
+        maxWidth: 1180,
         margin: "0 auto"
       }
     }, React.createElement("div", {
       style: {
-        display: "flex",
-        alignItems: "flex-end",
-        justifyContent: "space-between",
-        padding: "52px 0 30px",
-        gap: 30,
-        flexWrap: "wrap"
+        textAlign: "center",
+        padding: "72px 0 34px"
       }
-    }, React.createElement("div", null, React.createElement(Kicker, null, "The native HookOS wallet \xB7 live on Base \xB7 keys, signing, launches & hooks"), React.createElement("h1", {
+    }, React.createElement(Reveal, null, React.createElement(Kicker, null, "Self-custody wallet \xB7 native client for HookOS \xB7 live on Base"), React.createElement("h1", {
       style: {
-        fontSize: 64,
+        fontSize: 68,
         fontWeight: 700,
         letterSpacing: "-0.04em",
         lineHeight: 1.0,
-        margin: 0,
+        margin: "0 auto",
+        maxWidth: 900,
         color: LT.ink
       }
-    }, "Markets are now ", React.createElement("span", {
+    }, "Your keys. Your markets.", React.createElement("br", null), React.createElement("span", {
       style: {
         color: LT.acidInk
       }
-    }, "software.")), React.createElement("p", {
+    }, "Markets are now software.")), React.createElement("p", {
       style: {
-        fontSize: 17,
+        fontSize: 18,
         color: LT.ink2,
-        margin: "18px 0 0",
-        maxWidth: 560,
+        margin: "20px auto 0",
+        maxWidth: 620,
         lineHeight: 1.55
       }
-    }, "The native client for the HookOS ecosystem. Hold your own keys and launch programmable tokens with custom AMM hooks \u2014 MEV shields, reflexive burns, PvP wagers, AI-tuned fees, and cross-chain \u2014 all in one wallet.")), React.createElement("div", {
+    }, "HookOS Wallet is the self-custody home for the HookOS ecosystem. Hold your own keys, then launch programmable tokens, install AMM hooks, wager in the arena, and go cross-chain \u2014 from one app."), React.createElement("div", {
       style: {
         display: "flex",
         gap: 10,
-        flexShrink: 0,
-        paddingBottom: 6
+        justifyContent: "center",
+        marginTop: 28,
+        flexWrap: "wrap"
       }
-    }, React.createElement("button", {
-      className: "lnd-btn",
-      onClick: lopen(HL.ios)
-    }, "Get the App"), React.createElement("button", {
-      className: "lnd-btn-ghost",
-      onClick: lopen(HL.app)
+    }, React.createElement(Btn, {
+      href: HL.ios
+    }, "\uD83D\uDE80 Get the App"), React.createElement(Btn, {
+      ghost: true,
+      href: HL.app
     }, "Explore HookOS"), React.createElement("button", {
       className: "lnd-plain",
       style: {
@@ -533,637 +466,100 @@
         border: "none",
         cursor: "pointer"
       },
-      onClick: lopen(HL.app)
-    }, "View Docs \u2192"))), React.createElement(Reveal, null, React.createElement("div", {
-      className: "lnd-frame"
+      onClick: lopen(HL.docs)
+    }, "Read the docs \u2192")))), React.createElement(Reveal, {
+      delay: 100
     }, React.createElement("div", {
-      style: {
-        display: "flex",
-        alignItems: "center",
-        gap: 13,
-        padding: "10px 18px",
-        borderBottom: `1px solid ${LT.line}`,
-        background: "#fafbf8"
-      }
-    }, React.createElement("div", {
-      style: {
-        display: "flex",
-        gap: 5
-      }
-    }, [0, 1, 2].map(i => React.createElement("span", {
-      key: i,
-      style: {
-        width: 9,
-        height: 9,
-        borderRadius: 9,
-        background: "rgba(13,16,12,0.12)"
-      }
-    }))), ["Market Map", "Tokens", "Terminal"].map((t, i) => React.createElement("button", {
-      key: t,
-      onClick: () => setTab(i),
-      className: "lnd-plain",
-      style: {
-        fontSize: 12.5,
-        fontWeight: 600,
-        padding: "5px 13px",
-        borderRadius: 7,
-        border: "none",
-        cursor: "pointer",
-        background: tab === i ? LT.acidBg : "transparent",
-        color: tab === i ? LT.acidInk : LT.ink3
-      }
-    }, t)), React.createElement("span", {
-      style: {
-        marginLeft: "auto",
-        fontFamily: LT.mono,
-        fontSize: 10.5,
-        color: LT.acidInk
-      }
-    }, "\u25CF Base mainnet \xB7 app preview")), React.createElement("div", {
-      className: "lnd-cols",
-      style: {
-        display: "grid",
-        gridTemplateColumns: "1.3fr 1fr",
-        minHeight: 360
-      }
-    }, React.createElement("div", {
-      className: "lnd-hero-map",
-      style: {
-        position: "relative",
-        borderRight: `1px solid ${LT.line}`,
-        background: "radial-gradient(480px 280px at 50% 45%, rgba(56,224,123,0.08), transparent 70%)"
-      }
-    }, React.createElement("svg", {
-      width: "100%",
-      height: "100%",
-      viewBox: "0 0 640 360",
-      preserveAspectRatio: "xMidYMid meet",
-      style: {
-        position: "absolute",
-        inset: 0
-      }
-    }, [{
-      x: 320,
-      y: 168,
-      r: 42,
-      t: "VAULT",
-      main: 1
-    }, {
-      x: 168,
-      y: 96,
-      r: 24,
-      t: "GH"
-    }, {
-      x: 480,
-      y: 86,
-      r: 19,
-      t: "FL"
-    }, {
-      x: 528,
-      y: 250,
-      r: 27,
-      t: "RU"
-    }, {
-      x: 132,
-      y: 258,
-      r: 17,
-      t: "PR"
-    }, {
-      x: 376,
-      y: 296,
-      r: 14,
-      t: "NE"
-    }, {
-      x: 236,
-      y: 312,
-      r: 11,
-      t: "AX"
-    }].map((n, i) => React.createElement("g", {
-      key: i,
-      style: {
-        cursor: "pointer"
-      }
-    }, i > 0 && React.createElement("line", {
-      x1: "320",
-      y1: "168",
-      x2: n.x,
-      y2: n.y,
-      stroke: "rgba(12,138,66,0.22)",
-      strokeDasharray: "2 5"
-    }), n.main ? React.createElement("circle", {
-      cx: n.x,
-      cy: n.y,
-      r: n.r + 10,
-      fill: "none",
-      stroke: "rgba(56,224,123,0.5)"
-    }, React.createElement("animate", {
-      attributeName: "r",
-      values: `${n.r + 6};${n.r + 14};${n.r + 6}`,
-      dur: "2.6s",
-      repeatCount: "indefinite"
-    }), React.createElement("animate", {
-      attributeName: "stroke-opacity",
-      values: "0.6;0.1;0.6",
-      dur: "2.6s",
-      repeatCount: "indefinite"
-    })) : null, React.createElement("circle", {
-      cx: n.x,
-      cy: n.y,
-      r: n.r,
-      fill: LT.acid,
-      stroke: "rgba(13,16,12,0.15)"
-    }), React.createElement("text", {
-      x: n.x,
-      y: n.y + 3.5,
-      textAnchor: "middle",
-      fontFamily: "JetBrains Mono",
-      fontSize: n.r > 30 ? 11 : 8.5,
-      fontWeight: "700",
-      fill: "#06210f"
-    }, n.t)))), React.createElement("div", {
-      style: {
-        position: "absolute",
-        left: 16,
-        bottom: 12,
-        fontFamily: LT.mono,
-        fontSize: 9.5,
-        color: LT.ink3
-      }
-    }, "size = mcap \xB7 pulse = volume \xB7 threads = shared hooks")), React.createElement("div", {
-      style: {
-        display: "flex",
-        flexDirection: "column"
-      }
-    }, React.createElement("div", {
-      style: {
-        display: "grid",
-        gridTemplateColumns: "1fr 80px 64px 72px",
-        gap: 8,
-        padding: "9px 18px",
-        borderBottom: `1px solid ${LT.line}`,
-        fontFamily: LT.mono,
-        fontSize: 9,
-        color: LT.ink3,
-        letterSpacing: "0.14em"
-      }
-    }, React.createElement("span", null, "TOKEN"), React.createElement("span", {
-      style: {
-        textAlign: "right"
-      }
-    }, "PRICE"), React.createElement("span", {
-      style: {
-        textAlign: "right"
-      }
-    }, "24H"), React.createElement("span", {
-      style: {
-        textAlign: "right"
-      }
-    }, "7D")), LND_TOKENS.slice(0, 6).map((t, i) => React.createElement("div", {
-      key: t.s,
-      className: "lnd-row",
-      style: {
-        display: "grid",
-        gridTemplateColumns: "1fr 80px 64px 72px",
-        gap: 8,
-        padding: "10px 18px",
-        borderBottom: `1px solid ${LT.line}`,
-        alignItems: "center",
-        cursor: "pointer"
-      }
-    }, React.createElement("span", {
-      style: {
-        display: "flex",
-        alignItems: "center",
-        gap: 8,
-        fontSize: 13,
-        fontWeight: 600,
-        color: LT.ink
-      }
-    }, React.createElement("span", {
-      style: {
-        width: 20,
-        height: 20,
-        borderRadius: 6,
-        background: "linear-gradient(135deg, #5af787, #2fb866)",
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontFamily: LT.mono,
-        fontSize: 8,
-        fontWeight: 700,
-        color: "#06210f"
-      }
-    }, t.s.slice(0, 2)), "$", t.s), React.createElement("span", {
-      style: {
-        textAlign: "right",
-        fontFamily: LT.mono,
-        fontSize: 11.5,
-        color: LT.ink
-      }
-    }, t.p), React.createElement("span", {
-      style: {
-        textAlign: "right",
-        fontFamily: LT.mono,
-        fontSize: 11,
-        color: t.ch >= 0 ? LT.acidInk : LT.loss
-      }
-    }, t.ch >= 0 ? "+" : "", t.ch, "%"), React.createElement("span", {
-      style: {
-        display: "flex",
-        justifyContent: "flex-end"
-      }
-    }, React.createElement(LSpark, {
-      pts: lndSpark(i + 2, t.ch >= 0),
-      w: 58,
-      h: 16,
-      color: t.ch >= 0 ? LT.acidInk : LT.loss
-    })))), React.createElement("div", {
-      style: {
-        marginTop: "auto",
-        padding: "11px 18px",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        background: "#fafbf8"
-      }
-    }, React.createElement("span", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 10,
-        color: LT.ink3
-      }
-    }, "12,840 tokens indexed"), React.createElement("span", {
-      onClick: lopen(HL.app),
-      style: {
-        fontSize: 12.5,
-        fontWeight: 600,
-        color: LT.acidInk,
-        cursor: "pointer"
-      }
-    }, "Open full app \u2192")))))), React.createElement(Reveal, {
-      delay: 120
-    }, React.createElement("div", {
+      id: "live",
       className: "lnd-cols",
       style: {
         display: "grid",
         gridTemplateColumns: "repeat(4,1fr)",
         border: `1px solid ${LT.line2}`,
-        borderRadius: 14,
+        borderRadius: 16,
         background: "#fff",
-        margin: "18px 0 0",
-        overflow: "hidden"
+        overflow: "hidden",
+        scrollMarginTop: 80
       }
-    }, [{
-      k: "Total volume",
-      v: 48.2,
-      pre: "$",
-      suf: "M",
-      dec: 1,
-      sp: lndSpark(3, true)
-    }, {
-      k: "Tokens launched",
-      v: 12840,
-      pre: "",
-      suf: "",
-      dec: 0,
-      sp: lndSpark(5, true)
-    }, {
-      k: "Hooks active",
-      v: 142,
-      pre: "",
-      suf: "",
-      dec: 0,
-      sp: lndSpark(7, true)
-    }, {
-      k: "Protocol fees",
-      v: 1.84,
-      pre: "$",
-      suf: "M",
-      dec: 2,
-      sp: lndSpark(9, true)
-    }].map((s, i) => React.createElement("div", {
-      key: s.k,
+    }, cells.map((c, i) => React.createElement("div", {
+      key: c.k,
       style: {
-        padding: "18px 24px",
-        borderLeft: i ? `1px solid ${LT.line}` : "none",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        gap: 12
+        padding: "22px 26px",
+        borderLeft: i ? `1px solid ${LT.line}` : "none"
       }
-    }, React.createElement("div", null, React.createElement("div", {
+    }, React.createElement("div", {
       style: {
         fontFamily: LT.mono,
         fontSize: 9.5,
         color: LT.ink3,
         letterSpacing: "0.16em",
         textTransform: "uppercase",
-        marginBottom: 6
+        marginBottom: 8
       }
-    }, s.k), React.createElement("div", {
+    }, c.k), React.createElement("div", {
       style: {
         fontFamily: LT.mono,
-        fontSize: 23,
+        fontSize: 26,
         fontWeight: 700,
         color: LT.ink
       }
-    }, React.createElement(Counter, {
-      to: s.v,
-      prefix: s.pre,
-      suffix: s.suf,
-      decimals: s.dec
-    }))), React.createElement(LSpark, {
-      pts: s.sp,
-      w: 74,
+    }, stats.loading ? React.createElement(Skeleton, {
+      w: 72,
       h: 24
-    })))))));
-  }
-  function LaunchOnX() {
-    return React.createElement("section", {
+    }) : stats.error ? React.createElement("span", {
       style: {
-        padding: "84px 40px 0"
-      }
-    }, React.createElement("div", {
-      className: "lnd-cols",
-      style: {
-        maxWidth: 1280,
-        margin: "0 auto",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: 56,
-        alignItems: "center"
-      }
-    }, React.createElement(Reveal, null, React.createElement(Kicker, {
-      color: LT.acidInk
-    }, "New \xB7 @hookosbot"), React.createElement(H2, null, "Tweet a token.", React.createElement("br", null), "Deployed in seconds."), React.createElement("p", {
-      style: {
-        fontSize: 16,
-        color: LT.ink2,
-        lineHeight: 1.6,
-        maxWidth: 460,
-        margin: "0 0 24px"
-      }
-    }, "Reply to any tweet with a deploy command. The bot mints the token, seeds liquidity, installs your hooks, and replies with the receipt \u2014 all on-chain, no app needed."), React.createElement("div", {
-      style: {
-        display: "flex",
-        gap: 10,
-        alignItems: "center"
-      }
-    }, React.createElement("button", {
-      className: "lnd-btn",
-      onClick: lopen(HL.bot)
-    }, "Try it now"), React.createElement("a", {
-      href: HL.bot,
-      target: "_blank",
-      rel: "noopener noreferrer",
-      className: "lnd-plain",
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 13,
-        color: LT.acidInk,
-        fontWeight: 600
-      }
-    }, "@hookosbot \u2192"))), React.createElement(Reveal, {
-      delay: 140
-    }, React.createElement("div", {
-      style: {
-        position: "relative"
-      }
-    }, React.createElement("div", {
-      className: "lnd-card",
-      style: {
-        padding: 22,
-        maxWidth: 430
-      }
-    }, React.createElement("div", {
-      style: {
-        display: "flex",
-        gap: 10,
-        alignItems: "center",
-        marginBottom: 12
-      }
-    }, React.createElement("span", {
-      style: {
-        width: 32,
-        height: 32,
-        borderRadius: 99,
-        background: LT.acid,
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontFamily: LT.mono,
-        fontSize: 11,
-        fontWeight: 700,
-        color: "#06210f"
-      }
-    }, "0x"), React.createElement("div", null, React.createElement("div", {
-      style: {
-        fontSize: 13.5,
-        fontWeight: 600,
-        color: LT.ink
-      }
-    }, "anyone"), React.createElement("div", {
-      style: {
-        fontSize: 11.5,
-        color: LT.ink3
-      }
-    }, "@anyone \xB7 now"))), React.createElement("div", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 14.5,
-        lineHeight: 1.6
-      }
-    }, React.createElement("span", {
-      style: {
-        color: LT.acidInk,
-        fontWeight: 600
-      }
-    }, "@hookosbot"), " ", React.createElement("span", {
-      style: {
-        color: LT.ink
-      }
-    }, "deploy $MOON"), React.createElement("br", null), React.createElement("span", {
-      style: {
-        color: LT.ink2
-      }
-    }, "1B supply \xB7 anti-bot"))), React.createElement("div", {
-      style: {
-        display: "flex",
-        justifyContent: "center",
-        padding: "8px 0",
-        maxWidth: 430
-      }
-    }, React.createElement("span", {
-      style: {
-        color: LT.acidInk,
+        color: LT.ink3,
         fontSize: 18
       }
-    }, "\u2193")), React.createElement("div", {
-      className: "lnd-card",
+    }, "\u2014") : React.createElement(Counter, {
+      to: Number(c.v) || 0,
+      prefix: c.pre || "",
+      suffix: c.suf || "",
+      decimals: c.dec
+    }))))), React.createElement("div", {
       style: {
-        padding: 18,
-        maxWidth: 430,
-        border: `1.5px solid rgba(56,224,123,0.5)`,
-        boxShadow: "0 18px 44px -18px rgba(12,138,66,0.35)",
-        display: "flex",
-        alignItems: "center",
-        gap: 13
-      }
-    }, React.createElement("span", {
-      style: {
-        width: 38,
-        height: 38,
-        borderRadius: 10,
-        background: "linear-gradient(135deg, #5af787, #2fb866)",
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
+        textAlign: "center",
+        marginTop: 12,
         fontFamily: LT.mono,
-        fontSize: 12,
-        fontWeight: 700,
-        color: "#06210f"
-      }
-    }, "MO"), React.createElement("div", {
-      style: {
-        flex: 1
-      }
-    }, React.createElement("div", {
-      style: {
-        fontSize: 15,
-        fontWeight: 700,
-        color: LT.ink
-      }
-    }, "$MOON deployed"), React.createElement("div", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 11,
-        color: LT.acidInk
-      }
-    }, "\u25CF live \xB7 moon.hookos.fun")), React.createElement("span", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 10,
+        fontSize: 10.5,
         color: LT.ink3
       }
-    }, "4.2s"))))));
+    }, stats.error ? "live indexer unavailable — numbers hidden" : stats.loading ? "loading live data…" : "● live from the HookOS indexer · Base mainnet"))));
   }
-  function HowItWorks() {
-    const prims = [{
-      t: "Map",
-      d: "A living force-graph of every market. Size is mcap, pulse is volume, threads are shared hooks. Discovery you can feel.",
-      icon: "◈",
-      cta: "Explore Map"
+  function Features() {
+    const groups = [{
+      icon: "🔑",
+      kicker: "Self-custody core",
+      items: [["Your keys, always", "Non-custodial — the seed never leaves your device."], ["Smart Wallet OS", "ERC-4337 accounts, gasless onboarding, sponsored gas."], ["Multi-wallet identity", "Many addresses, one signing experience."], ["Hardware wallet", "Ledger support for cold-key signing."], ["Built-in swaps", "Best-route token swaps across chains."], ["Send, receive & NFTs", "Tokens and collectibles, with a dApp browser."]]
     }, {
-      t: "Receipt",
-      d: "Every launch prints an on-chain receipt — supply, hooks, curve, fees. Verifiable, shareable, collectible.",
-      icon: "🧾",
-      cta: "See a launch"
+      icon: "🚀",
+      kicker: "Launch & trade",
+      items: [["Token launcher", "Print a token on a bonding curve in a few taps."], ["Hook marketplace", "Install up to 8 AMM hooks per token."], ["Cross-chain bridge", "Move value across HookOS chains as they come online."], ["Staking", "Stake to earn a share of protocol fees."], ["Creator fees", "Collect swap/LP fees, routed on-chain automatically."], ["Hook licenses", "License NFTs that pay hook authors per use."]]
     }, {
-      t: "Hooks",
-      d: "Programs that run inside your AMM. Install from the store or build your own — they fire on every swap.",
-      icon: "◆",
-      cta: "Browse Hooks"
+      icon: "⚔",
+      kicker: "Compete & earn",
+      items: [["PvP Arena", "Wager on token price battles — no oracle."], ["Launch Wars", "Compete to top the launch leaderboard."], ["Battle Pass", "Seasonal XP with free and Pro tracks."], ["Daily Quests", "Challenges and streaks that pay XP."], ["Clans", "Shared treasuries and team leaderboards."], ["Reputation & events", "On-chain rep and live protocol events."]]
     }];
     return React.createElement("section", {
-      id: "features",
+      id: "wallet",
       style: {
-        padding: "84px 40px 0",
+        padding: "92px 40px 0",
         scrollMarginTop: 72
       }
     }, React.createElement("div", {
       style: {
-        maxWidth: 1280,
+        maxWidth: 1180,
         margin: "0 auto"
       }
-    }, React.createElement(Reveal, null, React.createElement(Kicker, null, "How it works"), React.createElement(H2, null, "Three primitives. One operating system.")), React.createElement("div", {
-      className: "lnd-cols",
+    }, React.createElement(Reveal, null, React.createElement(Kicker, null, "Everything in one wallet"), React.createElement(H2, null, "The whole protocol, in your pocket."), React.createElement("p", {
       style: {
-        display: "grid",
-        gridTemplateColumns: "repeat(3,1fr)",
-        gap: 16,
-        marginTop: 28
-      }
-    }, prims.map((p, i) => React.createElement(Reveal, {
-      key: p.t,
-      delay: i * 110
-    }, React.createElement("div", {
-      className: "lnd-card lnd-lift",
-      style: {
-        padding: 28,
-        height: "100%"
-      }
-    }, React.createElement("div", {
-      style: {
-        fontSize: 26,
-        marginBottom: 18,
-        color: LT.acidInk
-      }
-    }, p.icon), React.createElement("div", {
-      style: {
-        fontSize: 21,
-        fontWeight: 700,
-        color: LT.ink,
-        marginBottom: 10
-      }
-    }, p.t), React.createElement("p", {
-      style: {
-        fontSize: 14.5,
+        fontSize: 16.5,
         color: LT.ink2,
         lineHeight: 1.6,
-        margin: "0 0 18px"
+        maxWidth: 640,
+        margin: "0 0 8px"
       }
-    }, p.d), React.createElement("span", {
-      onClick: lopen(HL.app),
-      style: {
-        fontSize: 13.5,
-        fontWeight: 600,
-        color: LT.acidInk,
-        cursor: "pointer"
-      }
-    }, p.cta, " \u2192")))))));
-  }
-  function SixWeapons() {
-    const weapons = [{
-      t: "MEV Shield",
-      d: "Block sandwich attacks at the pool level.",
-      cta: "Install Hook",
-      icon: "🛡"
-    }, {
-      t: "Reflexive Burn",
-      d: "Supply shrinks when price falls.",
-      cta: "Install Hook",
-      icon: "🔥"
-    }, {
-      t: "PvP Arena",
-      d: "Bet on the next candle. Winner takes the pot.",
-      cta: "Enter Arena",
-      icon: "⚔"
-    }, {
-      t: "AI Hook Studio",
-      d: "Describe → generate → deploy custom hooks.",
-      cta: "Build a Hook",
-      icon: "✦"
-    }, {
-      t: "Market Map",
-      d: "Force-directed token universe, live.",
-      cta: "Explore Map",
-      icon: "◈"
-    }, {
-      t: "Battle Pass",
-      d: "Trade. Rank up. Get paid.",
-      cta: "View Season",
-      icon: "▲"
-    }];
-    return React.createElement("section", {
-      style: {
-        padding: "84px 40px 0"
-      }
-    }, React.createElement("div", {
-      style: {
-        maxWidth: 1280,
-        margin: "0 auto"
-      }
-    }, React.createElement(Reveal, null, React.createElement(Kicker, null, "Capabilities"), React.createElement(H2, null, "Six weapons. One terminal.")), React.createElement("div", {
+    }, "Most wallets stop at send and receive. HookOS Wallet is a self-custody client for a programmable market \u2014 launch, trade, hook, bridge, compete and earn, all signed on your device.")), React.createElement("div", {
       className: "lnd-cols",
       style: {
         display: "grid",
@@ -1171,23 +567,21 @@
         gap: 16,
         marginTop: 28
       }
-    }, weapons.map((w, i) => React.createElement(Reveal, {
-      key: w.t,
-      delay: i % 3 * 110
+    }, groups.map((g, i) => React.createElement(Reveal, {
+      key: g.kicker,
+      delay: i % 3 * 90
     }, React.createElement("div", {
-      className: "lnd-card lnd-lift",
+      className: "lnd-card",
       style: {
         padding: 26,
-        display: "flex",
-        flexDirection: "column",
-        gap: 10,
         height: "100%"
       }
     }, React.createElement("div", {
       style: {
         display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center"
+        alignItems: "center",
+        gap: 11,
+        marginBottom: 18
       }
     }, React.createElement("span", {
       style: {
@@ -1200,84 +594,410 @@
         justifyContent: "center",
         fontSize: 17
       }
-    }, w.icon), React.createElement("span", {
+    }, g.icon), React.createElement("span", {
       style: {
         fontFamily: LT.mono,
-        fontSize: 9.5,
-        color: LT.ink3
+        fontSize: 10.5,
+        color: LT.acidInk,
+        letterSpacing: "0.14em",
+        textTransform: "uppercase",
+        fontWeight: 600
       }
-    }, "0", i + 1)), React.createElement("div", {
+    }, g.kicker)), React.createElement("div", {
       style: {
-        fontSize: 18,
-        fontWeight: 700,
+        display: "flex",
+        flexDirection: "column"
+      }
+    }, g.items.map(([t, d], j) => React.createElement("div", {
+      key: t,
+      style: {
+        display: "flex",
+        gap: 11,
+        padding: "12px 0",
+        borderTop: j ? `1px solid ${LT.line}` : "none"
+      }
+    }, React.createElement("span", {
+      style: {
+        color: LT.acidInk,
+        flexShrink: 0,
+        marginTop: 1,
+        fontSize: 13,
+        fontWeight: 700
+      }
+    }, "\u2713"), React.createElement("div", null, React.createElement("div", {
+      style: {
+        fontSize: 14.5,
+        fontWeight: 600,
         color: LT.ink
       }
-    }, w.t), React.createElement("p", {
+    }, t), React.createElement("div", {
       style: {
-        fontSize: 13.5,
+        fontSize: 12.5,
         color: LT.ink2,
-        lineHeight: 1.55,
-        margin: 0,
-        flex: 1
+        lineHeight: 1.5,
+        marginTop: 2
       }
-    }, w.d), React.createElement("button", {
-      className: "lnd-btn-ghost",
-      style: {
-        alignSelf: "flex-start",
-        padding: "8px 15px",
-        fontSize: 12.5
-      },
-      onClick: lopen(HL.app)
-    }, w.cta)))))));
+    }, d)))))))))));
   }
-  Object.assign(window, {
-    LT,
-    HL,
-    lopen,
-    LND_TOKENS,
-    lndSpark,
-    LSpark,
-    LHex,
-    Reveal,
-    Counter,
-    Kicker,
-    H2,
-    LTopbar,
-    LTicker,
-    LndHero,
-    LaunchOnX,
-    HowItWorks,
-    SixWeapons
-  });
-  function ProtocolPulse() {
-    const volBars = [4, 6, 5, 8, 7, 9, 8, 11, 10, 13, 12, 15, 14, 17];
-    const topHooks = [{
-      n: "MEV Shield",
-      v: 4218
-    }, {
-      n: "Reflexive Burn",
-      v: 3184
-    }, {
-      n: "Sniper Cage",
-      v: 2841
-    }, {
-      n: "Loyalty Multiplier",
-      v: 1922
-    }, {
-      n: "AI Fee Tuner",
-      v: 1484
-    }];
-    const maxH = topHooks[0].v;
-    return React.createElement("section", {
+  function TokenGlyph({
+    sym
+  }) {
+    return React.createElement("span", {
       style: {
-        padding: "84px 40px 0"
+        width: 30,
+        height: 30,
+        borderRadius: 9,
+        background: "linear-gradient(135deg,#5af787,#2fb866)",
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontFamily: LT.mono,
+        fontSize: 10,
+        fontWeight: 700,
+        color: "#06210f",
+        flexShrink: 0
+      }
+    }, (sym || "?").slice(0, 2).toUpperCase());
+  }
+  function LiveTokens() {
+    const q = useApi("/tokens");
+    const rows = React.useMemo(() => {
+      if (!Array.isArray(q.data)) return [];
+      return q.data.slice().sort((a, b) => (Number(b.totalTrades) || 0) - (Number(a.totalTrades) || 0) || (Number(b.totalVolume) || 0) - (Number(a.totalVolume) || 0)).slice(0, 8);
+    }, [q.data]);
+    return React.createElement("section", {
+      id: "live-tokens",
+      style: {
+        padding: "92px 40px 0"
       }
     }, React.createElement("div", {
       style: {
-        maxWidth: 1280,
+        maxWidth: 1180,
         margin: "0 auto"
       }
-    }, React.createElement(Reveal, null, React.createElement(Kicker, null, "Protocol pulse"), React.createElement(H2, null, "The numbers.")), React.createElement("div", {
+    }, React.createElement(Reveal, null, React.createElement("div", {
+      className: "lnd-head",
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "flex-end",
+        marginBottom: 22
+      }
+    }, React.createElement("div", null, React.createElement(Kicker, null, "Live on Base"), React.createElement(H2, null, "Real tokens, launched on HookOS.")), React.createElement("a", {
+      href: HL.app,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      className: "lnd-plain",
+      style: {
+        fontSize: 13.5,
+        fontWeight: 600,
+        color: LT.acidInk,
+        paddingBottom: 8
+      }
+    }, "Trade in the app \u2192"))), React.createElement(Reveal, {
+      delay: 90
+    }, React.createElement("div", {
+      className: "lnd-card lnd-tscroll",
+      style: {
+        padding: 0
+      }
+    }, React.createElement("div", {
+      style: {
+        display: "grid",
+        gridTemplateColumns: "44px 1.6fr 90px 120px 1fr",
+        gap: 12,
+        padding: "11px 22px",
+        borderBottom: `1px solid ${LT.line}`,
+        fontFamily: LT.mono,
+        fontSize: 9.5,
+        color: LT.ink3,
+        letterSpacing: "0.14em"
+      }
+    }, React.createElement("span", null, "#"), React.createElement("span", null, "TOKEN"), React.createElement("span", {
+      style: {
+        textAlign: "right"
+      }
+    }, "TRADES"), React.createElement("span", {
+      style: {
+        textAlign: "right"
+      }
+    }, "VOLUME"), React.createElement("span", null, "STATUS")), q.loading && [0, 1, 2, 3, 4].map(i => React.createElement("div", {
+      key: i,
+      style: {
+        display: "grid",
+        gridTemplateColumns: "44px 1.6fr 90px 120px 1fr",
+        gap: 12,
+        padding: "14px 22px",
+        borderBottom: `1px solid ${LT.line}`,
+        alignItems: "center"
+      }
+    }, React.createElement(Skeleton, {
+      w: 14
+    }), React.createElement(Skeleton, {
+      w: 140
+    }), React.createElement(Skeleton, {
+      w: 40,
+      style: {
+        marginLeft: "auto"
+      }
+    }), React.createElement(Skeleton, {
+      w: 70,
+      style: {
+        marginLeft: "auto"
+      }
+    }), React.createElement(Skeleton, {
+      w: "100%"
+    }))), !q.loading && rows.length === 0 && React.createElement("div", {
+      style: {
+        padding: "40px 22px",
+        textAlign: "center",
+        color: LT.ink3,
+        fontSize: 14,
+        minWidth: "auto"
+      }
+    }, q.error ? "Live token data is unavailable right now." : "No tokens indexed yet — be the first to launch."), !q.loading && rows.map((t, i) => {
+      const status = t.graduated ? {
+        t: "GRADUATED",
+        c: LT.gold,
+        bg: "rgba(199,146,18,0.12)"
+      } : t.hasCurve ? {
+        t: "ON CURVE",
+        c: LT.acidInk,
+        bg: LT.acidBg
+      } : {
+        t: "PRE-LAUNCH",
+        c: LT.ink3,
+        bg: "rgba(13,16,12,0.05)"
+      };
+      return React.createElement("a", {
+        key: t.id || i,
+        href: HL.app,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        className: "lnd-row lnd-plain",
+        style: {
+          display: "grid",
+          gridTemplateColumns: "44px 1.6fr 90px 120px 1fr",
+          gap: 12,
+          padding: "14px 22px",
+          borderBottom: i < rows.length - 1 ? `1px solid ${LT.line}` : "none",
+          alignItems: "center"
+        }
+      }, React.createElement("span", {
+        style: {
+          fontFamily: LT.mono,
+          fontSize: 11.5,
+          color: i < 3 ? LT.gold : LT.ink3,
+          fontWeight: i < 3 ? 700 : 400
+        }
+      }, i + 1), React.createElement("span", {
+        style: {
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          minWidth: 0
+        }
+      }, React.createElement(TokenGlyph, {
+        sym: t.symbol
+      }), React.createElement("span", {
+        style: {
+          fontSize: 14,
+          fontWeight: 600,
+          color: LT.ink
+        }
+      }, "$", t.symbol), React.createElement("span", {
+        style: {
+          fontSize: 12,
+          color: LT.ink3,
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap"
+        }
+      }, t.name)), React.createElement("span", {
+        style: {
+          textAlign: "right",
+          fontFamily: LT.mono,
+          fontSize: 12,
+          color: LT.ink2
+        }
+      }, fmtInt(t.totalTrades)), React.createElement("span", {
+        style: {
+          textAlign: "right",
+          fontFamily: LT.mono,
+          fontSize: 12,
+          color: LT.ink2
+        }
+      }, weiToEth(t.totalVolume, 3), " ETH"), React.createElement("span", null, React.createElement("span", {
+        style: {
+          fontFamily: LT.mono,
+          fontSize: 9,
+          fontWeight: 700,
+          letterSpacing: "0.06em",
+          padding: "3px 8px",
+          borderRadius: 5,
+          color: status.c,
+          background: status.bg
+        }
+      }, status.t)));
+    })))));
+  }
+  function LiveHooks() {
+    const q = useApi("/hooks");
+    const rows = React.useMemo(() => {
+      if (!Array.isArray(q.data)) return [];
+      return q.data.slice().sort((a, b) => (b.verified ? 1 : 0) - (a.verified ? 1 : 0) || (Number(b.installs) || 0) - (Number(a.installs) || 0)).slice(0, 8);
+    }, [q.data]);
+    return React.createElement("section", {
+      id: "hooks",
+      style: {
+        padding: "92px 40px 0",
+        scrollMarginTop: 72
+      }
+    }, React.createElement("div", {
+      style: {
+        maxWidth: 1180,
+        margin: "0 auto"
+      }
+    }, React.createElement(Reveal, null, React.createElement("div", {
+      className: "lnd-head",
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "flex-end",
+        marginBottom: 22
+      }
+    }, React.createElement("div", null, React.createElement(Kicker, null, "Hook marketplace"), React.createElement(H2, null, "Programs that run inside your AMM.")), React.createElement("a", {
+      href: HL.dev,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      className: "lnd-plain",
+      style: {
+        fontSize: 13.5,
+        fontWeight: 600,
+        color: LT.acidInk,
+        paddingBottom: 8
+      }
+    }, "Build a hook \u2192"))), React.createElement("div", {
+      className: "lnd-cols",
+      style: {
+        display: "grid",
+        gridTemplateColumns: "repeat(4,1fr)",
+        gap: 12
+      }
+    }, q.loading && [0, 1, 2, 3, 4, 5, 6, 7].map(i => React.createElement("div", {
+      key: i,
+      className: "lnd-card",
+      style: {
+        padding: 18
+      }
+    }, React.createElement(Skeleton, {
+      w: 40,
+      h: 40,
+      r: 11,
+      style: {
+        marginBottom: 12
+      }
+    }), React.createElement(Skeleton, {
+      w: "70%",
+      h: 15
+    }), React.createElement("div", {
+      style: {
+        height: 8
+      }
+    }), React.createElement(Skeleton, {
+      w: "40%",
+      h: 11
+    }))), !q.loading && rows.length === 0 && React.createElement("div", {
+      className: "lnd-card",
+      style: {
+        padding: "36px",
+        gridColumn: "1 / -1",
+        textAlign: "center",
+        color: LT.ink3,
+        fontSize: 14
+      }
+    }, q.error ? "Live hook data is unavailable right now." : "No hooks published yet."), !q.loading && rows.map((h, i) => React.createElement(Reveal, {
+      key: h.id || i
+    }, React.createElement("a", {
+      href: HL.app,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      className: "lnd-card lnd-lift lnd-plain",
+      style: {
+        padding: 18,
+        height: "100%",
+        display: "block"
+      }
+    }, React.createElement("div", {
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 12
+      }
+    }, React.createElement("span", {
+      style: {
+        width: 40,
+        height: 40,
+        borderRadius: 11,
+        background: LT.acidBg,
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: LT.acidInk,
+        fontSize: 16,
+        fontWeight: 700
+      }
+    }, "\u25C6"), h.verified ? React.createElement("span", {
+      style: {
+        fontFamily: LT.mono,
+        fontSize: 8.5,
+        fontWeight: 700,
+        color: LT.acidInk,
+        background: LT.acidBg,
+        padding: "3px 7px",
+        borderRadius: 5,
+        letterSpacing: "0.08em"
+      }
+    }, "VERIFIED") : null), React.createElement("div", {
+      style: {
+        fontSize: 15,
+        fontWeight: 700,
+        color: LT.ink,
+        marginBottom: 5
+      }
+    }, h.name), React.createElement("div", {
+      style: {
+        fontFamily: LT.mono,
+        fontSize: 10.5,
+        color: LT.ink3
+      }
+    }, fmtInt(h.installs), " installs \xB7 by ", shortAddr(h.author))))))));
+  }
+  function HowItWorks() {
+    const steps = [{
+      n: "01",
+      t: "Get the wallet",
+      d: "Download HookOS Wallet and create a self-custody smart account in seconds — no seed-phrase friction, gasless to start."
+    }, {
+      n: "02",
+      t: "Launch or trade",
+      d: "Print a token on a bonding curve, install hooks, or ape into live markets — all signed on your device."
+    }, {
+      n: "03",
+      t: "Earn & rank up",
+      d: "Collect creator fees, win arena wagers, complete quests and climb the Battle Pass — paid on-chain."
+    }];
+    return React.createElement("section", {
+      style: {
+        padding: "92px 40px 0"
+      }
+    }, React.createElement("div", {
+      style: {
+        maxWidth: 1180,
+        margin: "0 auto"
+      }
+    }, React.createElement(Reveal, null, React.createElement(Kicker, null, "How it works"), React.createElement(H2, null, "From download to on-chain in minutes.")), React.createElement("div", {
       className: "lnd-cols",
       style: {
         display: "grid",
@@ -1285,307 +1005,115 @@
         gap: 16,
         marginTop: 28
       }
-    }, React.createElement(Reveal, null, React.createElement("div", {
-      className: "lnd-card",
-      style: {
-        padding: 24,
-        height: "100%"
-      }
-    }, React.createElement("div", {
-      style: {
-        display: "flex",
-        justifyContent: "space-between",
-        marginBottom: 16
-      }
-    }, React.createElement("span", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 10,
-        color: LT.ink3,
-        letterSpacing: "0.16em"
-      }
-    }, "VOLUME \xB7 14D"), React.createElement("span", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 12,
-        fontWeight: 700,
-        color: LT.acidInk
-      }
-    }, "$48.2M")), React.createElement("div", {
-      style: {
-        display: "flex",
-        gap: 4,
-        alignItems: "flex-end",
-        height: 110
-      }
-    }, volBars.map((v, i) => React.createElement("div", {
-      key: i,
-      style: {
-        flex: 1,
-        height: `${v / 17 * 100}%`,
-        background: i === volBars.length - 1 ? LT.acidInk : LT.acid,
-        opacity: i === volBars.length - 1 ? 1 : 0.35 + v / 34,
-        borderRadius: 3
-      }
-    }))))), React.createElement(Reveal, {
-      delay: 110
-    }, React.createElement("div", {
-      className: "lnd-card",
-      style: {
-        padding: 24,
-        height: "100%"
-      }
-    }, React.createElement("div", {
-      style: {
-        display: "flex",
-        justifyContent: "space-between",
-        marginBottom: 16
-      }
-    }, React.createElement("span", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 10,
-        color: LT.ink3,
-        letterSpacing: "0.16em"
-      }
-    }, "REVENUE \xB7 30D"), React.createElement("span", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 12,
-        fontWeight: 700,
-        color: LT.acidInk
-      }
-    }, "$1.84M")), React.createElement(LSpark, {
-      pts: lndSpark(11, true).concat(lndSpark(13, true)),
-      w: 340,
-      h: 110,
-      sw: 2
-    }))), React.createElement(Reveal, {
-      delay: 220
-    }, React.createElement("div", {
-      className: "lnd-card",
-      style: {
-        padding: 24,
-        height: "100%"
-      }
-    }, React.createElement("div", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 10,
-        color: LT.ink3,
-        letterSpacing: "0.16em",
-        marginBottom: 16
-      }
-    }, "TOP HOOKS \xB7 INSTALLS"), React.createElement("div", {
-      style: {
-        display: "flex",
-        flexDirection: "column",
-        gap: 11
-      }
-    }, topHooks.map(h => React.createElement("div", {
-      key: h.n
-    }, React.createElement("div", {
-      style: {
-        display: "flex",
-        justifyContent: "space-between",
-        fontSize: 12,
-        marginBottom: 4
-      }
-    }, React.createElement("span", {
-      style: {
-        fontWeight: 600,
-        color: LT.ink
-      }
-    }, h.n), React.createElement("span", {
-      style: {
-        fontFamily: LT.mono,
-        color: LT.ink3
-      }
-    }, h.v.toLocaleString())), React.createElement("div", {
-      style: {
-        height: 5,
-        borderRadius: 99,
-        background: "rgba(13,16,12,0.05)"
-      }
-    }, React.createElement("div", {
-      style: {
-        width: `${h.v / maxH * 100}%`,
-        height: "100%",
-        borderRadius: 99,
-        background: LT.acid
-      }
-    }))))))))));
-  }
-  function RevenueSplits() {
-    const splits = [{
-      n: "HOOK Stakers",
-      p: 40
-    }, {
-      n: "Liquidity",
-      p: 20
-    }, {
-      n: "Hook Creators",
-      p: 15
-    }, {
-      n: "Treasury",
-      p: 15
-    }, {
-      n: "Platform",
-      p: 10
-    }];
-    return React.createElement("section", {
-      style: {
-        padding: "84px 40px 0"
-      }
-    }, React.createElement("div", {
-      style: {
-        maxWidth: 1280,
-        margin: "0 auto"
-      }
-    }, React.createElement(Reveal, null, React.createElement(Kicker, null, "Fee routing"), React.createElement(H2, null, "On-chain revenue splits.")), React.createElement("div", {
-      className: "lnd-cols",
-      style: {
-        display: "grid",
-        gridTemplateColumns: "repeat(5,1fr)",
-        gap: 14,
-        marginTop: 28
-      }
-    }, splits.map((s, i) => React.createElement(Reveal, {
+    }, steps.map((s, i) => React.createElement(Reveal, {
       key: s.n,
-      delay: i * 90
+      delay: i * 100
     }, React.createElement("div", {
       className: "lnd-card",
       style: {
-        padding: 22
+        padding: 28,
+        height: "100%"
       }
     }, React.createElement("div", {
       style: {
         fontFamily: LT.mono,
-        fontSize: 32,
-        fontWeight: 700,
-        color: i === 0 ? LT.acidInk : LT.ink
-      }
-    }, s.p, "%"), React.createElement("div", {
-      style: {
         fontSize: 13,
-        fontWeight: 600,
-        color: LT.ink2,
-        margin: "6px 0 14px"
+        color: LT.acidInk,
+        fontWeight: 700,
+        marginBottom: 14
       }
     }, s.n), React.createElement("div", {
       style: {
-        height: 6,
-        borderRadius: 99,
-        background: "rgba(13,16,12,0.05)",
-        overflow: "hidden"
+        fontSize: 20,
+        fontWeight: 700,
+        color: LT.ink,
+        marginBottom: 10
       }
-    }, React.createElement("div", {
-      className: "lnd-fill",
+    }, s.t), React.createElement("p", {
       style: {
-        width: `${s.p * 2.2}%`,
-        height: "100%",
-        borderRadius: 99,
-        background: i === 0 ? LT.acidInk : LT.acid
+        fontSize: 14.5,
+        color: LT.ink2,
+        lineHeight: 1.6,
+        margin: 0
       }
-    }))))))));
+    }, s.d)))))));
   }
-  function Gamification() {
-    const ring = 2 * Math.PI * 30;
+  function Economics() {
+    const splits = [{
+      n: "Creator / LP",
+      p: 30,
+      note: "of swap fees, perpetually"
+    }, {
+      n: "Protocol",
+      p: 70,
+      note: "routed to stakers, hook authors, treasury"
+    }];
     return React.createElement("section", {
       style: {
-        padding: "84px 40px 0"
+        padding: "92px 40px 0"
       }
     }, React.createElement("div", {
       style: {
-        maxWidth: 1280,
+        maxWidth: 1180,
         margin: "0 auto"
       }
-    }, React.createElement(Reveal, null, React.createElement(Kicker, null, "Growth economy"), React.createElement(H2, null, "Trade. Rank up. Get paid.")), React.createElement("div", {
+    }, React.createElement("div", {
+      className: "lnd-card",
+      style: {
+        padding: "44px 48px",
+        background: "linear-gradient(135deg,#ffffff,#f2f8f1)"
+      }
+    }, React.createElement("div", {
       className: "lnd-cols",
       style: {
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
-        gap: 16,
-        marginTop: 28
+        gap: 56,
+        alignItems: "center"
       }
-    }, React.createElement(Reveal, null, React.createElement("div", {
-      className: "lnd-card",
+    }, React.createElement(Reveal, null, React.createElement(Kicker, {
+      color: LT.acidInk
+    }, "On-chain economics"), React.createElement(H2, null, "Fair by default. Verifiable forever."), React.createElement("p", {
       style: {
-        padding: 26,
-        height: "100%"
+        fontSize: 16,
+        color: LT.ink2,
+        lineHeight: 1.6,
+        maxWidth: 440,
+        margin: "0 0 22px"
       }
+    }, "100% of every token's supply starts in the bonding curve \u2014 creators get no pre-mine. At graduation (~$55k) liquidity locks permanently in a Uniswap v4 pool. Fees split on-chain, automatically."), React.createElement(Btn, {
+      href: HL.docs
+    }, "Read the economics")), React.createElement(Reveal, {
+      delay: 120
     }, React.createElement("div", {
       style: {
         display: "flex",
-        alignItems: "center",
-        gap: 18,
-        marginBottom: 22
+        flexDirection: "column",
+        gap: 16
       }
-    }, React.createElement("div", {
-      style: {
-        position: "relative",
-        width: 72,
-        height: 72,
-        flexShrink: 0
-      }
-    }, React.createElement("svg", {
-      width: "72",
-      height: "72",
-      viewBox: "0 0 72 72",
-      style: {
-        transform: "rotate(-90deg)"
-      }
-    }, React.createElement("circle", {
-      cx: "36",
-      cy: "36",
-      r: "30",
-      fill: "none",
-      stroke: "rgba(13,16,12,0.07)",
-      strokeWidth: "5"
-    }), React.createElement("circle", {
-      cx: "36",
-      cy: "36",
-      r: "30",
-      fill: "none",
-      stroke: LT.acidInk,
-      strokeWidth: "5",
-      strokeLinecap: "round",
-      strokeDasharray: ring,
-      strokeDashoffset: ring * 0.3
-    })), React.createElement("span", {
-      style: {
-        position: "absolute",
-        inset: 0,
-        display: "grid",
-        placeItems: "center",
-        fontFamily: LT.mono,
-        fontSize: 20,
-        fontWeight: 700,
-        color: LT.ink
-      }
-    }, "24")), React.createElement("div", {
-      style: {
-        flex: 1
-      }
+    }, splits.map((s, i) => React.createElement("div", {
+      key: s.n
     }, React.createElement("div", {
       style: {
         display: "flex",
         justifyContent: "space-between",
-        marginBottom: 7
+        alignItems: "baseline",
+        marginBottom: 6
       }
     }, React.createElement("span", {
       style: {
-        fontSize: 16,
-        fontWeight: 700,
+        fontSize: 14,
+        fontWeight: 600,
         color: LT.ink
       }
-    }, "Season 4 Pass"), React.createElement("span", {
+    }, s.n), React.createElement("span", {
       style: {
         fontFamily: LT.mono,
-        fontSize: 11,
-        color: LT.ink3
+        fontSize: 22,
+        fontWeight: 700,
+        color: i === 0 ? LT.acidInk : LT.ink
       }
-    }, "8,420 / 12,000 XP")), React.createElement("div", {
+    }, s.p, "%")), React.createElement("div", {
       style: {
         height: 8,
         borderRadius: 99,
@@ -1595,446 +1123,95 @@
     }, React.createElement("div", {
       className: "lnd-fill",
       style: {
-        width: "70%",
+        width: `${s.p}%`,
         height: "100%",
         borderRadius: 99,
-        background: `linear-gradient(90deg, ${LT.acid}, ${LT.acidInk})`
+        background: i === 0 ? LT.acidInk : LT.acid
       }
-    })))), React.createElement("div", {
+    })), React.createElement("div", {
       style: {
-        display: "flex",
-        gap: 8,
-        marginBottom: 20
-      }
-    }, ["T24 · Fee rebate", "T25 · Map aura", "T26 · 🔒 Pro"].map((t, i) => React.createElement("span", {
-      key: t,
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 10.5,
-        padding: "6px 11px",
-        borderRadius: 8,
-        border: `1px solid ${i === 0 ? "rgba(56,224,123,0.5)" : LT.line2}`,
-        background: i === 0 ? LT.acidBg : "#fff",
-        color: i === 0 ? LT.acidInk : LT.ink3
-      }
-    }, t))), React.createElement("span", {
-      onClick: lopen(HL.app),
-      style: {
-        fontSize: 13.5,
-        fontWeight: 600,
-        color: LT.acidInk,
-        cursor: "pointer"
-      }
-    }, "View Season Pass \u2192"))), React.createElement(Reveal, {
-      delay: 130
-    }, React.createElement("div", {
-      className: "lnd-card",
-      style: {
-        padding: 26,
-        height: "100%"
-      }
-    }, React.createElement("div", {
-      style: {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        marginBottom: 18
-      }
-    }, React.createElement("span", {
-      style: {
-        fontSize: 16,
-        fontWeight: 700,
-        color: LT.ink
-      }
-    }, "Daily quests"), React.createElement("div", {
-      style: {
-        display: "flex",
-        gap: 4
-      }
-    }, [1, 1, 1, 1, 0, 0, 0].map((f, i) => React.createElement("span", {
-      key: i,
-      style: {
-        width: 14,
-        height: 14,
-        borderRadius: 4,
-        background: f ? LT.acid : "rgba(13,16,12,0.06)",
-        border: `1px solid ${f ? "transparent" : LT.line2}`
-      }
-    })), React.createElement("span", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 10,
+        fontSize: 12,
         color: LT.ink3,
-        marginLeft: 6
+        marginTop: 5
       }
-    }, "4d streak"))), [{
-      q: "Make a trade on any curve token",
-      xp: 250,
-      done: true
-    }, {
-      q: "Install a hook on your token",
-      xp: 400,
-      done: false
-    }, {
-      q: "Win an arena wager",
-      xp: 600,
-      done: false
-    }].map((q, i) => React.createElement("div", {
-      key: i,
-      style: {
-        display: "flex",
-        alignItems: "center",
-        gap: 12,
-        padding: "11px 0",
-        borderTop: i ? `1px solid ${LT.line}` : "none"
-      }
-    }, React.createElement("span", {
-      style: {
-        width: 18,
-        height: 18,
-        borderRadius: 6,
-        flexShrink: 0,
-        background: q.done ? LT.acidInk : "#fff",
-        border: `1.5px solid ${q.done ? LT.acidInk : LT.line2}`,
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        color: "#fff",
-        fontSize: 10
-      }
-    }, q.done ? "✓" : ""), React.createElement("span", {
-      style: {
-        flex: 1,
-        fontSize: 13.5,
-        color: q.done ? LT.ink3 : LT.ink,
-        textDecoration: q.done ? "line-through" : "none"
-      }
-    }, q.q), React.createElement("span", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 11,
-        fontWeight: 700,
-        color: LT.acidInk
-      }
-    }, "+", q.xp, " XP"))), React.createElement("span", {
-      onClick: lopen(HL.app),
-      style: {
-        fontSize: 13.5,
-        fontWeight: 600,
-        color: LT.acidInk,
-        cursor: "pointer",
-        display: "inline-block",
-        marginTop: 12
-      }
-    }, "View All Quests \u2192"))))));
-  }
-  function WalletOS() {
-    const feats = [{
-      t: "Smart Wallets",
-      d: "ERC-4337 accounts, gasless onboarding"
-    }, {
-      t: "Extensions",
-      d: "5 plugins: limits, alerts, auto-buy, vesting, guard"
-    }, {
-      t: "Auto-Split Revenue",
-      d: "Route earnings to N wallets on-chain"
-    }, {
-      t: "Donation Automation",
-      d: "Pledge % of fees to any address"
-    }, {
-      t: "Multi-wallet",
-      d: "One identity, many addresses"
-    }];
-    return React.createElement("section", {
-      style: {
-        padding: "84px 40px 0"
-      }
-    }, React.createElement("div", {
-      className: "lnd-cols",
-      style: {
-        maxWidth: 1280,
-        margin: "0 auto",
-        display: "grid",
-        gridTemplateColumns: "0.9fr 1.1fr",
-        gap: 56,
-        alignItems: "center"
-      }
-    }, React.createElement(Reveal, null, React.createElement(Kicker, {
-      color: LT.acidInk
-    }, "New \xB7 Wallet OS"), React.createElement(H2, null, "Every wallet is a revenue engine."), React.createElement("p", {
-      style: {
-        fontSize: 16,
-        color: LT.ink2,
-        lineHeight: 1.6,
-        maxWidth: 420,
-        margin: "0 0 24px"
-      }
-    }, "Smart accounts with programmable money flows \u2014 your trading, creator earnings, and donations route themselves."), React.createElement("button", {
-      className: "lnd-btn",
-      onClick: lopen(HL.ios)
-    }, "Create Smart Wallet")), React.createElement(Reveal, {
-      delay: 130
-    }, React.createElement("div", {
-      className: "lnd-cols",
-      style: {
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: 12
-      }
-    }, feats.map((f, i) => React.createElement("div", {
-      key: f.t,
-      className: "lnd-card lnd-lift",
-      style: {
-        padding: 20,
-        gridColumn: i === 4 ? "span 2" : "auto"
-      }
-    }, React.createElement("div", {
-      style: {
-        fontSize: 14.5,
-        fontWeight: 700,
-        color: LT.ink,
-        marginBottom: 5
-      }
-    }, f.t), React.createElement("div", {
-      style: {
-        fontSize: 12.5,
-        color: LT.ink2,
-        lineHeight: 1.5
-      }
-    }, f.d)))))));
-  }
-  function CreatorEconomy() {
-    return React.createElement("section", {
-      style: {
-        padding: "84px 40px 0"
-      }
-    }, React.createElement("div", {
-      style: {
-        maxWidth: 1280,
-        margin: "0 auto"
-      }
-    }, React.createElement("div", {
-      className: "lnd-card",
-      style: {
-        padding: "44px 48px",
-        background: "linear-gradient(135deg, #ffffff, #f2f8f1)"
-      }
-    }, React.createElement("div", {
-      className: "lnd-cols",
-      style: {
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: 56,
-        alignItems: "center"
-      }
-    }, React.createElement(Reveal, null, React.createElement(Kicker, {
-      color: LT.acidInk
-    }, "Creator economy"), React.createElement(H2, null, "Build hooks. Earn forever."), React.createElement("p", {
-      style: {
-        fontSize: 16,
-        color: LT.ink2,
-        lineHeight: 1.6,
-        maxWidth: 440,
-        margin: "0 0 22px"
-      }
-    }, "Publish to the hook marketplace with license NFTs. Every install, every swap through your hook \u2014 you get paid, on-chain, automatically."), React.createElement("div", {
-      style: {
-        display: "flex",
-        alignItems: "center",
-        gap: 22,
-        marginBottom: 26
-      }
-    }, React.createElement("div", null, React.createElement("div", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 38,
-        fontWeight: 700,
-        color: LT.acidInk
-      }
-    }, "70/30"), React.createElement("div", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 10,
-        color: LT.ink3,
-        letterSpacing: "0.14em"
-      }
-    }, "CREATOR SPLIT")), React.createElement("div", {
-      style: {
-        width: 1,
-        height: 44,
-        background: LT.line2
-      }
-    }), React.createElement("div", null, React.createElement("div", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 38,
-        fontWeight: 700,
-        color: LT.ink
-      }
-    }, "142"), React.createElement("div", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 10,
-        color: LT.ink3,
-        letterSpacing: "0.14em"
-      }
-    }, "HOOKS LISTED"))), React.createElement("button", {
-      className: "lnd-btn",
-      onClick: lopen(HL.app)
-    }, "Start Building")), React.createElement(Reveal, {
-      delay: 130
-    }, React.createElement("div", {
-      style: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexWrap: "wrap",
-        gap: 0
-      }
-    }, [{
-      t: "Build",
-      d: "AI Studio or Solidity SDK",
-      icon: "✦"
-    }, {
-      t: "Deploy",
-      d: "Audited registry, one tx",
-      icon: "◆"
-    }, {
-      t: "Earn",
-      d: "Per-install + per-swap fees",
-      icon: "$"
-    }].map((s, i) => React.createElement(React.Fragment, {
-      key: s.t
-    }, i > 0 && React.createElement("span", {
-      style: {
-        color: LT.acidInk,
-        fontSize: 18,
-        padding: "0 10px"
-      }
-    }, "\u2192"), React.createElement("div", {
-      className: "lnd-card",
-      style: {
-        padding: "20px 18px",
-        flex: 1,
-        textAlign: "center"
-      }
-    }, React.createElement("span", {
-      style: {
-        width: 38,
-        height: 38,
-        borderRadius: 10,
-        background: LT.acidBg,
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontSize: 15,
-        marginBottom: 10,
-        color: LT.acidInk,
-        fontWeight: 700
-      }
-    }, s.icon), React.createElement("div", {
-      style: {
-        fontSize: 15,
-        fontWeight: 700,
-        color: LT.ink
-      }
-    }, s.t), React.createElement("div", {
-      style: {
-        fontSize: 11.5,
-        color: LT.ink3,
-        marginTop: 4
-      }
-    }, s.d))))))))));
+    }, s.note)))))))));
   }
   function ChainLogo({
-    chain
+    c
   }) {
     const [err, setErr] = React.useState(false);
-    if (!err && chain.img) {
-      return React.createElement("img", {
-        src: chain.img,
-        alt: chain.n,
-        width: "24",
-        height: "24",
-        onError: () => setErr(true),
-        style: {
-          width: 24,
-          height: 24,
-          borderRadius: 99,
-          objectFit: "cover",
-          filter: chain.live ? "none" : "grayscale(0.25)",
-          opacity: chain.live ? 1 : 0.88
-        }
-      });
-    }
+    if (!err) return React.createElement("img", {
+      src: `assets/chains/${c.k}.jpg`,
+      alt: c.n,
+      width: "24",
+      height: "24",
+      onError: () => setErr(true),
+      style: {
+        width: 24,
+        height: 24,
+        borderRadius: 99,
+        objectFit: "cover",
+        filter: c.live ? "none" : "grayscale(0.3)",
+        opacity: c.live ? 1 : 0.85
+      }
+    });
     return React.createElement("span", {
       style: {
         width: 24,
         height: 24,
         borderRadius: 99,
-        background: chain.c,
+        background: LT.paper2,
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
         fontFamily: LT.mono,
         fontSize: 9.5,
         fontWeight: 700,
-        color: chain.fg || "#fff"
+        color: LT.ink2
       }
-    }, chain.n.slice(0, 2));
+    }, c.n.slice(0, 2));
   }
   function MultiChain() {
     const chains = [{
       n: "Base",
-      live: true,
-      img: "assets/chains/base.jpg",
-      c: "#0052ff"
+      k: "base",
+      live: true
     }, {
       n: "Ethereum",
-      img: "assets/chains/ethereum.jpg",
-      c: "#627eea"
-    }, {
-      n: "Unichain",
-      img: "assets/chains/unichain.jpg",
-      c: "#f50db4"
+      k: "ethereum"
     }, {
       n: "Arbitrum",
-      img: "assets/chains/arbitrum.jpg",
-      c: "#28a0f0"
+      k: "arbitrum"
     }, {
       n: "BNB",
-      img: "assets/chains/binance.jpg",
-      c: "#f0b90b",
-      fg: "#1a1500"
+      k: "binance"
     }, {
       n: "HyperEVM",
-      img: "assets/chains/hyperliquid.jpg",
-      c: "#97fce4",
-      fg: "#04312a"
+      k: "hyperliquid"
     }, {
       n: "MegaETH",
-      img: "assets/chains/megaeth.jpg",
-      c: "#1a1a1a"
+      k: "megaeth"
+    }, {
+      n: "Unichain",
+      k: "unichain"
     }, {
       n: "Ink",
-      img: "assets/chains/ink.jpg",
-      c: "#7132f5"
+      k: "ink"
     }, {
       n: "X Layer",
-      img: "assets/chains/xlayer.jpg",
-      c: "#0d100c"
+      k: "xlayer"
     }];
     return React.createElement("section", {
       style: {
-        padding: "84px 40px 0"
+        padding: "92px 40px 0"
       }
     }, React.createElement("div", {
       style: {
-        maxWidth: 1280,
+        maxWidth: 1180,
         margin: "0 auto",
         textAlign: "center"
       }
-    }, React.createElement(Reveal, null, React.createElement(Kicker, null, "Multi-chain"), React.createElement(H2, null, "9 chains. One protocol."), React.createElement("div", {
+    }, React.createElement(Reveal, null, React.createElement(Kicker, null, "Multi-chain"), React.createElement(H2, null, "One wallet. Every HookOS chain."), React.createElement("div", {
       style: {
         display: "flex",
         justifyContent: "center",
@@ -2042,7 +1219,7 @@
         gap: 12,
         marginTop: 30
       }
-    }, chains.map((c, i) => React.createElement("div", {
+    }, chains.map(c => React.createElement("div", {
       key: c.n,
       className: "lnd-card lnd-lift",
       style: {
@@ -2053,7 +1230,7 @@
         border: c.live ? "1.5px solid rgba(56,224,123,0.55)" : undefined
       }
     }, React.createElement(ChainLogo, {
-      chain: c
+      c: c
     }), React.createElement("span", {
       style: {
         fontSize: 14,
@@ -2083,198 +1260,14 @@
       }
     }, "SOON")))))));
   }
-  function TrendingTokens() {
-    return React.createElement("section", {
-      style: {
-        padding: "84px 40px 0"
-      }
-    }, React.createElement("div", {
-      style: {
-        maxWidth: 1280,
-        margin: "0 auto"
-      }
-    }, React.createElement(Reveal, null, React.createElement("div", {
-      style: {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "flex-end",
-        marginBottom: 24
-      }
-    }, React.createElement("div", null, React.createElement(Kicker, null, "Markets"), React.createElement(H2, null, "Trending now.")), React.createElement("span", {
-      onClick: lopen(HL.app),
-      style: {
-        fontSize: 13.5,
-        fontWeight: 600,
-        color: LT.acidInk,
-        cursor: "pointer",
-        paddingBottom: 8
-      }
-    }, "All 12,840 tokens \u2192"))), React.createElement(Reveal, {
-      delay: 100
-    }, React.createElement("div", {
-      className: "lnd-card lnd-tscroll",
-      style: {
-        padding: 0
-      }
-    }, React.createElement("div", {
-      style: {
-        display: "grid",
-        gridTemplateColumns: "44px 1.5fr 110px 90px 110px 110px 1fr 90px",
-        gap: 12,
-        padding: "11px 22px",
-        borderBottom: `1px solid ${LT.line}`,
-        fontFamily: LT.mono,
-        fontSize: 9.5,
-        color: LT.ink3,
-        letterSpacing: "0.14em"
-      }
-    }, React.createElement("span", null, "#"), React.createElement("span", null, "TOKEN"), React.createElement("span", {
-      style: {
-        textAlign: "right"
-      }
-    }, "PRICE"), React.createElement("span", {
-      style: {
-        textAlign: "right"
-      }
-    }, "24H"), React.createElement("span", {
-      style: {
-        textAlign: "right"
-      }
-    }, "MCAP"), React.createElement("span", {
-      style: {
-        textAlign: "right"
-      }
-    }, "VOLUME"), React.createElement("span", null, "CURVE"), React.createElement("span", {
-      style: {
-        textAlign: "right"
-      }
-    }, "7D")), LND_TOKENS.map((t, i) => React.createElement("div", {
-      key: t.s,
-      className: "lnd-row",
-      style: {
-        display: "grid",
-        gridTemplateColumns: "44px 1.5fr 110px 90px 110px 110px 1fr 90px",
-        gap: 12,
-        padding: "13px 22px",
-        borderBottom: i < 9 ? `1px solid ${LT.line}` : "none",
-        alignItems: "center",
-        cursor: "pointer"
-      }
-    }, React.createElement("span", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 11.5,
-        color: i < 3 ? LT.gold : LT.ink3,
-        fontWeight: i < 3 ? 700 : 400
-      }
-    }, i + 1), React.createElement("span", {
-      style: {
-        display: "flex",
-        alignItems: "center",
-        gap: 10
-      }
-    }, React.createElement("span", {
-      style: {
-        width: 26,
-        height: 26,
-        borderRadius: 8,
-        background: "linear-gradient(135deg, #5af787, #2fb866)",
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontFamily: LT.mono,
-        fontSize: 9,
-        fontWeight: 700,
-        color: "#06210f"
-      }
-    }, t.s.slice(0, 2)), React.createElement("span", {
-      style: {
-        fontSize: 14,
-        fontWeight: 600,
-        color: LT.ink
-      }
-    }, "$", t.s), React.createElement("span", {
-      style: {
-        fontSize: 12,
-        color: LT.ink3
-      }
-    }, t.n)), React.createElement("span", {
-      style: {
-        textAlign: "right",
-        fontFamily: LT.mono,
-        fontSize: 12.5,
-        color: LT.ink
-      }
-    }, t.p), React.createElement("span", {
-      style: {
-        textAlign: "right",
-        fontFamily: LT.mono,
-        fontSize: 12,
-        color: t.ch >= 0 ? LT.acidInk : LT.loss
-      }
-    }, t.ch >= 0 ? "+" : "", t.ch, "%"), React.createElement("span", {
-      style: {
-        textAlign: "right",
-        fontFamily: LT.mono,
-        fontSize: 12,
-        color: LT.ink2
-      }
-    }, t.mc), React.createElement("span", {
-      style: {
-        textAlign: "right",
-        fontFamily: LT.mono,
-        fontSize: 12,
-        color: LT.ink2
-      }
-    }, t.vol), React.createElement("span", {
-      style: {
-        display: "flex",
-        alignItems: "center",
-        gap: 8
-      }
-    }, React.createElement("span", {
-      style: {
-        flex: 1,
-        height: 5,
-        borderRadius: 99,
-        background: "rgba(13,16,12,0.05)",
-        overflow: "hidden"
-      }
-    }, React.createElement("span", {
-      style: {
-        display: "block",
-        width: `${t.curve}%`,
-        height: "100%",
-        borderRadius: 99,
-        background: t.curve === 100 ? LT.gold : LT.acid
-      }
-    })), React.createElement("span", {
-      style: {
-        fontFamily: LT.mono,
-        fontSize: 9.5,
-        color: t.curve === 100 ? LT.gold : LT.ink3,
-        minWidth: 38
-      }
-    }, t.curve === 100 ? "GRAD" : `${t.curve}%`)), React.createElement("span", {
-      style: {
-        display: "flex",
-        justifyContent: "flex-end"
-      }
-    }, React.createElement(LSpark, {
-      pts: lndSpark(i + 4, t.ch >= 0),
-      w: 66,
-      h: 20,
-      color: t.ch >= 0 ? LT.acidInk : LT.loss
-    }))))))));
-  }
   function BottomCTA() {
     return React.createElement("section", {
       style: {
-        padding: "100px 40px"
+        padding: "104px 40px"
       }
     }, React.createElement("div", {
       style: {
-        maxWidth: 1280,
+        maxWidth: 1180,
         margin: "0 auto",
         textAlign: "center"
       }
@@ -2288,14 +1281,14 @@
       size: 56
     })), React.createElement("h2", {
       style: {
-        fontSize: 56,
+        fontSize: 54,
         fontWeight: 700,
         letterSpacing: "-0.04em",
-        lineHeight: 1.04,
+        lineHeight: 1.05,
         margin: "0 0 16px",
         color: LT.ink
       }
-    }, "Stop launching tokens.", React.createElement("br", null), React.createElement("span", {
+    }, "Take custody.", React.createElement("br", null), React.createElement("span", {
       style: {
         color: LT.acidInk
       }
@@ -2305,48 +1298,36 @@
         color: LT.ink2,
         margin: "0 0 30px"
       }
-    }, "Deploy in 60 seconds \u2014 from the app or a single tweet."), React.createElement("div", {
+    }, "Your keys, your tokens, your hooks \u2014 in one app. Live on Base."), React.createElement("div", {
       style: {
         display: "flex",
         justifyContent: "center",
-        gap: 12
+        gap: 12,
+        flexWrap: "wrap"
       }
-    }, React.createElement("button", {
-      className: "lnd-btn",
-      style: {
-        padding: "15px 28px",
-        fontSize: 15.5
-      },
-      onClick: lopen(HL.ios)
-    }, "\uD83D\uDE80 Get the App"), React.createElement("button", {
-      className: "lnd-btn-ghost",
-      style: {
-        padding: "15px 28px",
-        fontSize: 15.5
-      },
-      onClick: lopen(HL.app)
-    }, "Explore Hooks"), React.createElement("button", {
-      className: "lnd-btn-ghost",
-      style: {
-        padding: "15px 28px",
-        fontSize: 15.5
-      },
-      onClick: lopen(HL.tg)
+    }, React.createElement(Btn, {
+      big: true,
+      href: HL.ios
+    }, "\uD83D\uDE80 Get the App"), React.createElement(Btn, {
+      big: true,
+      ghost: true,
+      href: HL.app
+    }, "Explore HookOS"), React.createElement(Btn, {
+      big: true,
+      ghost: true,
+      href: HL.tg
     }, "Join Community")))));
   }
-  function LFooter() {
+  function Footer() {
     const cols = [{
+      h: "Wallet",
+      l: [["Features", "#wallet"], ["Live data", "#live"], ["Hooks", "#hooks"], ["Get the App", HL.ios]]
+    }, {
       h: "Protocol",
-      l: [["Tokens", HL.app], ["Hooks", HL.app], ["Arena", HL.app], ["Terminal", HL.app], ["Launch", HL.app], ["Market Map", HL.app]]
-    }, {
-      h: "Economy",
-      l: [["Battle Pass", HL.app], ["Quests", HL.app], ["Clans", HL.app], ["Launch Wars", HL.app], ["Staking", HL.app], ["Governance", HL.app]]
-    }, {
-      h: "Build",
-      l: [["AI Hook Studio", HL.app], ["Creator Hub", HL.app], ["Marketplace", HL.app], ["Docs", HL.app], ["Status", HL.app], ["Get the App", HL.ios]]
+      l: [["HookOS App", HL.app], ["Docs", HL.docs], ["Developers", HL.dev], ["Indexer", API]]
     }, {
       h: "Community",
-      l: [["X @hookosfun", HL.x], ["Bot @hookosbot", HL.bot], ["Telegram", HL.tg], ["hookos.fun", HL.app], ["Wallet site", HL.wallet], ["Brand Kit", HL.app]]
+      l: [["X @hookosfun", HL.x], ["Bot @hookosbot", HL.bot], ["Telegram", HL.tg], ["hookos.fun", HL.app]]
     }];
     const socials = [["𝕏", HL.x], ["✈", HL.tg], ["◆", HL.app]];
     return React.createElement("footer", {
@@ -2357,14 +1338,14 @@
       }
     }, React.createElement("div", {
       style: {
-        maxWidth: 1280,
+        maxWidth: 1180,
         margin: "0 auto"
       }
     }, React.createElement("div", {
       className: "lnd-cols",
       style: {
         display: "grid",
-        gridTemplateColumns: "1.4fr repeat(4, 1fr)",
+        gridTemplateColumns: "1.6fr repeat(3,1fr)",
         gap: 36
       }
     }, React.createElement("div", null, React.createElement("a", {
@@ -2393,10 +1374,10 @@
         fontSize: 13,
         color: LT.ink3,
         lineHeight: 1.6,
-        maxWidth: 240,
+        maxWidth: 260,
         margin: "0 0 18px"
       }
-    }, "The native client for the HookOS ecosystem. Markets are now software."), React.createElement("div", {
+    }, "The self-custody native client for the HookOS ecosystem. Your keys. Your markets."), React.createElement("div", {
       style: {
         display: "flex",
         gap: 8
@@ -2416,8 +1397,7 @@
         alignItems: "center",
         justifyContent: "center",
         fontSize: 13,
-        color: LT.ink2,
-        cursor: "pointer"
+        color: LT.ink2
       }
     }, s)))), cols.map(c => React.createElement("div", {
       key: c.h
@@ -2438,13 +1418,14 @@
     }, c.l.map(([label, href]) => React.createElement("a", {
       key: label,
       href: href,
-      target: "_blank",
-      rel: "noopener noreferrer",
+      target: href.startsWith("#") ? undefined : "_blank",
+      rel: href.startsWith("#") ? undefined : "noopener noreferrer",
       className: "lnd-plain lnd-navlink",
       style: {
         fontSize: 13
       }
     }, label)))))), React.createElement("div", {
+      className: "lnd-head",
       style: {
         display: "flex",
         justifyContent: "space-between",
@@ -2459,7 +1440,7 @@
         fontSize: 11,
         color: LT.ink3
       }
-    }, "\xA9 2026 HOOKOS LABS \xB7 hookos.fun"), React.createElement("span", {
+    }, "\xA9 2026 HOOKOS LABS \xB7 hookoswallet.xyz"), React.createElement("span", {
       style: {
         fontFamily: LT.mono,
         fontSize: 11,
@@ -2473,21 +1454,637 @@
       sw: 4
     }), " POWERED BY HookOS"))));
   }
-  Object.assign(window, {
-    ProtocolPulse,
-    RevenueSplits,
-    Gamification,
-    WalletOS,
-    CreatorEconomy,
-    MultiChain,
-    TrendingTokens,
-    BottomCTA,
-    LFooter
-  });
+  function ProtocolPulse() {
+    const fees = useApi("/fees");
+    const stats = useApi("/stats");
+    const loading = fees.loading;
+    const failed = !fees.loading && (fees.error || !Array.isArray(fees.data));
+    const rows = Array.isArray(fees.data) ? fees.data : [];
+    const empty = !loading && !failed && rows.length === 0;
+    let total = 0n;
+    const byLabel = {};
+    for (const r of rows) {
+      let w;
+      try {
+        w = BigInt(r.amount);
+      } catch (e) {
+        w = 0n;
+      }
+      total += w;
+      byLabel[r.label] = (byLabel[r.label] || 0n) + w;
+    }
+    const bars = Object.keys(byLabel).map(label => {
+      const wei = byLabel[label];
+      const pct = total > 0n ? Number(wei * 10000n / total) / 100 : 0;
+      return {
+        label,
+        wei,
+        pct
+      };
+    }).sort((a, b) => a.wei < b.wei ? 1 : a.wei > b.wei ? -1 : 0);
+    const statTotalWei = stats.data && stats.data.totalFeesDistributed ? stats.data.totalFeesDistributed : total.toString();
+    const headEth = parseFloat(weiToEth(statTotalWei, 4)) || 0;
+    const recent = rows.slice().sort((a, b) => Number(b.timestamp) - Number(a.timestamp)).slice(0, 6);
+    const timeAgo = ts => {
+      const s = Math.max(0, Math.floor(Date.now() / 1000) - Number(ts));
+      if (s < 60) return s + "s";
+      if (s < 3600) return Math.floor(s / 60) + "m";
+      if (s < 86400) return Math.floor(s / 3600) + "h";
+      return Math.floor(s / 86400) + "d";
+    };
+    const monoNum = {
+      fontFamily: LT.mono,
+      fontVariantNumeric: "tabular-nums"
+    };
+    return React.createElement("section", {
+      style: {
+        padding: "92px 40px 0"
+      }
+    }, React.createElement("div", {
+      style: {
+        maxWidth: 1180,
+        margin: "0 auto"
+      }
+    }, React.createElement(Reveal, null, React.createElement("div", {
+      className: "lnd-head",
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "flex-end",
+        marginBottom: 30
+      }
+    }, React.createElement("div", null, React.createElement(Kicker, null, "Protocol Pulse"), React.createElement(H2, null, "Every swap fee, split on-chain."), React.createElement("p", {
+      style: {
+        margin: "10px 0 0",
+        color: LT.ink2,
+        fontFamily: LT.sans,
+        maxWidth: 520,
+        lineHeight: 1.5,
+        fontSize: 16
+      }
+    }, "Live fee distribution from the HookOS indexer. No estimates \u2014 these are settled transfers to LPs, hook authors, and the protocol treasury.")), React.createElement("div", {
+      style: {
+        textAlign: "right",
+        flexShrink: 0
+      }
+    }, React.createElement("div", {
+      style: {
+        fontSize: 11,
+        letterSpacing: "0.14em",
+        textTransform: "uppercase",
+        color: LT.ink3,
+        fontFamily: LT.mono,
+        marginBottom: 6
+      }
+    }, "Total distributed"), React.createElement("div", {
+      style: {
+        ...monoNum,
+        fontSize: 30,
+        fontWeight: 700,
+        color: LT.ink,
+        lineHeight: 1
+      }
+    }, loading || failed ? React.createElement(Skeleton, {
+      w: 150,
+      h: 30,
+      r: 6
+    }) : React.createElement(Counter, {
+      to: headEth,
+      decimals: 4,
+      suffix: " ETH"
+    }))))), React.createElement(Reveal, {
+      delay: 80
+    }, React.createElement("div", {
+      className: "lnd-cols",
+      style: {
+        display: "grid",
+        gridTemplateColumns: "1.4fr 1fr",
+        gap: 20,
+        alignItems: "stretch"
+      }
+    }, React.createElement("div", {
+      className: "lnd-card",
+      style: {
+        padding: 26
+      }
+    }, React.createElement("div", {
+      style: {
+        fontFamily: LT.mono,
+        fontSize: 10.5,
+        letterSpacing: "0.14em",
+        textTransform: "uppercase",
+        color: LT.ink3,
+        marginBottom: 20
+      }
+    }, "Distribution by recipient"), loading && React.createElement("div", {
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        gap: 22
+      }
+    }, [0, 1, 2].map(i => React.createElement("div", {
+      key: i
+    }, React.createElement(Skeleton, {
+      w: 140,
+      h: 13,
+      r: 4,
+      style: {
+        marginBottom: 10
+      }
+    }), React.createElement(Skeleton, {
+      w: "100%",
+      h: 12,
+      r: 6
+    })))), failed && React.createElement("div", {
+      style: {
+        padding: "40px 0",
+        textAlign: "center",
+        color: LT.ink3
+      }
+    }, "Live fee data unavailable."), empty && React.createElement("div", {
+      style: {
+        padding: "40px 0",
+        textAlign: "center",
+        color: LT.ink3
+      }
+    }, "No fees distributed yet."), !loading && !failed && !empty && React.createElement("div", {
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        gap: 22
+      }
+    }, bars.map(b => React.createElement("div", {
+      key: b.label
+    }, React.createElement("div", {
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "baseline",
+        marginBottom: 9
+      }
+    }, React.createElement("span", {
+      style: {
+        fontSize: 15,
+        fontWeight: 500,
+        color: LT.ink
+      }
+    }, b.label), React.createElement("span", {
+      style: {
+        ...monoNum,
+        fontSize: 13,
+        color: LT.ink2
+      }
+    }, weiToEth(b.wei.toString(), 5), " ETH", React.createElement("span", {
+      style: {
+        color: LT.ink3,
+        marginLeft: 10
+      }
+    }, b.pct.toFixed(1), "%"))), React.createElement("div", {
+      style: {
+        height: 12,
+        borderRadius: 6,
+        background: LT.paper2,
+        overflow: "hidden"
+      }
+    }, React.createElement("div", {
+      className: "lnd-fill",
+      style: {
+        width: b.pct + "%",
+        height: "100%",
+        borderRadius: 6,
+        background: LT.acid,
+        minWidth: 4
+      }
+    })))))), React.createElement("div", {
+      className: "lnd-card",
+      style: {
+        padding: 26,
+        display: "flex",
+        flexDirection: "column"
+      }
+    }, React.createElement("div", {
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 18
+      }
+    }, React.createElement("span", {
+      style: {
+        fontFamily: LT.mono,
+        fontSize: 10.5,
+        letterSpacing: "0.14em",
+        textTransform: "uppercase",
+        color: LT.ink3
+      }
+    }, "Recent events"), React.createElement(LHex, {
+      size: 16,
+      sw: 1.5
+    })), loading && React.createElement("div", {
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        gap: 14
+      }
+    }, [0, 1, 2, 3, 4].map(i => React.createElement(Skeleton, {
+      key: i,
+      w: "100%",
+      h: 18,
+      r: 4
+    }))), (failed || empty) && React.createElement("div", {
+      style: {
+        flex: 1,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: LT.ink3,
+        textAlign: "center",
+        minHeight: 120
+      }
+    }, failed ? "Live fee data unavailable." : "No fees distributed yet."), !loading && !failed && !empty && React.createElement("div", {
+      style: {
+        display: "flex",
+        flexDirection: "column"
+      }
+    }, recent.map((r, i) => React.createElement("div", {
+      key: r.id,
+      style: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "11px 0",
+        borderTop: i === 0 ? "none" : `1px solid ${LT.line}`
+      }
+    }, React.createElement("div", {
+      style: {
+        minWidth: 0
+      }
+    }, React.createElement("div", {
+      style: {
+        fontSize: 14,
+        color: LT.ink,
+        fontWeight: 500,
+        whiteSpace: "nowrap",
+        overflow: "hidden",
+        textOverflow: "ellipsis"
+      }
+    }, r.label), React.createElement("div", {
+      style: {
+        ...monoNum,
+        fontSize: 12,
+        color: LT.ink3
+      }
+    }, shortAddr(r.recipient))), React.createElement("div", {
+      style: {
+        textAlign: "right",
+        flexShrink: 0,
+        marginLeft: 12
+      }
+    }, React.createElement("div", {
+      style: {
+        ...monoNum,
+        fontSize: 14,
+        color: LT.ink
+      }
+    }, weiToEth(r.amount, 5)), React.createElement("div", {
+      style: {
+        ...monoNum,
+        fontSize: 11,
+        color: LT.ink3
+      }
+    }, timeAgo(r.timestamp), " ago"))))))))));
+  }
+  function SelfCustody() {
+    const checklist = [["Non-custodial by design", "Your seed is generated and encrypted on-device. It never touches our servers — there are none to touch."], ["On-device signing", "Every signature is produced in the app's secure keystore. Keys don't leave the phone to sign."], ["Hardware wallet support", "Pair a Ledger to keep keys in cold storage and confirm on the device screen."], ["Smart accounts (ERC-4337)", "Opt into on-chain spend limits and guards — safety rails the contract enforces, not a promise."], ["Explicit confirmation, always", "Swaps, buys, hook attach, bridge transfers — every write routes through a confirmation sheet. No silent signing."], ["Open-source lineage", "Built on Rainbow's open-source wallet. The signing path is public and inspectable."]];
+    return React.createElement("section", {
+      style: {
+        padding: "92px 40px 0"
+      }
+    }, React.createElement("div", {
+      style: {
+        maxWidth: 1180,
+        margin: "0 auto"
+      }
+    }, React.createElement(Reveal, null, React.createElement(Kicker, null, "Security \xB7 self-custody"), React.createElement(H2, null, "Your keys. Your markets.")), React.createElement("div", {
+      className: "lnd-cols",
+      style: {
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: 40,
+        marginTop: 32,
+        alignItems: "start"
+      }
+    }, React.createElement(Reveal, {
+      delay: 60
+    }, React.createElement("div", {
+      style: {
+        maxWidth: 520
+      }
+    }, React.createElement("p", {
+      style: {
+        fontSize: 17,
+        lineHeight: 1.6,
+        color: LT.ink2,
+        margin: 0
+      }
+    }, "HookOS Wallet is self-custody. No account to open, no custodian to trust, and no support desk that can move your funds \u2014 because only your device holds the key."), React.createElement("p", {
+      style: {
+        fontSize: 15.5,
+        lineHeight: 1.65,
+        color: LT.ink2,
+        marginTop: 18
+      }
+    }, "The signing core comes from Rainbow's open-source wallet, extended as the native client for HookOS on Base. Trade tokens, attach hooks, bridge assets \u2014 each is an explicit, on-device signature you approve, one sheet at a time."), React.createElement("div", {
+      style: {
+        marginTop: 28,
+        display: "flex",
+        gap: 12,
+        flexWrap: "wrap"
+      }
+    }, React.createElement(Btn, {
+      href: HL.ios,
+      big: true
+    }, "Get the wallet"), React.createElement(Btn, {
+      href: HL.docs,
+      ghost: true
+    }, "Read the security model")))), React.createElement(Reveal, {
+      delay: 120
+    }, React.createElement("div", {
+      className: "lnd-card lnd-lift",
+      style: {
+        padding: 28
+      }
+    }, React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 12,
+        marginBottom: 20
+      }
+    }, React.createElement(LHex, {
+      size: 22,
+      sw: 2
+    }), React.createElement("div", {
+      style: {
+        fontFamily: LT.mono,
+        fontSize: 11,
+        letterSpacing: "0.14em",
+        textTransform: "uppercase",
+        color: LT.ink3
+      }
+    }, "What self-custody means here")), React.createElement("div", null, checklist.map(([t, d], i) => React.createElement("div", {
+      key: t,
+      style: {
+        display: "flex",
+        gap: 14,
+        padding: "14px 0",
+        borderTop: i === 0 ? "none" : `1px solid ${LT.line}`
+      }
+    }, React.createElement("span", {
+      "aria-hidden": true,
+      style: {
+        flex: "0 0 auto",
+        width: 22,
+        height: 22,
+        marginTop: 1,
+        borderRadius: 6,
+        background: LT.acidBg,
+        color: LT.acidInk,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontFamily: LT.mono,
+        fontSize: 13,
+        fontWeight: 700
+      }
+    }, "\u2713"), React.createElement("div", null, React.createElement("div", {
+      style: {
+        fontSize: 15,
+        fontWeight: 600,
+        color: LT.ink
+      }
+    }, t), React.createElement("div", {
+      style: {
+        fontSize: 13.5,
+        lineHeight: 1.55,
+        color: LT.ink2,
+        marginTop: 3
+      }
+    }, d))))), React.createElement("div", {
+      style: {
+        marginTop: 20,
+        paddingTop: 16,
+        borderTop: `1px solid ${LT.line2}`,
+        fontFamily: LT.mono,
+        fontSize: 11,
+        lineHeight: 1.6,
+        color: LT.ink3
+      }
+    }, "Open-source lineage (Rainbow fork) \xB7 self-custody \xB7 you sign every write. We make no claim of third-party audit or certification."))))));
+  }
+  function Gamification() {
+    const {
+      data,
+      loading,
+      error
+    } = useApi("/stats");
+    const surfaces = [["Battle Pass", "Seasonal tiers. Earn XP from real on-chain activity and climb."], ["Daily Quests", "Rotating objectives — trade, launch, attach a hook, show up."], ["Clans", "Squad up. Pool progress and compete for the collective board."], ["PvP Arena", "Head-to-head battles settled on-chain. Winner takes the pot."], ["Launch Wars", "New-token launches race the bonding curve. First to graduate wins."]];
+    const num = k => data && typeof data[k] === "number" ? data[k] : null;
+    const season = num("currentSeason"),
+      battles = num("totalBattles"),
+      wagers = num("totalWagers");
+    const arenaCold = battles === 0 && wagers === 0;
+    const stats = [{
+      label: "Tokens launched",
+      value: num("totalTokens")
+    }, {
+      label: "Hooks deployed",
+      value: num("totalHooks")
+    }, {
+      label: "Arena battles",
+      value: battles,
+      first: battles === 0
+    }, {
+      label: "Wagers settled",
+      value: wagers,
+      first: wagers === 0
+    }];
+    return React.createElement("section", {
+      style: {
+        padding: "92px 40px 0"
+      }
+    }, React.createElement("div", {
+      style: {
+        maxWidth: 1180,
+        margin: "0 auto"
+      }
+    }, React.createElement(Reveal, null, React.createElement(Kicker, {
+      color: LT.acidInk
+    }, "Earn \xB7 compete"), React.createElement(H2, null, "Markets are the game."), React.createElement("p", {
+      style: {
+        fontSize: 17,
+        lineHeight: 1.6,
+        color: LT.ink2,
+        maxWidth: 620,
+        marginTop: 14
+      }
+    }, "Every launch, hook, and trade is a move. HookOS turns programmable markets into a season you can play \u2014 and the board is live now.")), React.createElement(Reveal, {
+      delay: 60
+    }, React.createElement("div", {
+      className: "lnd-card",
+      style: {
+        marginTop: 32,
+        padding: "18px 22px",
+        display: "flex",
+        alignItems: "center",
+        gap: 14,
+        flexWrap: "wrap"
+      }
+    }, loading ? React.createElement(Skeleton, {
+      w: 220,
+      h: 20,
+      r: 6
+    }) : error || season === null ? React.createElement("span", {
+      style: {
+        fontFamily: LT.mono,
+        fontSize: 13,
+        color: LT.ink3
+      }
+    }, "Season status unavailable \u2014 the game is still on. Check back shortly.") : React.createElement(React.Fragment, null, React.createElement("span", {
+      "aria-hidden": true,
+      style: {
+        width: 9,
+        height: 9,
+        borderRadius: "50%",
+        background: LT.acid,
+        boxShadow: `0 0 0 4px ${LT.acidBg}`
+      }
+    }), React.createElement("span", {
+      style: {
+        fontFamily: LT.mono,
+        fontSize: 14,
+        fontWeight: 700,
+        color: LT.ink
+      }
+    }, "Season ", season), React.createElement("span", {
+      style: {
+        fontFamily: LT.mono,
+        fontSize: 13,
+        color: LT.acidInk,
+        letterSpacing: "0.04em"
+      }
+    }, "\xB7 LIVE NOW"), React.createElement("span", {
+      style: {
+        fontSize: 13.5,
+        color: LT.ink2
+      }
+    }, arenaCold ? "The Arena just opened — zero battles fought. Be the first name on the board." : "The board is warming up. Jump in and climb.")))), React.createElement("div", {
+      style: {
+        marginTop: 20,
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+        gap: 14
+      }
+    }, stats.map((s, i) => React.createElement(Reveal, {
+      key: s.label,
+      delay: 80 + i * 40
+    }, React.createElement("div", {
+      className: "lnd-card lnd-lift",
+      style: {
+        padding: 20
+      }
+    }, loading ? React.createElement(Skeleton, {
+      w: 70,
+      h: 30,
+      r: 6
+    }) : error || s.value === null ? React.createElement("div", {
+      style: {
+        fontFamily: LT.mono,
+        fontSize: 26,
+        fontWeight: 700,
+        color: LT.ink3
+      }
+    }, "\u2014") : React.createElement("div", {
+      style: {
+        fontFamily: LT.mono,
+        fontSize: 30,
+        fontWeight: 700,
+        color: LT.ink,
+        lineHeight: 1
+      }
+    }, React.createElement(Counter, {
+      to: s.value,
+      decimals: 0
+    })), React.createElement("div", {
+      style: {
+        fontFamily: LT.mono,
+        fontSize: 10.5,
+        letterSpacing: "0.12em",
+        textTransform: "uppercase",
+        color: LT.ink3,
+        marginTop: 10
+      }
+    }, s.label), !loading && !error && s.first && React.createElement("div", {
+      style: {
+        fontFamily: LT.mono,
+        fontSize: 11,
+        color: LT.acidInk,
+        marginTop: 6
+      }
+    }, "be first \u2197"))))), React.createElement("div", {
+      style: {
+        marginTop: 20,
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
+        gap: 14
+      }
+    }, surfaces.map(([t, d]) => React.createElement("div", {
+      className: "lnd-card lnd-lift",
+      key: t,
+      style: {
+        padding: 22
+      }
+    }, React.createElement("div", {
+      style: {
+        fontSize: 16,
+        fontWeight: 700,
+        color: LT.ink
+      }
+    }, t), React.createElement("div", {
+      style: {
+        fontSize: 13.5,
+        lineHeight: 1.55,
+        color: LT.ink2,
+        marginTop: 8
+      }
+    }, d)))), React.createElement(Reveal, {
+      delay: 180
+    }, React.createElement("div", {
+      style: {
+        marginTop: 28,
+        display: "flex",
+        gap: 12,
+        flexWrap: "wrap",
+        alignItems: "center"
+      }
+    }, React.createElement(Btn, {
+      href: HL.app,
+      big: true
+    }, "Enter the Arena"), React.createElement(Btn, {
+      href: HL.docs,
+      ghost: true
+    }, "How seasons work"), !loading && !error && data && data.lastUpdatedBlock && React.createElement("span", {
+      style: {
+        fontFamily: LT.mono,
+        fontSize: 11.5,
+        color: LT.ink3
+      }
+    }, "live \xB7 block ", fmtInt(data.lastUpdatedBlock))))));
+  }
   function LandingPage() {
     return React.createElement("div", {
       "data-screen-label": "HookOS Wallet"
-    }, React.createElement(LTopbar, null), React.createElement(LTicker, null), React.createElement(LndHero, null), React.createElement(LaunchOnX, null), React.createElement(HowItWorks, null), React.createElement(SixWeapons, null), React.createElement(ProtocolPulse, null), React.createElement(RevenueSplits, null), React.createElement(Gamification, null), React.createElement(WalletOS, null), React.createElement(CreatorEconomy, null), React.createElement(MultiChain, null), React.createElement(TrendingTokens, null), React.createElement(BottomCTA, null), React.createElement(LFooter, null));
+    }, React.createElement(Topbar, null), React.createElement(Hero, null), React.createElement(Features, null), React.createElement(LiveTokens, null), React.createElement(LiveHooks, null), React.createElement(ProtocolPulse, null), React.createElement(HowItWorks, null), React.createElement(SelfCustody, null), React.createElement(Gamification, null), React.createElement(Economics, null), React.createElement(MultiChain, null), React.createElement(BottomCTA, null), React.createElement(Footer, null));
   }
   ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(LandingPage, null));
 })();
