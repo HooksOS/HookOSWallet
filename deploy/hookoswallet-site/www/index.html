@@ -3,92 +3,227 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>HookOS Wallet — Markets are now software.</title>
-<meta name="description" content="HookOS Wallet — the native client for the HookOS ecosystem. Hold your own keys and launch programmable tokens with custom AMM hooks: MEV shields, reflexive burns, PvP wagers, AI-tuned fees, and cross-chain. Live on Base." />
-<meta property="og:title" content="HookOS Wallet — Markets are now software." />
-<meta property="og:description" content="The native client for the HookOS ecosystem. Keys, signing, launches, hooks, cross-chain — one wallet. Live on Base." />
+<title>HookOS Wallet — Coming Soon</title>
+<meta name="description" content="HookOS Wallet — the self-custody native client for the HookOS ecosystem. Hold, launch, and trade programmable tokens on Base. Launching soon." />
+<meta name="theme-color" content="#1F3A2C" />
+
+<!-- Social / Open Graph -->
 <meta property="og:type" content="website" />
-<meta name="theme-color" content="#f4f5f1" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cpath d='M30 5 L51 17 L51 43 L30 55 L9 43 L9 17 Z' stroke='%230c8a42' stroke-width='4' fill='%23e3f7eb'/%3E%3Cpath d='M22 26 Q22 36 30 36 Q38 36 38 26 Q38 19 32 19' stroke='%230c8a42' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta property="og:site_name" content="HookOS Wallet" />
+<meta property="og:title" content="HookOS Wallet — Coming Soon" />
+<meta property="og:description" content="The self-custody wallet for the HookOS ecosystem. Programmable tokens on Base. Launching soon." />
+<meta property="og:url" content="https://hookoswallet.xyz/" />
+<meta property="og:image" content="https://hookoswallet.xyz/brand/og-banner.png" />
+<meta property="og:image:width" content="1500" />
+<meta property="og:image:height" content="500" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@hookosfun" />
+<meta name="twitter:title" content="HookOS Wallet — Coming Soon" />
+<meta name="twitter:description" content="The self-custody wallet for the HookOS ecosystem. Programmable tokens on Base. Launching soon." />
+<meta name="twitter:image" content="https://hookoswallet.xyz/brand/og-banner.png" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20120%20120'%3E%3Crect%20width='120'%20height='120'%20rx='28'%20fill='%231F3A2C'/%3E%3Ccircle%20cx='60'%20cy='34'%20r='8.5'%20fill='none'%20stroke='%2397D9AE'%20stroke-width='13'/%3E%3Cpath%20d='M60%2047%20L60%2072%20C60%2094%2044%20104%2032%2095%20C22%2088%2023%2076%2033%2070'%20fill='none'%20stroke='%2397D9AE'%20stroke-width='13'%20stroke-linecap='round'/%3E%3C/svg%3E" />
+<link rel="alternate icon" href="/brand/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-  :root { color-scheme: light; }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: #f4f5f1; font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; }
-  button { font-family: inherit; }
-  .lnd-plain { text-decoration: none; color: inherit; }
-  .lnd-navlink { color: #494c44; transition: color 130ms; }
-  .lnd-navlink:hover { color: #0c8a42; }
-  .lnd-btn {
-    background: #0c8a42; color: #fff; font-weight: 600; font-size: 14.5px;
-    padding: 13px 22px; border-radius: 10px; border: none; cursor: pointer;
-    box-shadow: 0 10px 26px -10px rgba(12,138,66,0.5);
-    transition: transform 150ms, box-shadow 150ms;
+  :root{
+    --forest:#1F3A2C; --sage:#5E9377; --mint:#97D9AE; --char:#1B221D; --cream:#F2EFE4;
   }
-  .lnd-btn:hover { transform: translateY(-1px); box-shadow: 0 14px 32px -10px rgba(12,138,66,0.55); }
-  .lnd-btn-ghost {
-    background: #fff; color: #0d100c; font-weight: 600; font-size: 14.5px;
-    padding: 13px 22px; border-radius: 10px; border: 1px solid rgba(13,16,12,0.14); cursor: pointer;
-    transition: border-color 150ms, transform 150ms;
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Hanken Grotesk",system-ui,sans-serif;
+    background:var(--char);
+    color:var(--cream);
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
   }
-  .lnd-btn-ghost:hover { border-color: rgba(12,138,66,0.5); transform: translateY(-1px); }
-  .lnd-card {
-    background: #fff; border: 1px solid rgba(13,16,12,0.09); border-radius: 14px;
-    box-shadow: 0 1px 3px rgba(13,16,12,0.04);
+  /* radial glow behind the mark */
+  body::before{
+    content:"";
+    position:fixed;
+    top:22%;left:50%;
+    width:min(640px,120vw);height:min(640px,120vw);
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(151,217,174,.22) 0%, rgba(94,147,119,.08) 38%, rgba(27,34,29,0) 70%);
+    filter:blur(4px);
+    z-index:0;
+    pointer-events:none;
+    animation:pulse 7s ease-in-out infinite;
   }
-  .lnd-lift { transition: transform 180ms cubic-bezier(0.22,1,0.36,1), box-shadow 180ms; }
-  .lnd-lift:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -16px rgba(13,16,12,0.16); }
-  .lnd-frame {
-    background: #fff; border: 1px solid rgba(13,16,12,0.14); border-radius: 16px;
-    box-shadow: 0 24px 60px -24px rgba(13,16,12,0.18); overflow: hidden;
+  @keyframes pulse{
+    0%,100%{opacity:.75;transform:translate(-50%,-50%) scale(1)}
+    50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}
   }
-  .lnd-row { transition: background 120ms; }
-  .lnd-row:hover { background: rgba(56,224,123,0.05); }
-  @keyframes lndMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .lnd-marquee { animation: lndMarquee 36s linear infinite; }
-  .lnd-marquee:hover { animation-play-state: paused; }
-  @keyframes lndPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
-  .lnd-pulse { animation: lndPulse 1.8s ease-in-out infinite; }
-  .lnd-fill { transition: width 1200ms cubic-bezier(0.22,1,0.36,1); }
-  /* loading skeleton shimmer (real data is fetched live; this shows while it loads) */
-  @keyframes lndShimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-  .lnd-sk {
-    background: linear-gradient(90deg, rgba(13,16,12,0.05), rgba(13,16,12,0.11), rgba(13,16,12,0.05));
-    background-size: 200% 100%; animation: lndShimmer 1.4s ease-in-out infinite;
+  main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2.5rem 1.5rem 1rem;
+    position:relative;
+    z-index:1;
+    gap:1.5rem;
   }
-  @media (prefers-reduced-motion: reduce) {
-    .lnd-marquee { animation: none; }
-    .lnd-pulse { animation: none; }
-    .lnd-sk { animation: none; }
+
+  /* lockup */
+  .lockup{display:flex;align-items:center;gap:.85rem}
+  .mark{
+    width:clamp(46px,10vw,60px);height:auto;display:block;
+    filter:drop-shadow(0 0 18px rgba(151,217,174,.35));
   }
-  /* horizontal-scroll wrapper for the dense trending table on small screens */
-  .lnd-tscroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .lnd-tscroll > * { min-width: 720px; }
-  /* responsive: collapse multi-column grids in two steps */
-  @media (max-width: 1024px) {
-    .lnd-cols { grid-template-columns: repeat(2, 1fr) !important; }
+  .wordmark{
+    font-weight:800;
+    font-size:clamp(1.5rem,5.4vw,2rem);
+    letter-spacing:-.02em;
+    line-height:1;
   }
-  @media (max-width: 900px) {
-    .lnd-topbar { padding-left: 18px !important; padding-right: 18px !important; gap: 12px !important; }
-    .lnd-search, .lnd-nav { display: none !important; }
-    .lnd-topbar > a:first-child { margin-right: auto; }
+  .wordmark .os{color:var(--cream)}
+  .wordmark .wal{color:var(--mint)}
+
+  /* pill */
+  .pill{
+    font-family:"Space Mono",monospace;
+    font-size:.72rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--mint);
+    border:1px solid rgba(151,217,174,.32);
+    background:rgba(151,217,174,.06);
+    padding:.5rem 1rem;
+    border-radius:999px;
+    display:inline-flex;align-items:center;gap:.55rem;
   }
-  @media (max-width: 680px) {
-    .lnd-cols { grid-template-columns: 1fr !important; }
-    .lnd-head { flex-direction: column; align-items: flex-start !important; gap: 10px; }
-    section, footer { padding-left: 20px !important; padding-right: 20px !important; }
-    .lnd-hero-map { border-right: none !important; border-bottom: 1px solid rgba(13,16,12,0.09) !important; min-height: 240px !important; }
-    h1 { font-size: 40px !important; }
-    h2 { font-size: 32px !important; }
+  .pill .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--mint);
+    box-shadow:0 0 8px var(--mint);
+    animation:blink 2.4s ease-in-out infinite;
+  }
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+
+  h1{
+    font-weight:700;
+    font-size:clamp(2rem,7.5vw,3.4rem);
+    line-height:1.06;
+    letter-spacing:-.03em;
+    max-width:14ch;
+    color:var(--cream);
+  }
+  h1 em{font-style:normal;color:var(--mint)}
+  .sub{
+    font-size:clamp(.98rem,2.4vw,1.12rem);
+    line-height:1.55;
+    color:rgba(242,239,228,.72);
+    max-width:38ch;
+    font-weight:400;
+  }
+
+  /* follow-on-X button */
+  .xbtn{
+    display:inline-flex;align-items:center;gap:.6rem;
+    font-family:"Hanken Grotesk",sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    color:var(--char);
+    background:var(--mint);
+    border:none;
+    border-radius:12px;
+    padding:.85rem 1.5rem;
+    cursor:pointer;
+    text-decoration:none;
+    margin-top:.25rem;
+    box-shadow:0 12px 30px -12px rgba(151,217,174,.5);
+    transition:transform .15s,background .2s,box-shadow .2s;
+  }
+  .xbtn:hover{background:#aee6c1;transform:translateY(-1px);box-shadow:0 16px 36px -12px rgba(151,217,174,.6)}
+  .xbtn:active{transform:translateY(0)}
+  .xlogo{width:1.05em;height:1.05em;display:block}
+  .nospam{
+    font-family:"Space Mono",monospace;
+    font-size:.68rem;
+    letter-spacing:.04em;
+    color:rgba(242,239,228,.42);
+    margin-top:-.25rem;
+  }
+
+  .base{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-family:"Space Mono",monospace;
+    font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(242,239,228,.62);
+  }
+  .base .swatch{width:9px;height:9px;border-radius:50%;background:var(--sage);box-shadow:0 0 7px var(--sage)}
+
+  footer{
+    position:relative;z-index:1;
+    padding:1.5rem;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+    gap:.6rem 1.25rem;
+    font-family:"Space Mono",monospace;
+    font-size:.7rem;
+    letter-spacing:.05em;
+    color:rgba(242,239,228,.5);
+    border-top:1px solid rgba(242,239,228,.08);
+  }
+  footer a{color:rgba(242,239,228,.66);text-decoration:none;transition:color .2s}
+  footer a:hover{color:var(--mint)}
+  footer .sep{opacity:.3}
+
+  @media (max-width:420px){
+    footer{gap:.5rem .8rem}
+    .wordmark{font-size:1.5rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    body::before{animation:none}
+    .pill .dot{animation:none}
+    button,input{transition:none}
   }
 </style>
 </head>
 <body>
-<div id="root"></div>
-<script src="./vendor/react.production.min.js"></script>
-<script src="./vendor/react-dom.production.min.js"></script>
-<script src="./landing.js" defer></script>
+  <main>
+    <div class="lockup">
+      <svg class="mark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="60" cy="28" r="8.5" fill="none" stroke="#97D9AE" stroke-width="13"/>
+        <path d="M60 41 L60 66 C60 88 44 98 32 89 C22 82 23 70 33 64" fill="none" stroke="#97D9AE" stroke-width="13" stroke-linecap="round"/>
+      </svg>
+      <span class="wordmark"><span class="os">HookOS</span> <span class="wal">Wallet</span></span>
+    </div>
+
+    <span class="pill"><span class="dot" aria-hidden="true"></span>Launching Soon</span>
+
+    <h1>Your keys. <em>Programmable</em> money.</h1>
+    <p class="sub">The self-custody wallet for the HookOS ecosystem — hold, launch, and trade programmable tokens on Base.</p>
+
+    <a class="xbtn" href="https://x.com/hookosfun" target="_blank" rel="noopener">
+      <svg class="xlogo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      Follow on X
+    </a>
+    <p class="nospam">Get launch updates &amp; early access.</p>
+
+    <span class="base"><span class="swatch" aria-hidden="true"></span>Live on Base</span>
+  </main>
+
+  <footer>
+    <span>© 2026 HookOS Wallet</span>
+    <span class="sep">·</span>
+    <a href="https://x.com/hookosfun" target="_blank" rel="noopener">@hookosfun</a>
+    <span class="sep">·</span>
+    <a href="https://hookoswallet.xyz" target="_blank" rel="noopener">hookoswallet.xyz</a>
+    <span class="sep">·</span>
+    <span>Self-custody. Your keys.</span>
+  </footer>
 </body>
 </html>
